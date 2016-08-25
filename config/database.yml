@@ -8,13 +8,13 @@ defaults: &defaults
   timeout: 5000
 
 development:
-  database: diabee_development
+  database: diabee12_development
   <<: *defaults
 
 test:
-  database: diabee_test
+  database: diabee12_test
   <<: *defaults
 
 production:
-  database: diabee_production
+  database: diabee12_production
   <<: *defaults
