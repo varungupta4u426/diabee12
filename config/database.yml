@@ -48,11 +48,11 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
+  defaults: &defaults
   adapter: postgresql
-  database: diabee_development
-  encoding: utf8
-  host: localhost
-  pool: 2
-  timeout: 5000
   username: postgres
   password: postgres
+  host: localhost
+  port: 5432
+  pool: 5
+  timeout: 5000
