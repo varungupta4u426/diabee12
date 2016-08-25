@@ -1,0 +1,57 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  password_digest: MyString
+  mobile: MyString
+  firts_name: MyString
+  last_name: MyString
+  gender: MyString
+  dob: 2016-08-25
+  street_address: MyString
+  city: MyString
+  state: MyString
+  pin: MyString
+  ethnicity: MyString
+  exercise: false
+  somke_drink: MyString
+  disability: MyString
+  preferred_language: MyString
+  preferred_time_call_start: MyString
+  preferred_time_call_end: MyString
+  height: 
+  reason_for_non_enrollment: MyString
+  date_of_dropout: 2016-08-25
+  reason_for_dropout: MyString
+  source: MyString
+  nok_number: MyString
+  nok_name: MyString
+  nok_relation_with_patient: MyString
+
+two:
+  email: MyString
+  password_digest: MyString
+  mobile: MyString
+  firts_name: MyString
+  last_name: MyString
+  gender: MyString
+  dob: 2016-08-25
+  street_address: MyString
+  city: MyString
+  state: MyString
+  pin: MyString
+  ethnicity: MyString
+  exercise: false
+  somke_drink: MyString
+  disability: MyString
+  preferred_language: MyString
+  preferred_time_call_start: MyString
+  preferred_time_call_end: MyString
+  height: 
+  reason_for_non_enrollment: MyString
+  date_of_dropout: 2016-08-25
+  reason_for_dropout: MyString
+  source: MyString
+  nok_number: MyString
+  nok_name: MyString
+  nok_relation_with_patient: MyString
