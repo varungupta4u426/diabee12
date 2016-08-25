@@ -8,11 +8,11 @@ defaults: &defaults
   timeout: 5000
 
 development:
-  database: sober-places_development
+  database: diabee_development
   <<: *defaults
 
 test:
-  database: sober-places_test
+  database: diabee_test
   <<: *defaults
 
 production:
