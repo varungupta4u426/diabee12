@@ -4,7 +4,7 @@ class Api::V1::SessionsController < AppsController
 
 
 	def create
-		@patient = Patient.find_by(:email => params[:email])
+		@patient = Patient.find_by(:username => params[:username])
 		if @patient && @patient.authenticate(params[:password])
 			generate_access_token @patient
 			render :create
@@ -15,11 +15,11 @@ class Api::V1::SessionsController < AppsController
 
 	def destroy
 		sign_out
-		render json: {result: true, messages: t('session.destroy.success.message')}
+		render json: {result: true, messages: "Logged out successfully"}
 	end	
  	
  	private
  	def sign_out
- 		
+ 		@patient
  	end	
 end

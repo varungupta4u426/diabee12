@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 		        ) do
 		          
 		          resource :patients, only: [:create]
+		          resource :sessions, only: [:create]
 		    end
 		  end 
 end

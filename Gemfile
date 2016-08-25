@@ -39,7 +39,7 @@ group :development, :test do
 end
 
 group :production do
-  # Use mysql as the database for Active Record
+  # Use postgres as the database for Active Record
   gem 'pg', '~> 0.18.4'
 end
 

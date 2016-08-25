@@ -1,6 +1,6 @@
 class Api::V1::PatientsController < AppsController
 
-    before_action :authenticate_user#, only: []
+    # before_action :authenticate_user#, only: []
 
 	def create 
 		@patient = Patient.new(patient_params)		
@@ -20,6 +20,7 @@ class Api::V1::PatientsController < AppsController
 				:last_name,
 				:email,
 				:gender,
+				:username,
 				:password
 			)
 	end	
