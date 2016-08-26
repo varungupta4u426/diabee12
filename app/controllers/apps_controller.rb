@@ -37,10 +37,10 @@ class AppsController < ActionController::Base
     end
 
     def generate_access_token patient
-		begin
-		  access_token = Time.now.to_i + patient.id
-		end while patient.class.exists?(access_token: access_token)
-		patient.access_token = access_token
-		patient.save
-	end
+  		begin
+  		  access_token = Time.now.to_i + patient.id
+  		end while patient.class.exists?(access_token: access_token)
+  		patient.access_token = access_token
+  		patient.save
+	  end
 end

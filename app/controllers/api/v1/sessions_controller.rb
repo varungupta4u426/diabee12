@@ -20,6 +20,10 @@ class Api::V1::SessionsController < AppsController
  	
  	private
  	def sign_out
- 		@patient
+ 		@patient.access_token = nil
+ 		@patient.save
  	end	
 end
+
+
+

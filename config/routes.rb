@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'patients/index'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
 		        ) do
 		          
 		          resource :patients, only: [:create]
-		          resource :sessions, only: [:create]
+		          resource :sessions, only: [:create,:destroy]
 		    end
 		  end 
 end

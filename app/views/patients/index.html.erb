@@ -1,0 +1,55 @@
+		<div class="main-div">
+			<div class="page-title">
+				<h1 class="pull-left">Dashboard</h1>
+				<div class="pull-right">
+					<a href="" class="add-btn blue-bg"><i class="icon icon-small-calendar"></i> Date of Enrolment</a>
+					<a href="" class="add-btn red-bg"><i class="icon icon-import"></i> Export Patient Data</a>
+					<a href="add-patient.html" class="add-btn"><i class="icon icon-add-1"></i> Add New Patient</a>
+				</div>
+			</div>
+			<div class="white-bg">
+				<table class="table" id="example">
+					<thead>
+					  <tr>
+						<th>SNo.</th>
+						<th>Name</th>
+						<th>Package</th>
+						<th>Mobile</th>
+						<th>Source</th>
+						<th>Modules Due Today</th>
+						<th>Medicine Refill / Test Due</th>
+						<th>Messages</th>
+						<th class="text-right">Action</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<%#= @patients %>
+						<%= render 'patients_data' ,locals: {p: @patients}%>
+					  
+					</tbody>
+				  </table>
+		
+			</div>
+		</div>
+
+		<script>
+		$(document).ready(function(){
+			alert();
+			    $('#example').DataTable({
+			        language: {
+			            searchPlaceholder: 'Search records',
+			            sSearch: '',
+			            sLengthMenu: 'Show _MENU_',
+			            sLength: 'dataTables_length',
+			            oPaginate: {
+			                sFirst: '<i class="icon icon-left-chevron"></i>',
+			                sPrevious: '<i class="icon icon-left-chevron"></i>',
+			                sNext: '<i class="icon icon-right-chevron"></i>',
+			                sLast: '<i class="icon icon-right-chevron"></i>' 
+			        }
+			        }
+			    });
+			    $('.dataTables_length select').addClass('browser-default');
+
+		});
+		</script>

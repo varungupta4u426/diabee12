@@ -10,9 +10,16 @@
 
   <body>
 
-  	<p class="notice"><%= notice %></p>
+  <p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 
+
+  <%= render 'common/header'%>
+  <section id="warper">
+  <%= render 'common/menubar'%>
     <%= yield %>
+  </section>
+
+
   </body>
 </html>

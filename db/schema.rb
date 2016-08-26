@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825125606) do
+ActiveRecord::Schema.define(version: 20160826070210) do
 
   create_table "patients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20160825125606) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.string   "username"
+    t.string   "reset_password_token"
+    t.index ["reset_password_token"], name: "index_patients_on_reset_password_token", using: :btree
   end
 
 end
