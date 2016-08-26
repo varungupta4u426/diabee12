@@ -63,11 +63,11 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.smtp_settings = {
-    :address              => "mail.lptpl.com",
+    :address              => "mail.soberplaces.org",
     :port                 => 25,
-    :domain               => 'lptpl.com',
-    :user_name            => 'varun@lptpl.com',
-    :password             => 'varun@123',
+    :domain               => 'soberplaces.org',
+    :user_name            => 'soberplacesorg',
+    :password             => 'Katie2014',
     :authentication       => 'plain',
     :openssl_verify_mode => 'none', 
     :enable_starttls_auto => true  }
