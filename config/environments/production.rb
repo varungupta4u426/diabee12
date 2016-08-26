@@ -65,7 +65,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address              => "mail.lptpl.com",
     :port                 => 25,
-    :domain               => 'lptpl.org',
+    :domain               => 'lptpl.com',
     :user_name            => 'varun@lptpl.com',
     :password             => 'varun@123',
     :authentication       => 'plain',
