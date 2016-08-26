@@ -13,8 +13,12 @@ Rails.application.routes.draw do
 		          
 		          resource :patients, only: [:create]
 		          resource :sessions, only: [:create,:destroy]
+		          resource :passwords,only: [:edit]	
 		    end
 		  end 
+
+		  get  'patient/password/new'   , :to => "api/v1/passwords#new"
+		  post 'patient/password/create', :to => "api/v1/passwords#create"
 end
 
 

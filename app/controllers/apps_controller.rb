@@ -33,7 +33,7 @@ class AppsController < ActionController::Base
     end
 
   	def render_errors(errors)
-    	render json: { errors: errors }, status: 422
+    	render json: { errors: errors ,status: 422}
     end
 
     def generate_access_token patient
