@@ -10,7 +10,134 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160826070210) do
+ActiveRecord::Schema.define(version: 20160827103854) do
+
+  create_table "eat_out_places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "exercises", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "type_of_exercise"
+    t.string   "amount_of_time"
+    t.string   "times_per_weak"
+    t.integer  "nutrition_history_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["nutrition_history_id"], name: "index_exercises_on_nutrition_history_id", using: :btree
+  end
+
+  create_table "health_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "ever_had_condition"
+    t.boolean  "follow_special_diet"
+    t.text     "listing_special_diet",               limit: 65535
+    t.string   "dilated_eye_exam_month"
+    t.string   "dilated_eye_exam_year"
+    t.boolean  "seen_foot_doctor"
+    t.string   "seen_foot_doctor_month"
+    t.string   "seen_foot_doctor_year"
+    t.boolean  "check_feet_daily"
+    t.boolean  "drink_alcohol"
+    t.string   "drinks_per_week_wine"
+    t.string   "drinks_per_week_beer"
+    t.string   "drinks_per_week_mixed"
+    t.boolean  "do_you_smoke"
+    t.string   "smoke_packs_per_day"
+    t.string   "smoke_years"
+    t.boolean  "ever_smoke"
+    t.string   "smoke_quit"
+    t.string   "alergies_any_othr_health_condition"
+    t.integer  "patient_id"
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.index ["patient_id"], name: "index_health_histories_on_patient_id", using: :btree
+  end
+
+  create_table "histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "ever_had_condition"
+    t.boolean  "follow_special_diet"
+    t.text     "listing_special_diet",               limit: 65535
+    t.string   "dilated_eye_exam_month"
+    t.string   "dilated_eye_exam_year"
+    t.boolean  "seen_foot_doctor"
+    t.string   "seen_foot_doctor_month"
+    t.string   "seen_foot_doctor_year"
+    t.boolean  "check_feet_daily"
+    t.boolean  "drink_alcohol"
+    t.string   "drinks_per_week_wine"
+    t.string   "drinks_per_week_beer"
+    t.string   "drinks_per_week_mixed"
+    t.boolean  "do_you_smoke"
+    t.string   "smoke_packs_per_day"
+    t.string   "smoke_years"
+    t.boolean  "ever_smoke"
+    t.string   "smoke_quit"
+    t.string   "alergies_any_othr_health_condition"
+    t.integer  "patient_id"
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.index ["patient_id"], name: "index_histories_on_patient_id", using: :btree
+  end
+
+  create_table "nutrition_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "height"
+    t.string   "weight"
+    t.boolean  "weight_chamge_last_year"
+    t.string   "realistic_weight_for_you"
+    t.string   "since_you_at_that_weight"
+    t.integer  "confidence_diaterey_change"
+    t.integer  "motivation_diatery_change"
+    t.integer  "eat_out_for_breakfast_count"
+    t.integer  "eat_out_for_lunch_count"
+    t.integer  "eat_out_for_dinner_count"
+    t.string   "places_eat_ot_at"
+    t.string   "type_of_bevrages_drink_a_day"
+    t.boolean  "eat_regular_meal"
+    t.string   "eat_regular_meal_comment"
+    t.boolean  "take_vitamin_mineral_diet_supplement"
+    t.string   "take_vitamin_mineral_diet_supplement_type"
+    t.boolean  "do_you_exercise_now"
+    t.integer  "patient_id"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.index ["patient_id"], name: "index_nutrition_histories_on_patient_id", using: :btree
+  end
+
+  create_table "nutrition_history_eat_out_places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "nutrition_history_id"
+    t.integer  "eat_out_place_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["eat_out_place_id"], name: "index_nutrition_history_eat_out_places_on_eat_out_place_id", using: :btree
+    t.index ["nutrition_history_id"], name: "index_nutrition_history_eat_out_places_on_nutrition_history_id", using: :btree
+  end
+
+  create_table "patient_health_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "ever_had_condition"
+    t.boolean  "follow_special_diet"
+    t.text     "listing_special_diet",               limit: 65535
+    t.string   "dilated_eye_exam_month"
+    t.string   "dilated_eye_exam_year"
+    t.boolean  "seen_foot_doctor"
+    t.string   "seen_foot_doctor_month"
+    t.string   "seen_foot_doctor_year"
+    t.boolean  "check_feet_daily"
+    t.boolean  "drink_alcohol"
+    t.string   "drinks_per_week_wine"
+    t.string   "drinks_per_week_beer"
+    t.string   "drinks_per_week_mixed"
+    t.boolean  "do_you_smoke"
+    t.string   "smoke_packs_per_day"
+    t.string   "smoke_years"
+    t.boolean  "ever_smoke"
+    t.string   "smoke_quit"
+    t.string   "alergies_any_othr_health_condition"
+    t.integer  "patient_id"
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.index ["patient_id"], name: "index_patient_health_histories_on_patient_id", using: :btree
+  end
 
   create_table "patients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email"
@@ -47,4 +174,11 @@ ActiveRecord::Schema.define(version: 20160826070210) do
     t.index ["reset_password_token"], name: "index_patients_on_reset_password_token", using: :btree
   end
 
+  add_foreign_key "exercises", "nutrition_histories"
+  add_foreign_key "health_histories", "patients"
+  add_foreign_key "histories", "patients"
+  add_foreign_key "nutrition_histories", "patients"
+  add_foreign_key "nutrition_history_eat_out_places", "eat_out_places"
+  add_foreign_key "nutrition_history_eat_out_places", "nutrition_histories"
+  add_foreign_key "patient_health_histories", "patients"
 end

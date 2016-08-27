@@ -1017,8 +1017,8 @@ th {
 @font-face {
   font-family: 'Glyphicons Halflings';
 
-  src: url('/assets/glyphicons-halflings-regular.eot');
-  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff2') format('woff2'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
@@ -7620,7 +7620,7 @@ button.close {
   display: block;
   width: 100%;
   height: 100%;
-  background: url('/assets/chosen-sprite.png') no-repeat 0px 2px;
+  background: url('../images/chosen-sprite.png') no-repeat 0px 2px;
 }
 .chosen-container-single .chosen-search {
   position: relative;
@@ -7636,8 +7636,8 @@ button.close {
   height: auto;
   outline: 0;
   border: 1px solid #aaa;
-  background: white url('/assets/chosen-sprite.png') no-repeat 100% -20px;
-  background: url('/assets/chosen-sprite.png') no-repeat 100% -20px;
+  background: white url('../images/chosen-sprite.png') no-repeat 100% -20px;
+  background: url('../images/chosen-sprite.png') no-repeat 100% -20px;
   font-size: 1em;
   font-family: sans-serif;
   line-height: normal;
@@ -7783,7 +7783,7 @@ button.close {
   display: block;
   width: 12px;
   height: 12px;
-  background: url('/assets/chosen-sprite.png') -42px 1px no-repeat;
+  background: url('../images/chosen-sprite.png') -42px 1px no-repeat;
   font-size: 1px;
 }
 .chosen-container-multi .chosen-choices li.search-choice .search-choice-close:hover {
@@ -7919,8 +7919,8 @@ button.close {
 }
 .chosen-rtl .chosen-search input[type="text"] {
   padding: 4px 5px 4px 20px;
-  background: white url('/assets/chosen-sprite.png') no-repeat -30px -20px;
-  background: url('/assets/chosen-sprite.png') no-repeat -30px -20px;
+  background: white url('../images/chosen-sprite.png') no-repeat -30px -20px;
+  background: url('../images/chosen-sprite.png') no-repeat -30px -20px;
   direction: rtl;
 }
 .chosen-rtl.chosen-container-single .chosen-single div b {
@@ -7948,43 +7948,43 @@ button.close {
 /* @end */
 @font-face {
     font-family: 'robotoblack';
-    src: url('/assets/roboto-black-webfont.woff2') format('woff2'),
-         url('/assets/roboto-black-webfont.woff') format('woff');
+    src: url('../fonts/roboto-black-webfont.woff2') format('woff2'),
+         url('../fonts/roboto-black-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'robotobold';
-    src: url('/assets/roboto-bold-webfont.woff2') format('woff2'),
-         url('/assets/roboto-bold-webfont.woff') format('woff');
+    src: url('../fonts/roboto-bold-webfont.woff2') format('woff2'),
+         url('../fonts/roboto-bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'robotolight';
-    src: url('/assets/roboto-light-webfont.woff2') format('woff2'),
-         url('/assets/roboto-light-webfont.woff') format('woff');
+    src: url('../fonts/roboto-light-webfont.woff2') format('woff2'),
+         url('../fonts/roboto-light-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'robotomedium';
-    src: url('/assets/roboto-medium-webfont.woff2') format('woff2'),
-         url('/assets/roboto-medium-webfont.woff') format('woff');
+    src: url('../fonts/roboto-medium-webfont.woff2') format('woff2'),
+         url('../fonts/roboto-medium-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'robotoregular';
-    src: url('/assets/roboto-regular-webfont.woff2') format('woff2'),
-         url('/assets/roboto-regular-webfont.woff') format('woff');
+    src: url('../fonts/roboto-regular-webfont.woff2') format('woff2'),
+         url('../fonts/roboto-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'robotothin';
-    src: url('/assets/roboto-thin-webfont.woff2') format('woff2'),
-         url('/assets/roboto-thin-webfont.woff') format('woff');
+    src: url('../fonts/roboto-thin-webfont.woff2') format('woff2'),
+         url('../fonts/roboto-thin-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -8026,13 +8026,19 @@ a:hover{text-decoration:none;}
 ul{list-style:none;}
 ul li{list-style:none;}
 body{background:#f1f2f2;font-family: 'robotolight'; color:rgb(23, 78, 99); font-size:13px;}
-header{background:rgb(23, 78, 99); min-height:50px; width:100%; position:fixed; top:0; left:0; right:0;z-index:2;}
+header{background:rgb(23, 78, 99); min-height:50px; width:100%; position:fixed; top:0; left:0; right:0;z-index:9999;}
 header .logo{background:rgba(53, 137, 161,0.5);width:200px; height:50px; color:#fff; font-size:25px; line-height:47px; padding-left:15px; float:left;}
 header .logo img{width:130px;}
 header .user-div{float:right; color:#fff;}
 header .settings-div{float:right; color:#fff;margin-right:15px; margin-top:12px; position:relative;}
-header .settings-div a{color:#fff; position:relative;padding-left: 43px;}
-header .settings-div a i{position: absolute;left: 0;font-size: 17px;background: rgba(255,255,255,0.3);width: 35px;height: 35px;text-align: center;border-radius: 50%;line-height: 37px; top:-5px;}
+header .settings-div a {
+    color: #fff;
+    position: relative;
+    padding-left: 43px;
+    margin-top: 4px;
+    display: inline-block;
+}
+header .settings-div a i{position: absolute;left: 0;font-size: 17px;background: rgba(255,255,255,0.3);width: 35px;height: 35px;text-align: center;border-radius: 50%;line-height: 37px; top:-9px;}
 header .settings-div img{width:25px; cursor:pointer;}
 header .settings-div ul.settings-list{width:175px;background:#fff; box-shadow:0 0 5px #999;min-height:100px;position:absolute; top:38px;right:0; list-style:none; text-align:left; padding:0; display:none;}
 header .settings-div ul.settings-list li{width:100%; border-bottom:1px solid #f1f1f1; position:relative;}
@@ -8051,7 +8057,7 @@ ul.collapse{background:rgba(255,255,255,0.3); padding:7px 0px 7px 45px;}
 ul.collapse li{padding:4px 0; color:#fff;}
 ul.collapse li a{font-size:13px; color:#fff;}
 ul.collapse li a:hover{color:#ccc;}
-#warper .main-div{position:absolute;left:215px;top:65px; right:15px;}
+#warper .main-div{position:absolute;left:215px;top:6px; right:15px;}
 #warper .main-div .page-title{min-height:40px;}
 #warper .main-div .page-title h1{font-size:24px;line-height:normal; margin:0px;padding:0px;font-family: 'robotoregular';}
 #warper .main-div .white-bg{ background:rgba(255,255,255,1);padding:25px;}
@@ -8095,7 +8101,7 @@ select {
     -moz-appearance: none;
     text-indent: 1px;
     text-overflow: '';
-	background:url(/assets/drop.png) no-repeat right center !important;
+	background:url(../images/drop.png) no-repeat right center !important;
 }
 select::-ms-expand {
     display: none;
@@ -8195,7 +8201,9 @@ table.dataTable thead .sorting::after {
 .margin-top30{margin-top:30px;}
 .canvasjs-chart-credit{display:none;}
 .chart{}
-.chart h3{font-family: 'robotomedium'; font-size:17px;}
+.chart h2{font-family: 'robotomedium'; font-size:17px; background:#f1f1f1;padding:7px 10px; text-transform:uppercase; margin:30px 0 0 0;}
+.chart h3{font-family: 'robotoregular';font-size:15px;text-transform:uppercase; margin:10px 0 5px 0;}
+
 .chart .chart-div{border:1px solid #ccc; padding:15px; margin-bottom:10px;}
 .canvasjs-chart-toolbar  {
     position: absolute !important;
@@ -8257,7 +8265,8 @@ font-family: 'robotoregular';}
 .table-custom thead {width:100%; background:#f1f1f1;}
 .table-custom thead tr{border:1px solid #f1f1f1;}
 .table-custom thead tr th{padding:9px 12px;}
-.table-custom tbody tr td{padding:5px 12px;}
+.table-custom tbody tr td{padding:5px 12px; white-space:nowrap;}
+.table-custom tbody tr td .form-control{width:124px;}
 .table-custom tbody tr td .form-control{max-width: 150px;
     height: 23px;
     font-size: 12px;
@@ -8343,6 +8352,7 @@ p.ChatStyle .stopT{position:absolute; right:0px;font-size:10px; background:#eab4
 .btn {border-radius:0px;}
 .btn-primary {color: #fff;background-color:rgb(53, 137, 161);border-color:rgb(53, 137, 161);}
 
+.tab-content .form-control[readonly]{background:#f1f1f1;border:0px;}
 
 .view-reports-down{border:1px solid #f1f1f1; width:auto; min-height:80px; text-align:center; cursor:pointer;}
 .attach-file{position: absolute;
@@ -8361,14 +8371,55 @@ p.ChatStyle .stopT{position:absolute; right:0px;font-size:10px; background:#eab4
     line-height: 1.42857143;
 }
 
+.mobile-menu{display:none;}
+.mobile-menu-close{display:none;}
+.mobile-menu i, .mobile-menu-close i{font-size: 17px;
+    background: rgba(255,255,255,0.2);
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 37px; display:inline-block;}
+.table-overflow{}
+ .mobile-menu-close i{font-size:12px;}
+
+.margin-bottom10{margin-bottom:10px;}
+.margin-top10{margin-top:10px;}
+.exer{position:relative; width:100%; display:block;}
+#exerciseBtn{position:absolute;right:0; color:#f00; cursor:pointer; background:#f1f1f1; padding:5px 8px;}
+
+
+
+
+/* media css */
+@media only screen and (max-width: 640px) {
+	header .logo {background:transparent;}
+	header .settings-div {margin-right: 45px;}
+    .mobile-menu {display: block;position: fixed;right: 10px;top: 8px;color: #fff;font-size: 22px;}
+    .mobile-menu-close {display: none;position: fixed;right: 10px;top: 8px;color: #fff;font-size: 22px;}
+	#warper aside {left:-250px; transition:all ease-in-out 0.6s; z-index:99999;}
+	#warper .main-div {left: 10px;top: 65px;right: 10px;}
+	.table-overflow{width:100%; overflow-x:auto;}
+	header .settings-div a {overflow: hidden;width: 35px;height: 35px; margin-top:-4px;}
+	header .settings-div a i {top:0px;}
+	#warper .main-div .white-bg {background: rgba(255,255,255,1);padding: 10px;}
+	.tab-content {border:0px solid #f1f2f2;padding:10px 0;}
+	.signin-div .s-tr form .warp {width: 100%;}
+	.addUnits .modal-dialog {width: auto;position: fixed;right: 0;top: 0;left: 0;bottom: 0;}
+	.modal-dialog {position: relative;width: auto;margin:0px;}
+}
+@media only screen and (max-width: 320px) {
+	header .settings-div {margin-right:42px;}
+} 
+
 
 @font-face {
   font-family: "untitled-font-6";
-  src:url("/assets/untitled-font-6.eot");
-  src:url("/assets/untitled-font-6.eot?#iefix") format("embedded-opentype"),
-    url("/assets/untitled-font-6.woff") format("woff"),
-    url("/assets/untitled-font-6.ttf") format("truetype"),
-    url("/assets/untitled-font-6.svg#untitled-font-6") format("svg");
+  src:url("../fonts/untitled-font-6.eot");
+  src:url("../fonts/untitled-font-6.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/untitled-font-6.woff") format("woff"),
+    url("../fonts/untitled-font-6.ttf") format("truetype"),
+    url("../fonts/untitled-font-6.svg#untitled-font-6") format("svg");
   font-weight: normal;
   font-style: normal;
 
@@ -8684,6 +8735,18 @@ p.ChatStyle .stopT{position:absolute; right:0px;font-size:10px; background:#eab4
 }
 .icon-doctor1:before {
   content: "\e000";
+}
+.icon-micon:before {
+  content: "\e001";
+}
+.icon-more:before {
+  content: "\e002";
+}
+.icon-m-icon:before {
+  content: "\e003";
+}
+.icon-cross:before {
+  content: "\e004";
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

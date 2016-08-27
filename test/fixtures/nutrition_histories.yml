@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  height: 1
+  weight: MyString
+  weight_chamge_last_year: false
+  realistic_weight_for_you: MyString
+  since_you_at_that_weight: MyString
+  confidence_diaterey_change: 1
+  motivation_diatery_change: 1
+  eat_out_for_breakfast_count: 1
+  eat_out_for_lunch_count: 1
+  eat_out_for_dinner_count: 1
+  places_eat_ot_at: MyString
+  type_of_bevrages_drink_a_day: MyString
+  eat_regular_meal: false
+  eat_regular_meal_comment: MyString
+  take_vitamin_mineral_diet_supplement: false
+  take_vitamin_mineral_diet_supplement_type: MyString
+  do_you_exercise_now: false
+  patient: one
+
+two:
+  height: 1
+  weight: MyString
+  weight_chamge_last_year: false
+  realistic_weight_for_you: MyString
+  since_you_at_that_weight: MyString
+  confidence_diaterey_change: 1
+  motivation_diatery_change: 1
+  eat_out_for_breakfast_count: 1
+  eat_out_for_lunch_count: 1
+  eat_out_for_dinner_count: 1
+  places_eat_ot_at: MyString
+  type_of_bevrages_drink_a_day: MyString
+  eat_regular_meal: false
+  eat_regular_meal_comment: MyString
+  take_vitamin_mineral_diet_supplement: false
+  take_vitamin_mineral_diet_supplement_type: MyString
+  do_you_exercise_now: false
+  patient: two

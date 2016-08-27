@@ -23,7 +23,7 @@
 				<label for="pwd">Confirm Password:</label>
 				<input type="password" class="form-control" id="pwd">
 			  </div>
-			  
+			    <input type="hidden" name="token" value=<%= @patient.reset_password_token%>>
 			  <br>
 			  <button type="submit">Submit</button>
 			  

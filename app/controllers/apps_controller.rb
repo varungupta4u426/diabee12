@@ -10,7 +10,7 @@ class AppsController < ActionController::Base
       unless logged_in?
         respond_to do |format|
           format.html { redirect_to :sign_in, alert: 'You need to login' }
-          format.json { render :json => { :result => false,status: UNAUTHORIZE_ACCESS_CODE ,:message => "Patient not found!" } }
+          format.json { render :json => { :result => false,status: ERROR ,:message => "Patient not found!" } }
         end
       end
     end
@@ -33,7 +33,7 @@ class AppsController < ActionController::Base
     end
 
   	def render_errors(errors)
-    	render json: { errors: errors ,status: 422}
+    	render json: { errors: errors ,status: ERROR}
     end
 
     def generate_access_token patient

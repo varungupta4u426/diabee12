@@ -78,13 +78,19 @@ a:hover{text-decoration:none;}
 ul{list-style:none;}
 ul li{list-style:none;}
 body{background:#f1f2f2;font-family: 'robotolight'; color:rgb(23, 78, 99); font-size:13px;}
-header{background:rgb(23, 78, 99); min-height:50px; width:100%; position:fixed; top:0; left:0; right:0;z-index:2;}
+header{background:rgb(23, 78, 99); min-height:50px; width:100%; position:fixed; top:0; left:0; right:0;z-index:9999;}
 header .logo{background:rgba(53, 137, 161,0.5);width:200px; height:50px; color:#fff; font-size:25px; line-height:47px; padding-left:15px; float:left;}
 header .logo img{width:130px;}
 header .user-div{float:right; color:#fff;}
 header .settings-div{float:right; color:#fff;margin-right:15px; margin-top:12px; position:relative;}
-header .settings-div a{color:#fff; position:relative;padding-left: 43px;}
-header .settings-div a i{position: absolute;left: 0;font-size: 17px;background: rgba(255,255,255,0.3);width: 35px;height: 35px;text-align: center;border-radius: 50%;line-height: 37px; top:-5px;}
+header .settings-div a {
+    color: #fff;
+    position: relative;
+    padding-left: 43px;
+    margin-top: 4px;
+    display: inline-block;
+}
+header .settings-div a i{position: absolute;left: 0;font-size: 17px;background: rgba(255,255,255,0.3);width: 35px;height: 35px;text-align: center;border-radius: 50%;line-height: 37px; top:-9px;}
 header .settings-div img{width:25px; cursor:pointer;}
 header .settings-div ul.settings-list{width:175px;background:#fff; box-shadow:0 0 5px #999;min-height:100px;position:absolute; top:38px;right:0; list-style:none; text-align:left; padding:0; display:none;}
 header .settings-div ul.settings-list li{width:100%; border-bottom:1px solid #f1f1f1; position:relative;}
@@ -103,7 +109,7 @@ ul.collapse{background:rgba(255,255,255,0.3); padding:7px 0px 7px 45px;}
 ul.collapse li{padding:4px 0; color:#fff;}
 ul.collapse li a{font-size:13px; color:#fff;}
 ul.collapse li a:hover{color:#ccc;}
-#warper .main-div{position:absolute;left:215px;top:2px; right:15px;}
+#warper .main-div{position:absolute;left:215px;top:6px; right:15px;}
 #warper .main-div .page-title{min-height:40px;}
 #warper .main-div .page-title h1{font-size:24px;line-height:normal; margin:0px;padding:0px;font-family: 'robotoregular';}
 #warper .main-div .white-bg{ background:rgba(255,255,255,1);padding:25px;}
@@ -247,7 +253,9 @@ table.dataTable thead .sorting::after {
 .margin-top30{margin-top:30px;}
 .canvasjs-chart-credit{display:none;}
 .chart{}
-.chart h3{font-family: 'robotomedium'; font-size:17px;}
+.chart h2{font-family: 'robotomedium'; font-size:17px; background:#f1f1f1;padding:7px 10px; text-transform:uppercase; margin:30px 0 0 0;}
+.chart h3{font-family: 'robotoregular';font-size:15px;text-transform:uppercase; margin:10px 0 5px 0;}
+
 .chart .chart-div{border:1px solid #ccc; padding:15px; margin-bottom:10px;}
 .canvasjs-chart-toolbar  {
     position: absolute !important;
@@ -309,7 +317,8 @@ font-family: 'robotoregular';}
 .table-custom thead {width:100%; background:#f1f1f1;}
 .table-custom thead tr{border:1px solid #f1f1f1;}
 .table-custom thead tr th{padding:9px 12px;}
-.table-custom tbody tr td{padding:5px 12px;}
+.table-custom tbody tr td{padding:5px 12px; white-space:nowrap;}
+.table-custom tbody tr td .form-control{width:124px;}
 .table-custom tbody tr td .form-control{max-width: 150px;
     height: 23px;
     font-size: 12px;
@@ -395,6 +404,7 @@ p.ChatStyle .stopT{position:absolute; right:0px;font-size:10px; background:#eab4
 .btn {border-radius:0px;}
 .btn-primary {color: #fff;background-color:rgb(53, 137, 161);border-color:rgb(53, 137, 161);}
 
+.tab-content .form-control[readonly]{background:#f1f1f1;border:0px;}
 
 .view-reports-down{border:1px solid #f1f1f1; width:auto; min-height:80px; text-align:center; cursor:pointer;}
 .attach-file{position: absolute;
@@ -412,3 +422,44 @@ p.ChatStyle .stopT{position:absolute; right:0px;font-size:10px; background:#eab4
     font-size: 13px;
     line-height: 1.42857143;
 }
+
+.mobile-menu{display:none;}
+.mobile-menu-close{display:none;}
+.mobile-menu i, .mobile-menu-close i{font-size: 17px;
+    background: rgba(255,255,255,0.2);
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 37px; display:inline-block;}
+.table-overflow{}
+ .mobile-menu-close i{font-size:12px;}
+
+.margin-bottom10{margin-bottom:10px;}
+.margin-top10{margin-top:10px;}
+.exer{position:relative; width:100%; display:block;}
+#exerciseBtn{position:absolute;right:0; color:#f00; cursor:pointer; background:#f1f1f1; padding:5px 8px;}
+
+
+
+
+/* media css */
+@media only screen and (max-width: 640px) {
+	header .logo {background:transparent;}
+	header .settings-div {margin-right: 45px;}
+    .mobile-menu {display: block;position: fixed;right: 10px;top: 8px;color: #fff;font-size: 22px;}
+    .mobile-menu-close {display: none;position: fixed;right: 10px;top: 8px;color: #fff;font-size: 22px;}
+	#warper aside {left:-250px; transition:all ease-in-out 0.6s; z-index:99999;}
+	#warper .main-div {left: 10px;top: 65px;right: 10px;}
+	.table-overflow{width:100%; overflow-x:auto;}
+	header .settings-div a {overflow: hidden;width: 35px;height: 35px; margin-top:-4px;}
+	header .settings-div a i {top:0px;}
+	#warper .main-div .white-bg {background: rgba(255,255,255,1);padding: 10px;}
+	.tab-content {border:0px solid #f1f2f2;padding:10px 0;}
+	.signin-div .s-tr form .warp {width: 100%;}
+	.addUnits .modal-dialog {width: auto;position: fixed;right: 0;top: 0;left: 0;bottom: 0;}
+	.modal-dialog {position: relative;width: auto;margin:0px;}
+}
+@media only screen and (max-width: 320px) {
+	header .settings-div {margin-right:42px;}
+} 

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type_of_exercise: MyString
+  amount_of_time: MyString
+  times_per_weak: MyString
+  nutrition_history: one
+
+two:
+  type_of_exercise: MyString
+  amount_of_time: MyString
+  times_per_weak: MyString
+  nutrition_history: two

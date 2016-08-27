@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'patients/index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -17,8 +16,14 @@ Rails.application.routes.draw do
 		    end
 		  end 
 
-		  get  'patient/password/new'   , :to => "api/v1/passwords#new"
-		  post 'patient/password/create', :to => "api/v1/passwords#create"
+		get  'patient/password/new'   , :to => "api/v1/passwords#new"
+		post 'patient/password/create', :to => "api/v1/passwords#create"
+
+		get 'cities/:state', to: 'application#cities'
+
+		root 'patients#index'
+		resource :patients  
+
 end
 
 

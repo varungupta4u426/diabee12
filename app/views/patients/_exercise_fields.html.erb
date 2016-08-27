@@ -1,0 +1,26 @@
+<div class = "fields">
+<div class="row">
+	<div class="col-md-4 col-sm-4 col-xs-12">
+		<div class="form-group">
+			<label>Type of exercise you do</label>
+			<%= f.text_field :type_of_exercise, :class => "form-control margin-bottom10" %>
+			<div class="exerciseFeild"></div>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-12">
+		<div class="form-group">
+			<label>Amount of time you do</label>
+			<%= f.text_field :amount_of_time, :class => "form-control margin-bottom10" %>
+			<div class="exerciseFeild"></div>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-12">
+		<div class="form-group">
+			<label>Times per week you exercise</label>
+			<%= f.text_field :times_per_weak, :class => "form-control margin-bottom10" %>
+			<div class="exerciseFeild"></div>
+		</div>
+	</div>
+</div>
+<%= link_to_remove_fields "remove", f %>
+</div>

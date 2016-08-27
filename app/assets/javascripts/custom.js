@@ -30,9 +30,23 @@ $(document).ready(function(){
 		$(".ChatSummary4").fadeOut();
 	});
 
+	/* // */
+	$(".mobile-menu").click(function(){
+		$("aside").css("left","0");
+		$(".mobile-menu").hide();
+		$(".mobile-menu-close").show();
+	});
+	$(".mobile-menu-close").click(function(){
+		$("aside").css("left","-250px");
+		$(".mobile-menu").show();
+		$(".mobile-menu-close").hide();
+	});
 	
-
 	
+	//append
+	$("#exerciseBtn").click(function(){
+        $(".exerciseFeild").append("<input type='text' class='form-control margin-bottom10'>");
+    });
 	
 });
 
@@ -86,5 +100,11 @@ $(function() {
   });
   
 });
+
+
+
+
+
+
 
 

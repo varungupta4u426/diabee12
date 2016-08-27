@@ -1,0 +1,1127 @@
+<div class="main-div"> <!-- first div -->
+			<div class="page-title">
+				<h1 class="pull-left">Patient's Assessment</h1>
+				<div class="pull-right">
+					
+					<a href="index.html" class="add-btn"><i class="icon icon-left-arrow"></i> Back</a>
+				</div>
+			</div>
+
+			<div class="white-bg"> <!-- second div -->
+				<div class="tab-pill">
+				<!-- ................. -->
+						<ul class="nav nav-tabs">
+							<li class="active"><a data-toggle="tab" href="#AddNewPatient">Add New Patient</a></li>
+							<li><a data-toggle="tab" href="#HealthHistory">Health History</a></li>
+							<li><a data-toggle="tab" href="#NutritionHistory">Nutrition History</a></li>
+							<li><a data-toggle="tab" href="#DiabetesHistory">Diabetes History</a></li>
+						  </ul>
+						<%= form_for(@patient) do |f|%>
+					  <div class="tab-content">
+
+						<div id="AddNewPatient" class="tab-pane fade in active">
+							<h3>Add New Patient</h3>
+						
+							<div class="row">
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+									<div class="form-group">
+										<label>First Name</label>
+										<!-- <input type="text" class="form-control"> -->
+										<%= f.text_field :first_name, :class=>"form-control" %>
+										<%= f.text_field :password, :value =>"1111" ,:class=>"form-control" %>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+									<div class="form-group">
+										<label>Last Name</label>
+										<%= f.text_field :last_name, :class=>"form-control" %>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+									<div class="form-group">
+										<label>Gender</label>
+										  <%= f.select :gender, options_for_select(Patient::GENDER_OPTIONS),{prompt: true}, {:class => 'form-control'}%>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+									<div class="form-group">
+										<label>Date of Birth</label>
+										<%= f.text_field :dob, :class=>"form-control", :id=>"date" %>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+									<div class="form-group">
+										<label>Height</label>
+										<%= f.text_field :height, :class=>"form-control"%>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+									<div class="form-group">
+										<label>Ethnicity</label>
+										<%= f.text_field :ethnicity, :class=>"form-control"%>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+									<div class="form-group">
+										<label>Mobile</label>
+										<%= f.text_field :mobile, :class=>"form-control"%>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label>Email</label>
+										<%= f.text_field :email, :class=>"form-control"%>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+									<div class="form-group">
+										<label>Street Address</label>
+										<%= f.text_area :street_address, :class=>"form-control"%>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+									<div class="form-group">
+										<label>Pin</label>
+										<%= f.text_field :pin, :class=>"form-control"%>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+									<div class="form-group">
+										<label>State</label>
+										<%= f.select :state, options_for_select(CS.states(:in).map{|key, value| [value, key]}),{prompt: true}, {:class => 'form-control',:id => "state"}%>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+									<div class="form-group">
+									<label>City</label>
+										<%= f.select :city, options_for_select([]),{prompt: true}, {:class => 'form-control',:id => "city"}%>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+									<div class="form-group">
+										<%= f.select :preferred_language, options_for_select(Patient::LANGUAGE_OPTIONS),{prompt: true}, {:class => 'form-control'}%>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+									<div class="form-group">
+										<label>Preferred Time to Call</label>
+										<div class="row">
+											<div class="col-md-6 col-sm-6">
+											<%= f.text_field :preferred_time_call_start, :class=>"form-control",:placeholder=>"Start"%>
+											</div>
+											<div class="col-md-6 col-sm-6">
+											<%= f.text_field :preferred_time_call_end, :class=>"form-control", :placeholder=>"End"%>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+									<div class="form-group">
+										<label>Disability</label>
+										<%= f.select :disability, options_for_select(Patient::BOOLEAN_OPTIONS),{prompt: true}, {:class => 'form-control'} %>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label>Lifestyle/Do you Exercise?</label>
+										<%= f.select :exercise, options_for_select(Patient::BOOLEAN_OPTIONS),{prompt: true}, {:class => 'form-control'} %>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label>Smoker/Drinker</label>
+										<%= f.text_field :smoke_drink, :class=>"form-control"%>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label>Date of Enrolment</label>
+										<input type="text" id="date" name="date" class="form-control">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label>Doctor</label>
+										<select class="form-control">
+											<option>Doctor</option>
+											<option>Doctor</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label>Source</label>
+										<input type="text" class="form-control">
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label>Package</label>
+										<input type="text" class="form-control">
+									</div>
+								</div>
+								
+							</div>
+							<div class="row">
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label>Reason for non-enrolment</label>
+										<%= f.text_field :reason_for_non_enrollment, :class=>"form-control"%>			
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label>Date of Dropout</label>
+										<%= f.text_field :date_of_dropout, :class=>"form-control"%>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label>Reason for Dropout</label>
+										<%= f.text_field :reason_for_dropout, :class=>"form-control"%>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label>NOK_Number</label>
+										<%= f.text_field :nok_number, :class=>"form-control"%>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label>NOK_Name</label>
+										<%= f.text_field :nok_name, :class=>"form-control"%>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label>NOK_Relationship with patients.</label>
+										<%= f.text_field :nok_relation_with_patient, :class=>"form-control"%>										
+									</div>
+								</div>
+								
+							</div>
+				    
+						
+				</div>						
+				<!-- 1 -->
+						
+						<div id="HealthHistory" class="tab-pane fade">
+						<%= f.fields_for :health_history do |ff| %>
+						  <h3>Health History</h3>
+						  <p class="font-medium">Check box if you've ever had of the following conditions:</p>
+						  <div class="row margin-bottom10">
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Heart Problems
+									</label>
+								</div>
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Cancer
+									</label>
+								</div>
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Sleep Apnea
+									</label>
+								</div>
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Thyroid Problems
+									</label>
+								</div>
+						  </div>
+						  
+						  <div class="row margin-bottom10">
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Stroke
+									</label>
+								</div>
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Kideny Disease
+									</label>
+								</div>
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Breathing Problems
+									</label>
+								</div>
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Gestational Diabetes
+									</label>
+								</div>
+						  </div>
+						  <div class="row margin-bottom10">
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> High Cholesterol
+									</label>
+								</div>
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Foot Problems
+									</label>
+								</div>
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Cataracts / Glaucoma
+									</label>
+								</div>
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> PCOS
+									</label>
+								</div>
+						  </div>
+						  <div class="row margin-bottom10">
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> High Blood Pressure
+									</label>
+								</div>
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Pain issues
+									</label>
+								</div>
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Sexual Dysfunction
+									</label>
+								</div>
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Other
+									</label>
+								</div>
+						  </div>
+						  <div class="row margin-bottom10">
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Circulation Problems
+									</label>
+								</div>
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Stomach or intestinal Problems
+									</label>
+								</div>
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Depression or Mental Illness
+									</label>
+								</div>
+								
+						  </div>
+						  
+						  
+							<div class="panel panel-default">
+							  <div class="panel-heading font-regular">Do you follow any special diet for the above conditions?</div>
+							  <div class="panel-body">
+									
+									<div class="form-group">
+									  <label>Please List.</label>
+									 <%= ff.text_field :listing_special_diet, :class=>"form-control"%>
+									</div>
+									
+							  </div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">When was your last dilated eye exam?</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-2 col-sm-3">
+											<div class="form-group">
+												<%= ff.text_field :dilated_eye_exam_month, :class=>"form-control",:placeholder=>"Month"%>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-3">
+											<div class="form-group">
+												<%= ff.text_field :dilated_eye_exam_year, :class=>"form-control",:placeholder=>"Year"%>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Have you seen a foot doctor?</div>
+								<div class="panel-body">
+
+									<%= ff.radio_button :seen_foot_doctor, true, :checked => true %> 
+								  <%= label :seen_foot_doctor, 'Yes' %>
+								  <%= ff.radio_button :seen_foot_doctor, false %>
+								  <%= label :seen_foot_doctor, 'No' %>
+
+									<div class="row">
+										<div class="col-md-2 col-sm-3">
+											<div class="form-group">
+												<label>When?</label>
+												<%= ff.text_field :seen_foot_doctor_month, :class=>"form-control",:placeholder=>"Month"%>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-3">
+											<div class="form-group">
+												<label>&nbsp;</label>
+												<%= ff.text_field :seen_foot_doctor_year, :class=>"form-control",:placeholder=>"Year"%>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Do you check your feet daily?</div>
+								<div class="panel-body">
+									
+									<%= ff.radio_button :check_feet_daily, true, :checked => true %> 
+								  <%= label :check_feet_daily, 'Yes' %>
+								  <%= ff.radio_button :check_feet_daily, false %>
+								  <%= label :check_feet_daily, 'No' %>
+
+								</div>
+							</div>
+						  
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Do you drink alchol?</div>
+								<div class="panel-body">
+									
+									<%= ff.radio_button :drink_alcohol, true, :checked => true %> 
+								  <%= label :drink_alcohol, 'Yes' %>
+								  <%= ff.radio_button :drink_alcohol, false %>
+								  <%= label :drink_alcohol, 'No' %>
+									
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">How many drinks per week?</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-2 col-sm-3 col-xs-12">
+											<div class="form-group">
+												<label>Wine</label>
+												<%= ff.text_field :drinks_per_week_wine, :class=>"form-control"%>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-3 col-xs-12">
+											<div class="form-group">
+												<label>Beer</label>
+												<%= ff.text_field :drinks_per_week_beer, :class=>"form-control"%>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-3 col-xs-12">
+											<div class="form-group">
+												<label>Mixed drinks</label>
+												<%= ff.text_field :drinks_per_week_mixed, :class=>"form-control"%>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Do you smoke?</div>
+								<div class="panel-body">
+									
+									<%= ff.radio_button :do_you_smoke, true, :checked => true %> 
+								  <%= label :do_you_smoke, 'Yes' %>
+								  <%= ff.radio_button :do_you_smoke, false %>
+								  <%= label :do_you_smoke, 'No' %>
+
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">How much did you smoke?</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<div class="form-group">
+												<label>Packs per day</label>
+												<%= ff.text_field :smoke_packs_per_day, :class=>"form-control"%>
+											</div>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<div class="form-group">
+												<label>Number of years</label>
+												<%= ff.text_field :smoke_years, :class=>"form-control"%>
+											</div>
+										</div>
+										
+									</div>
+									
+								</div>
+							</div>
+							
+							
+							
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Did you ever smoke?</div>
+								<div class="panel-body">
+
+									<%= ff.radio_button :ever_smoke, true, :checked => true %> 
+								  <%= label :ever_smoke, 'Yes' %>
+								  <%= ff.radio_button :ever_smoke, false %>
+								  <%= label :ever_smoke, 'No' %>
+									
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">When did you quit?</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-4 col-sm-4 col-xs-12">
+											<div class="form-group">
+												<%= ff.text_field :smoke_quit, :class=>"form-control"%>
+											</div>
+										</div>
+										
+									</div>
+									
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Allergies/Any other Health Condition.</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<div class="form-group">
+												<%= ff.text_field :alergies_any_othr_health_condition, :class=>"form-control"%>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+						<%end%>
+						</div>
+						
+						<!-- 2 -->
+						
+						
+						
+						
+						
+						<div id="NutritionHistory" class="tab-pane fade">
+						<%= f.fields_for :nutrition_history do |fn| %>
+						  <h3>Nutrition History</h3>
+						  <div class="panel panel-default">
+								<div class="panel-heading font-regular">-</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-2 col-sm-3 col-xs-12">
+											<div class="form-group">
+												<label>Height</label>
+												<%= fn.text_field :height, :class=>"form-control"%>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-3 col-xs-12">
+											<div class="form-group">
+												<label>Weight</label>
+												<%= fn.text_field :weight, :class=>"form-control"%>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Has your weight changed in the last year?</div>
+								<div class="panel-body">
+
+									<%= fn.radio_button :weight_chamge_last_year, true, :checked => true %> 
+								  <%= label :weight_chamge_last_year, 'Yes' %>
+								  <%= fn.radio_button :weight_chamge_last_year, false %>
+								  <%= label :weight_chamge_last_year, 'No' %>
+
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">What do you think is realistic weight for you?</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-4 col-sm-4 col-xs-12">
+											<div class="form-group">
+												<label>Lbs</label>
+												<%= fn.text_field :realistic_weight_for_you, :class=>"form-control"%>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">How long since you were at that weight?</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-4 col-sm-4 col-xs-12">
+											<div class="form-group">
+												<%= fn.text_field :since_you_at_that_weight, :class=>"form-control"%>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Rate your CONFIDENCE in your ability to make dietary changes (1=low, 10=high)</div>
+								<div class="panel-body">
+
+									<% (1..10).each do |i| %>
+									  <%= fn.radio_button :confidence_diaterey_change, i ,:class=>"radio-inline"%> <%=i%>
+									<%end%>
+
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Rate your MOTIVATION level for making dietary changes(1=low, 10=high)</div>
+								<div class="panel-body">
+
+									<% (1..10).each do |i| %>
+									  <%= fn.radio_button :motivation_diatery_change, i ,:class=>"radio-inline"%> <%=i%>
+									<%end%>
+
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Do How many times a week do you eat out for</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-4 col-sm-4 col-xs-12">
+											<div class="form-group">
+												<label>Breakfast</label>
+												<%= fn.number_field :eat_out_for_breakfast_count, :class=>"form-control"%>
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-4 col-xs-12">
+											<div class="form-group">
+												<label>Lunch</label>
+												<%= fn.number_field :eat_out_for_lunch_count, :class=>"form-control"%>
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-4 col-xs-12">
+											<div class="form-group">
+												<label>Dinner</label>
+												<%= fn.number_field :eat_out_for_dinner_count, :class=>"form-control"%>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Types of places you eat out at</div>
+								<div class="panel-body">
+									<div class="row">
+
+
+
+										<!-- <div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Fast Food
+											</label>
+											
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Cafe
+											</label>
+											
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Buffets
+											</label>
+											
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Take out
+											</label>
+											
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Fine Dining
+											</label>
+											
+										</div>
+ -->
+
+											<% for place in EatOutPlace.all %>
+											<div>
+											  <%= check_box_tag "patient[nutrition_history_attributes][eat_out_place_ids][]" %>
+											  <%= place.name %>
+
+											</div>
+											<% end %>
+
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">What types of beverages do you drink during the day?</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<div class="form-group">
+												<%= fn.text_area :type_of_bevrages_drink_a_day, :class=>"form-control"%>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Do you eat regular meals?</div>
+								<div class="panel-body">
+									
+									<%= fn.radio_button :eat_regular_meal, true, :checked => true %> 
+								  <%= label :eat_regular_meal, 'Yes' %>
+								  <%= fn.radio_button :eat_regular_meal, false %>
+								  <%= label :eat_regular_meal, 'No' %>
+
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<div class="form-group">
+												<label>Comments</label>
+												<%= fn.text_area :eat_regular_meal_comment, :class=>"form-control",:row=>2%>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Do you take any vitamins, minerals or other diet suppliments?</div>
+								<div class="panel-body">
+									
+									<%= fn.radio_button :take_vitamin_mineral_diet_supplement_type, true, :checked => true %> 
+								  <%= label :take_vitamin_mineral_diet_supplement_type, 'Yes' %>
+								  <%= fn.radio_button :take_vitamin_mineral_diet_supplement_type, false %>
+								  <%= label :take_vitamin_mineral_diet_supplement_type, 'No' %>
+
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<div class="form-group">
+												<label>if yes, what?</label>
+												<%= fn.text_area :take_vitamin_mineral_diet_supplement_type, :class=>"form-control",:row=>2%>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Do you exercise now?</div>
+								<div class="panel-body">
+
+									<%= fn.radio_button :do_you_exercise_now, true, :checked => true %> 
+								  <%= label :do_you_exercise_now, 'Yes' %>
+								  <%= fn.radio_button :do_you_exercise_now, false %>
+								  <%= label :do_you_exercise_now, 'No' %>
+
+									<div class="row margin-top10">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											
+											<label class="exer">
+												if yes, what do you do and how often do you do it?
+												
+											</label>
+
+											<div class="exerciseNow">
+											  <%= fn.fields_for :exercises do |builder| %>
+											    <%= render "/patients/exercise_fields", :f => builder %>
+											  <% end %>
+											  
+												<p><%= link_to_add_fields "Add Exercise", fn, :exercises %></p>
+
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<%end%>
+							
+						</div>
+						<!-- 3 -->
+						
+						
+						
+						<div id="DiabetesHistory" class="tab-pane fade">
+						  <h3>Diabetes History</h3>
+						  
+						  
+						  <div class="panel panel-default">
+								<div class="panel-heading font-regular">Type of Diabetes</div>
+								<div class="panel-body">
+									<label class="checkbox-inline">
+									  <input type="checkbox" value="">Type 1
+									</label>
+									<label class="checkbox-inline">
+									  <input type="checkbox" value="">Type 2
+									</label>
+									<label class="checkbox-inline">
+									  <input type="checkbox" value="">Pre-Diabetes
+									</label>
+									<label class="checkbox-inline">
+									  <input type="checkbox" value="">Don't know
+									</label>
+								
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">When were you diagnosed?</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-2 col-sm-3 col-xs-12">
+											<div class="form-group">
+												<label>Month</label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-3 col-xs-12">
+											<div class="form-group">
+												<label>Year</label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Does anyone in your faimly have diabetes? </div>
+								<div class="panel-body">
+									<label class="checkbox-inline">
+									  <input type="checkbox" value="">No
+									</label>
+									<label class="checkbox-inline">
+									  <input type="checkbox" value="">Yes
+									</label>
+									<div class="row">
+										<div class="col-md-5 col-sm-5 col-xs-12">
+											<div class="form-group">
+												<label>Whom?</label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Have you had previous diabetes education?</div>
+								<div class="panel-body">
+									<label class="checkbox-inline">
+									  <input type="checkbox" value="">No
+									</label>
+									<label class="checkbox-inline">
+									  <input type="checkbox" value="">Yes -from whom?
+									</label>
+									<label class="checkbox-inline">
+									  <input type="checkbox" value="">Do Page Medical Group
+									</label>
+									<label class="checkbox-inline">
+									  <input type="checkbox" value="">Other
+									</label>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">In your own words, what is diabetes?</div>
+								<div class="panel-body">
+									<div class="form-group">
+										<textarea class="form-control"></textarea>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">What are you most interested in learning from these diabetes education sessions?</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Healthy Eating
+											</label>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Impact of Physical Activity
+											</label>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Using Medications
+											</label>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Checking My Blood Sugar
+											</label>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Behavior Change Strategies
+											</label>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Lowering My Risk for Complications
+											</label>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Coping Skills
+											</label>
+										</div>
+									</div>
+								
+								</div>
+							</div>
+							
+							
+							
+							<h3>Testing Your Blood Sugar</h3>
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Do you test your blood sugar at home? </div>
+								<div class="panel-body">
+									<label class="checkbox-inline">
+									  <input type="checkbox" value="">No
+									</label>
+									<label class="checkbox-inline">
+									  <input type="checkbox" value="">Yes
+									</label>
+									<div class="row">
+										<div class="col-md-5 col-sm-5 col-xs-12">
+											<div class="form-group">
+												<label>If yes, what meter do you use?</label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">How often do you test your blood sugar each day?</div>
+								<div class="panel-body">
+									<label class="radio-inline">
+									  <input type="radio" value="">1
+									</label>
+									<label class="radio-inline">
+									  <input type="radio" value="">2
+									</label>
+									<label class="radio-inline">
+									  <input type="radio" value="">3
+									</label>
+									<label class="radio-inline">
+									  <input type="radio" value="">4+ time per day
+									</label>
+									<div class="row">
+										<div class="col-md-5 col-sm-5 col-xs-12">
+											<div class="form-group">
+												<label>Other</label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">When do you test?</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Before Breakfast
+											</label>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Before Lunch
+											</label>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Before Dinner
+											</label>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Bedtime
+											</label>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">2 hours after Breakfast
+											</label>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">2 hours after Lunch
+											</label>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">2 hours after Dinner
+											</label>
+										</div>
+										
+									</div>
+									<div class="row">
+										<div class="col-md-5 col-sm-5 col-xs-12">
+											<div class="form-group">
+												<label>Other</label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">In the last month, how often have you had a low blood sugar reaction?</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-2 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Never
+											</label>
+										</div>
+										<div class="col-md-2 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Once
+											</label>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Two or more times/week
+											</label>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Bedtime
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">What do you do when your blood sugar is too high? </div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-5 col-sm-5 col-xs-12">
+											<div class="form-group">
+												<input type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">What do you do when your blood sugar is too low? </div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-5 col-sm-5 col-xs-12">
+											<div class="form-group">
+												<input type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">In the last 12 months, have you been to an emergency room for a diabetes related event?</div>
+								<div class="panel-body">
+									<label class="checkbox-inline">
+									  <input type="checkbox" value="">No
+									</label>
+									<label class="checkbox-inline">
+									  <input type="checkbox" value="">Yes
+									</label>
+								
+									
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3 col-sm-4 col-xs-12">
+									<div class="form-group">
+										<button class="add-btn blue-bg btn-lg"><i class="icon icon-paper-plane"></i> Submit</button>
+									</div>
+									
+								</div>
+							</div>
+							
+						</div>
+						<!-- 4 -->
+						
+					  </div>	
+				    <%end%>
+						  
+			  </div>
+				<!-- ................. -->
+			
+
+			</div> <!-- second div ends-->
+		</div> <!-- first div ends-->
+
+
+<script>
+$('#state').change(function () {
+  $.getJSON('/cities/' +$(this).val() , function (data) {
+    $('#city').empty();
+    $.each(data, function (i,value) {
+      var opt = '<option value='+ value +'>' + value + '</option>';
+      $('#city').append(opt);
+    });
+  });
+  $('#city').empty();
+});
+</script>

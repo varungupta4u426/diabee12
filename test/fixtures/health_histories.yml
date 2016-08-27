@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ever_had_condition: MyString
+  follow_special_diet: false
+  listing_special_diet: MyText
+  dilated_eye_exam_month: MyString
+  dilated_eye_exam_year: MyString
+  seen_foot_doctor: false
+  seen_foot_doctor_month: MyString
+  seen_foot_doctor_year: MyString
+  check_feet_daily: false
+  drink_alcohol: false
+  drinks_per_week_wine: MyString
+  drinks_per_week_beer: MyString
+  drinks_per_week_mixed: MyString
+  do_you_smoke: false
+  smoke_packs_per_day: MyString
+  smoke_years: MyString
+  ever_smoke: false
+  smoke_quit: MyString
+  alergies_any_othr_health_condition: MyString
+  patient: one
+
+two:
+  ever_had_condition: MyString
+  follow_special_diet: false
+  listing_special_diet: MyText
+  dilated_eye_exam_month: MyString
+  dilated_eye_exam_year: MyString
+  seen_foot_doctor: false
+  seen_foot_doctor_month: MyString
+  seen_foot_doctor_year: MyString
+  check_feet_daily: false
+  drink_alcohol: false
+  drinks_per_week_wine: MyString
+  drinks_per_week_beer: MyString
+  drinks_per_week_mixed: MyString
+  do_you_smoke: false
+  smoke_packs_per_day: MyString
+  smoke_years: MyString
+  ever_smoke: false
+  smoke_quit: MyString
+  alergies_any_othr_health_condition: MyString
+  patient: two
