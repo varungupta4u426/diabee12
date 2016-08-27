@@ -10,7 +10,7 @@ class Api::V1::PasswordsController < AppsController
 		@patient = Patient.find_by(:email => params[:email])
 		if @patient
 		   @patient.send_forget_password_mail
-		   render json: {result: true, status: 200, messages: "Reset password instructions sent to your mail"}
+		   render json: {result: true, status: SUCCESS_CODE, messages: "Reset password instructions sent to your mail"}
 		else
 		   render_errors "Email address not registered"
 		end   

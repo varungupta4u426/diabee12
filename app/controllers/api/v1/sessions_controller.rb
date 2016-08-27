@@ -4,7 +4,7 @@ class Api::V1::SessionsController < AppsController
 
 
 	def create
-		@patient = Patient.find_by(:username => params[:username])
+		@patient = Patient.find_by(:mobile => params[:mobile])
 		if @patient && @patient.authenticate(params[:password])
 			generate_access_token @patient
 			render :create

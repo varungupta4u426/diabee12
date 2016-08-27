@@ -29,7 +29,7 @@ class PatientsController < ApplicationController
     :exercise,:smoke_drink,:reason_for_non_enrollment,:date_of_dropout,
     :reason_for_dropout,:nok_number,:nok_name, :nok_relation_with_patient,
      health_history_attributes: [:listing_special_diet],
-     nutrition_history_attributes: [:weight, exercises_attributes: [:type_of_exercise] ] )
+     nutrition_history_attributes: [:weight, :eat_out_place_ids,exercises_attributes: [:type_of_exercise] ] )
   end	
   	
 end

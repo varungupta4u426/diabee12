@@ -20,7 +20,7 @@ class Api::V1::PatientsController < AppsController
 				:last_name,
 				:email,
 				:gender,
-				:username,
+				:mobile,
 				:password
 			)
 	end	

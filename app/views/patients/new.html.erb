@@ -684,7 +684,7 @@
 
 											<% for place in EatOutPlace.all %>
 											<div>
-											  <%= check_box_tag "patient[nutrition_history_attributes][eat_out_place_ids][]" %>
+											  <%= check_box_tag "patient[nutrition_history_attributes][eat_out_place_ids][]",place.id %>
 											  <%= place.name %>
 
 											</div>
