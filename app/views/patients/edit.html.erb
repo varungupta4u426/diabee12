@@ -1,0 +1,39 @@
+ 
+
+
+<%= render 'patient_form.html.erb'%>
+
+
+<script>
+$('#state').change(function () {
+  $.getJSON('/cities/' +$(this).val() , function (data) {
+    $('#city').empty();
+    $.each(data, function (i,value) {
+      var opt = '<option value='+ value +'>' + value + '</option>';
+      $('#city').append(opt);
+    });
+  });
+  $('#city').empty();
+});
+
+$(document).ready(function(){
+			var date_input=$('#date'); //our date input has the name "date"
+			var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+			date_input.datepicker({
+				format: 'yyyy-mm-dd',
+				container: container,
+				todayHighlight: true,
+				autoclose: true,
+			});
+			var date_input=$('.date-picker'); //our date input has the name "date"
+			var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+			date_input.datepicker({
+				format: 'yyyy-mm-dd',
+				container: container,
+				todayHighlight: true,
+				autoclose: true,
+			})
+		})
+
+
+</script>

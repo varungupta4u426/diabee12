@@ -10,18 +10,18 @@
 			<div class="white-bg"> <!-- second div -->
 
 			<% if @patient.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@patient.errors.count, "error") %> prohibited
-        this patient from being saved:
-      </h2>
-      <ul>
-        <% @patient.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+	    <div id="error_explanation">
+	      <h2>
+	        <%= pluralize(@patient.errors.count, "error") %> prohibited
+	        this patient from being saved:
+	      </h2>
+	      <ul>
+	        <% @patient.errors.full_messages.each do |msg| %>
+	          <li><%= msg %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
   
 				<div class="tab-pill">
 				<!-- ................. -->
@@ -685,7 +685,7 @@
 
 									<% DiabetesHistory::DIABETES_TYPE.each do |type|%>
 									<label class="checkbox-inline">
-										<%= fd.radio_button :type, type %><%= type%>
+										<%= fd.radio_button :diabetes_type, type %><%= type%>
 									</label>
 									<%end%>
 								

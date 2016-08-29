@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829072816) do
+ActiveRecord::Schema.define(version: 20160829094330) do
 
   create_table "diabetes_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "type"
+    t.string   "diabetes_type"
     t.string   "diagnosed_month"
     t.string   "diagnosed_year"
     t.boolean  "any_one_in_family_have_diabetes"

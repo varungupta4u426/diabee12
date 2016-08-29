@@ -21,6 +21,21 @@ class PatientsController < ApplicationController
     end  
   end	
 
+  def edit
+    @patient = Patient.find(params[:id])
+  end  
+
+  def update
+    @patient = Patient.update(patient_params)
+ 
+    if @patient.update(patient_params)
+      redirect_to @patient
+    else
+      render 'edit'
+    end
+
+  end  
+
 
 
   private 
@@ -43,7 +58,7 @@ class PatientsController < ApplicationController
     :eat_regular_meal, :eat_regular_meal_comment, :take_vitamin_mineral_diet_supplement, 
     :take_vitamin_mineral_diet_supplement_type,:do_you_exercise_now,exercises_attributes: [:type_of_exercise,:amount_of_time,:times_per_weak,:_destroy] ],
     
-     diabetes_history_attributes:[:type, :diagnosed_month, :diagnosed_year, :any_one_in_family_have_diabetes,
+     diabetes_history_attributes:[:diabetes_type, :diagnosed_month, :diagnosed_year, :any_one_in_family_have_diabetes,
     :whome_have_diabetes_family, {previous_diabetes_education:[]}, :own_words_diabetes, :intersting_learning_diabetes_session, 
     :test_blood_sugar_at_home, :what_meter_use, :how_often_test_sugar, :how_often_test_sugar_other, {when_did_you_test:[]}, 
     :when_did_you_test_other, {last_month_low_blood_sugar:[]}, :what_you_do_when_sugar_high, :what_you_do_when_sugar_low, 

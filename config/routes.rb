@@ -22,7 +22,8 @@ Rails.application.routes.draw do
 		get 'cities/:state', to: 'application#cities'
 
 		root 'patients#index'
-		resource :patients  
+		
+		resources :patients  
 
 end
 
