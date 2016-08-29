@@ -55,12 +55,12 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "diabee_#{Rails.env}"
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching = true
 
   config.action_mailer.default_url_options = {:host => 'diabee12.herokuapp.com', protocol: 'http://' }
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
+  config.action_mailer.perform_deliveries = false
 
   config.action_mailer.smtp_settings = {
     :address              => "mail.lptpl.com",

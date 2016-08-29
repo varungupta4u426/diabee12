@@ -250,6 +250,11 @@
 							<div class="panel panel-default">
 							  <div class="panel-heading font-regular">Do you follow any special diet for the above conditions?</div>
 							  <div class="panel-body">
+
+								  <%= ff.radio_button :follow_special_diet, true, :checked => true %> 
+								  <%= label :follow_special_diet, 'Yes' %>
+								  <%= ff.radio_button :follow_special_diet, false %>
+								  <%= label :follow_special_diet, 'No' %>
 									
 									<div class="form-group">
 									  <label>Please List.</label>
