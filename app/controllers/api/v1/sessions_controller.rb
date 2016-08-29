@@ -9,7 +9,8 @@ class Api::V1::SessionsController < AppsController
 			generate_access_token @patient
 			render :create
 		else
-			render_errors "Invalid Credentials"
+			error = ["Invalid Credentials"]
+			render_errors error
 		end	
 	end	
 
