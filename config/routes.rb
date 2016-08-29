@@ -10,8 +10,17 @@ Rails.application.routes.draw do
 		          defaults: { format: :json }
 		        ) do
 		          
-		          resource :patients, only: [:create]
-		          resource :sessions, only: [:create,:destroy]
+		          resource :patients, only: [:create,:show] do 
+		          	collection do
+					   post 'update_profile'
+					end
+				  end
+
+		          resource :sessions, only: [:create] do 
+		          	collection do
+					   post 'logout'
+					end
+				  end
 		          resource :passwords,only: [:edit]	
 		    end
 		  end 

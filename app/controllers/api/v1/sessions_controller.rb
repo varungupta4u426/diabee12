@@ -1,6 +1,6 @@
 class Api::V1::SessionsController < AppsController
    	
-   	before_action :authenticate_user, only: [:destroy]
+   	before_action :authenticate_user, only: [:logout]
 
 
 	def create
@@ -13,9 +13,9 @@ class Api::V1::SessionsController < AppsController
 		end	
 	end	
 
-	def destroy
+	def logout
 		sign_out
-		render json: {result: true, messages: "Logged out successfully",status: 200}
+		render json: {result: true, messages: "Logged out successfully",status: SUCCESS_CODE}
 	end	
  	
  	private
@@ -24,6 +24,5 @@ class Api::V1::SessionsController < AppsController
  		@patient.save
  	end	
 end
-
 
 

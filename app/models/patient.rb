@@ -3,6 +3,7 @@ class Patient < ApplicationRecord
    
    has_secure_password
 
+   mount_uploader :profile_pic, AvatarUploader
 
    # validates :username,presence: true,uniqueness: true
    validates :email, presence: true,uniqueness: true
@@ -29,6 +30,10 @@ class Patient < ApplicationRecord
   		patient.reset_password_token = reset_password_token
   		patient.save
    end	
+
+   def full_name
+     "#{self.first_name} #{self.last_name}"
+   end 
 
    GENDER_OPTIONS   = ["Male","Female","Other"]
    LANGUAGE_OPTIONS = ["Hindi","English"]

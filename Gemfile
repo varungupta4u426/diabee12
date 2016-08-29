@@ -16,6 +16,8 @@ gem 'devise'
 gem 'versionist'
 gem 'will_paginate', '~> 3.1.0'
 gem 'city-state'
+gem 'carrierwave'
+gem 'cloudinary'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -53,7 +55,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'byebug'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

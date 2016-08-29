@@ -45,3 +45,4 @@ class AppsController < ActionController::Base
   		patient.save
 	  end
 end
+

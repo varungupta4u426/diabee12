@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: diabee
+  api_key: '159449162947737'
+  api_secret: pyLoyqsTxhKOuVncJH3bzOrAW0A
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: diabee
+  api_key: '159449162947737'
+  api_secret: pyLoyqsTxhKOuVncJH3bzOrAW0A
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: diabee
+  api_key: '159449162947737'
+  api_secret: pyLoyqsTxhKOuVncJH3bzOrAW0A
+  enhance_image_tag: true
+  static_image_support: false
