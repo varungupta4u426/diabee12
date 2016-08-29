@@ -3,7 +3,7 @@
 				<h1 class="pull-left">Patient's Assessment</h1>
 				<div class="pull-right">
 					
-					<a href="index.html" class="add-btn"><i class="icon icon-left-arrow"></i> Back</a>
+					<a href="/" class="add-btn"><i class="icon icon-left-arrow"></i> Back</a>
 				</div>
 			</div>
 
@@ -25,10 +25,8 @@
 							<div class="row">
 								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 									<div class="form-group">
-										<label>First Name</label>
-										<!-- <input type="text" class="form-control"> -->
+										<label>First Names</label>
 										<%= f.text_field :first_name, :class=>"form-control" %>
-										<%= f.text_field :password, :value =>"1111" ,:class=>"form-control" %>
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -112,6 +110,7 @@
 							<div class="row">
 								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 									<div class="form-group">
+									<label>Preferred Language</label>
 										<%= f.select :preferred_language, options_for_select(Patient::LANGUAGE_OPTIONS),{prompt: true}, {:class => 'form-control'}%>
 									</div>
 								</div>
@@ -171,13 +170,13 @@
 								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 									<div class="form-group">
 										<label>Source</label>
-										<input type="text" class="form-control">
+										<%= f.select :source, options_for_select(Patient::SOURCE_OPTIONS),{prompt: true}, {:class => 'form-control'}%>
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 									<div class="form-group">
 										<label>Package</label>
-										<input type="text" class="form-control">
+										<%= f.select :package, options_for_select(Patient::PACKAGE_OPTIONS),{prompt: true}, {:class => 'form-control'}%>
 									</div>
 								</div>
 								
@@ -192,7 +191,7 @@
 								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 									<div class="form-group">
 										<label>Date of Dropout</label>
-										<%= f.text_field :date_of_dropout, :class=>"form-control"%>
+										<%= f.text_field :date_of_dropout, :class=>"form-control date-picker"%>
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -248,10 +247,10 @@
 						  
 						  
 							<div class="panel panel-default">
-							  <div class="panel-heading font-regular">Do you follow any special diet for the above conditions?</div>
+							  <div class="panel-heading font-regular">Do you follow any special diet for the above conditions &#63;</div>
 							  <div class="panel-body">
 
-								  <%= ff.radio_button :follow_special_diet, true, :checked => true %> 
+								  <%= ff.radio_button :follow_special_diet, true %> 
 								  <%= label :follow_special_diet, 'Yes' %>
 								  <%= ff.radio_button :follow_special_diet, false %>
 								  <%= label :follow_special_diet, 'No' %>
@@ -265,7 +264,7 @@
 							</div>
 							
 							<div class="panel panel-default">
-								<div class="panel-heading font-regular">When was your last dilated eye exam?</div>
+								<div class="panel-heading font-regular">When was your last dilated eye exam &#63;</div>
 								<div class="panel-body">
 									<div class="row">
 										<div class="col-md-2 col-sm-3">
@@ -285,10 +284,10 @@
 							
 							
 							<div class="panel panel-default">
-								<div class="panel-heading font-regular">Have you seen a foot doctor?</div>
+								<div class="panel-heading font-regular">Have you seen a foot doctor &#63;</div>
 								<div class="panel-body">
 
-									<%= ff.radio_button :seen_foot_doctor, true, :checked => true %> 
+									<%= ff.radio_button :seen_foot_doctor, true %> 
 								  <%= label :seen_foot_doctor, 'Yes' %>
 								  <%= ff.radio_button :seen_foot_doctor, false %>
 								  <%= label :seen_foot_doctor, 'No' %>
@@ -296,7 +295,7 @@
 									<div class="row">
 										<div class="col-md-2 col-sm-3">
 											<div class="form-group">
-												<label>When?</label>
+												<label>When &#63;</label>
 												<%= ff.text_field :seen_foot_doctor_month, :class=>"form-control",:placeholder=>"Month"%>
 											</div>
 										</div>
@@ -314,7 +313,7 @@
 								<div class="panel-heading font-regular">Do you check your feet daily?</div>
 								<div class="panel-body">
 									
-									<%= ff.radio_button :check_feet_daily, true, :checked => true %> 
+									<%= ff.radio_button :check_feet_daily, true %> 
 								  <%= label :check_feet_daily, 'Yes' %>
 								  <%= ff.radio_button :check_feet_daily, false %>
 								  <%= label :check_feet_daily, 'No' %>
@@ -326,7 +325,7 @@
 								<div class="panel-heading font-regular">Do you drink alchol?</div>
 								<div class="panel-body">
 									
-									<%= ff.radio_button :drink_alcohol, true, :checked => true %> 
+									<%= ff.radio_button :drink_alcohol, true %> 
 								  <%= label :drink_alcohol, 'Yes' %>
 								  <%= ff.radio_button :drink_alcohol, false %>
 								  <%= label :drink_alcohol, 'No' %>
@@ -365,7 +364,7 @@
 								<div class="panel-heading font-regular">Do you smoke?</div>
 								<div class="panel-body">
 									
-									<%= ff.radio_button :do_you_smoke, true, :checked => true %> 
+									<%= ff.radio_button :do_you_smoke, true %> 
 								  <%= label :do_you_smoke, 'Yes' %>
 								  <%= ff.radio_button :do_you_smoke, false %>
 								  <%= label :do_you_smoke, 'No' %>
@@ -402,7 +401,7 @@
 								<div class="panel-heading font-regular">Did you ever smoke?</div>
 								<div class="panel-body">
 
-									<%= ff.radio_button :ever_smoke, true, :checked => true %> 
+									<%= ff.radio_button :ever_smoke, true %> 
 								  <%= label :ever_smoke, 'Yes' %>
 								  <%= ff.radio_button :ever_smoke, false %>
 								  <%= label :ever_smoke, 'No' %>
@@ -471,7 +470,7 @@
 								<div class="panel-heading font-regular">Has your weight changed in the last year?</div>
 								<div class="panel-body">
 
-									<%= fn.radio_button :weight_chamge_last_year, true, :checked => true %> 
+									<%= fn.radio_button :weight_chamge_last_year, true %> 
 								  <%= label :weight_chamge_last_year, 'Yes' %>
 								  <%= fn.radio_button :weight_chamge_last_year, false %>
 								  <%= label :weight_chamge_last_year, 'No' %>
@@ -559,9 +558,11 @@
 									<div class="row">
 
 										<% NutritionHistory::EATOUT_OPTIONS.each do |value| %>
-										<div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+										<label class="checkbox-inline">
 										  <%= check_box_tag "patient[nutrition_history_attributes]places_eat_ot_at[]",value %>
 										  <%= value %>
+										 </label>
 										</div>
 										<% end %>
 
@@ -586,7 +587,7 @@
 								<div class="panel-heading font-regular">Do you eat regular meals?</div>
 								<div class="panel-body">
 									
-									<%= fn.radio_button :eat_regular_meal, true, :checked => true %> 
+									<%= fn.radio_button :eat_regular_meal, true %> 
 								  <%= label :eat_regular_meal, 'Yes' %>
 								  <%= fn.radio_button :eat_regular_meal, false %>
 								  <%= label :eat_regular_meal, 'No' %>
@@ -606,7 +607,7 @@
 								<div class="panel-heading font-regular">Do you take any vitamins, minerals or other diet suppliments?</div>
 								<div class="panel-body">
 									
-									<%= fn.radio_button :take_vitamin_mineral_diet_supplement_type, true, :checked => true %> 
+									<%= fn.radio_button :take_vitamin_mineral_diet_supplement_type, true %> 
 								  <%= label :take_vitamin_mineral_diet_supplement_type, 'Yes' %>
 								  <%= fn.radio_button :take_vitamin_mineral_diet_supplement_type, false %>
 								  <%= label :take_vitamin_mineral_diet_supplement_type, 'No' %>
@@ -626,7 +627,7 @@
 								<div class="panel-heading font-regular">Do you exercise now?</div>
 								<div class="panel-body">
 
-									<%= fn.radio_button :do_you_exercise_now, true, :checked => true %> 
+									<%= fn.radio_button :do_you_exercise_now, true %> 
 								  <%= label :do_you_exercise_now, 'Yes' %>
 								  <%= fn.radio_button :do_you_exercise_now, false %>
 								  <%= label :do_you_exercise_now, 'No' %>
@@ -915,4 +916,25 @@ $('#state').change(function () {
   });
   $('#city').empty();
 });
+
+$(document).ready(function(){
+			var date_input=$('#date'); //our date input has the name "date"
+			var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+			date_input.datepicker({
+				format: 'yyyy-mm-dd',
+				container: container,
+				todayHighlight: true,
+				autoclose: true,
+			});
+			var date_input=$('.date-picker'); //our date input has the name "date"
+			var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+			date_input.datepicker({
+				format: 'yyyy-mm-dd',
+				container: container,
+				todayHighlight: true,
+				autoclose: true,
+			})
+		})
+
+
 </script>

@@ -14,6 +14,9 @@ class Patient < ApplicationRecord
    has_one :nutrition_history, :inverse_of => :patient, dependent: :destroy
    accepts_nested_attributes_for :nutrition_history, :allow_destroy => true
 
+   has_one :diabetes_history, :inverse_of => :patient, dependent: :destroy
+   accepts_nested_attributes_for :diabetes_history, :allow_destroy => true
+
    def send_forget_password_mail
    	 generate_reset_password_token(self)
    	 PatientMailer.send_reset_password_link(self).deliver
@@ -30,5 +33,8 @@ class Patient < ApplicationRecord
    GENDER_OPTIONS   = ["Male","Female","Other"]
    LANGUAGE_OPTIONS = ["Hindi","English"]
    BOOLEAN_OPTIONS  = [ ["Yes",1],["No",0] ]
+   SOURCE_OPTIONS   = ["Dr. Anup Misra", "Dr. Sharma", "Humrahi", "DRL", "Others"]
+   PACKAGE_OPTIONS  = ["Pharma-sales", "Pharma – Lite", "Pharma-Heavy", "Corporate-Lite",
+     "Corporate-Heavy", "Doctor-1", "Doctor-2", "Doctor-3", "Doctor-4"]
 
 end
