@@ -14,7 +14,7 @@ module Diabee
 
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
     # Precompile additional assets
-    config.assets.precompile += %w( .svg .eot .woff .ttf .png .jpg .gif) 
+    config.assets.precompile += %w( .svg .eot .woff .ttf .png .jpg .gif .woff2) 
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
