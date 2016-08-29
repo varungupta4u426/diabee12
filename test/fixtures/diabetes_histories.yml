@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  diagnosed_month: MyString
+  diagnosed_year: MyString
+  any_one_in_family_have_diabetes: false
+  whome_have_diabetes_family: MyString
+  previous_diabetes_education: MyString
+  own_words_diabetes: MyString
+  intersting_learning_diabetes_session: MyString
+  test_blood_sugar_at_home: false
+  what_meter_use: MyString
+  how_often_test_sugar: MyString
+  how_often_test_sugar_other: MyString
+  when_did_you_test: MyString
+  when_did_you_test_other: MyString
+  last_month_low_blood_sugar: MyString
+  what_you_do_when_sugar_high: MyString
+  what_you_do_when_sugar_low: MyString
+  emergency_room_for_diabets_related_event: MyString
+  patient: one
+
+two:
+  type: 
+  diagnosed_month: MyString
+  diagnosed_year: MyString
+  any_one_in_family_have_diabetes: false
+  whome_have_diabetes_family: MyString
+  previous_diabetes_education: MyString
+  own_words_diabetes: MyString
+  intersting_learning_diabetes_session: MyString
+  test_blood_sugar_at_home: false
+  what_meter_use: MyString
+  how_often_test_sugar: MyString
+  how_often_test_sugar_other: MyString
+  when_did_you_test: MyString
+  when_did_you_test_other: MyString
+  last_month_low_blood_sugar: MyString
+  what_you_do_when_sugar_high: MyString
+  what_you_do_when_sugar_low: MyString
+  emergency_room_for_diabets_related_event: MyString
+  patient: two

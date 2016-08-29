@@ -233,112 +233,17 @@
 						<%= f.fields_for :health_history do |ff| %>
 						  <h3>Health History</h3>
 						  <p class="font-medium">Check box if you've ever had of the following conditions:</p>
-						  <div class="row margin-bottom10">
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Heart Problems
-									</label>
-								</div>
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Cancer
-									</label>
-								</div>
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Sleep Apnea
-									</label>
-								</div>
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Thyroid Problems
-									</label>
-								</div>
-						  </div>
 						  
 						  <div class="row margin-bottom10">
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Stroke
-									</label>
+
+				 				<% HealthHistory::EVER_HAD_CONDITION.each do |value| %>
+				 				<div class="col-md-3 col-sm-4 col-xs-12">
+								<label class="checkbox-inline">
+								  <%= check_box_tag "patient[health_history_attributes]ever_had_condition[]",value %> <%= value %>
+								</label>
 								</div>
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Kideny Disease
-									</label>
-								</div>
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Breathing Problems
-									</label>
-								</div>
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Gestational Diabetes
-									</label>
-								</div>
-						  </div>
-						  <div class="row margin-bottom10">
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> High Cholesterol
-									</label>
-								</div>
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Foot Problems
-									</label>
-								</div>
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Cataracts / Glaucoma
-									</label>
-								</div>
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> PCOS
-									</label>
-								</div>
-						  </div>
-						  <div class="row margin-bottom10">
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> High Blood Pressure
-									</label>
-								</div>
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Pain issues
-									</label>
-								</div>
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Sexual Dysfunction
-									</label>
-								</div>
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Other
-									</label>
-								</div>
-						  </div>
-						  <div class="row margin-bottom10">
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Circulation Problems
-									</label>
-								</div>
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Stomach or intestinal Problems
-									</label>
-								</div>
-								<div class="col-md-3 col-sm-4 col-xs-12">
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Depression or Mental Illness
-									</label>
-								</div>
-								
+								<% end %>
+
 						  </div>
 						  
 						  
@@ -648,47 +553,12 @@
 								<div class="panel-body">
 									<div class="row">
 
-
-
-										<!-- <div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Fast Food
-											</label>
-											
+										<% NutritionHistory::EATOUT_OPTIONS.each do |value| %>
+										<div>
+										  <%= check_box_tag "patient[nutrition_history_attributes]places_eat_ot_at[]",value %>
+										  <%= value %>
 										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Cafe
-											</label>
-											
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Buffets
-											</label>
-											
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Take out
-											</label>
-											
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Fine Dining
-											</label>
-											
-										</div>
- -->
-
-											<% for place in EatOutPlace.all %>
-											<div>
-											  <%= check_box_tag "patient[nutrition_history_attributes][eat_out_place_ids][]",place.id %>
-											  <%= place.name %>
-
-											</div>
-											<% end %>
+										<% end %>
 
 									</div>
 								</div>
@@ -786,23 +656,17 @@
 						
 						<div id="DiabetesHistory" class="tab-pane fade">
 						  <h3>Diabetes History</h3>
-						  
+						  <%= f.fields_for :diabetes_history do |fd| %>
 						  
 						  <div class="panel panel-default">
 								<div class="panel-heading font-regular">Type of Diabetes</div>
 								<div class="panel-body">
+
+									<% DiabetesHistory::DIABETES_TYPE.each do |type|%>
 									<label class="checkbox-inline">
-									  <input type="checkbox" value="">Type 1
+										<%= fd.radio_button :type, type %><%= type%>
 									</label>
-									<label class="checkbox-inline">
-									  <input type="checkbox" value="">Type 2
-									</label>
-									<label class="checkbox-inline">
-									  <input type="checkbox" value="">Pre-Diabetes
-									</label>
-									<label class="checkbox-inline">
-									  <input type="checkbox" value="">Don't know
-									</label>
+									<%end%>
 								
 								</div>
 							</div>
@@ -814,13 +678,13 @@
 										<div class="col-md-2 col-sm-3 col-xs-12">
 											<div class="form-group">
 												<label>Month</label>
-												<input type="text" class="form-control">
+												<%= fd.text_field :diagnosed_month,:class=>"form-control" %>
 											</div>
 										</div>
 										<div class="col-md-2 col-sm-3 col-xs-12">
 											<div class="form-group">
 												<label>Year</label>
-												<input type="text" class="form-control">
+												<%= fd.text_field :diagnosed_year,:class=>"form-control" %>
 											</div>
 										</div>
 									</div>
@@ -829,18 +693,19 @@
 							
 							<div class="panel panel-default">
 								<div class="panel-heading font-regular">Does anyone in your faimly have diabetes? </div>
+
 								<div class="panel-body">
-									<label class="checkbox-inline">
-									  <input type="checkbox" value="">No
-									</label>
-									<label class="checkbox-inline">
-									  <input type="checkbox" value="">Yes
-									</label>
+
+									<%= fd.radio_button :any_one_in_family_have_diabetes, true %> 
+								  <%= label :any_one_in_family_have_diabetes, 'Yes' %>
+								  <%= fd.radio_button :any_one_in_family_have_diabetes, false %>
+								  <%= label :any_one_in_family_have_diabetes, 'No' %>
+
 									<div class="row">
 										<div class="col-md-5 col-sm-5 col-xs-12">
 											<div class="form-group">
 												<label>Whom?</label>
-												<input type="text" class="form-control">
+												<%= fd.text_field :whome_have_diabetes_family,:class=>"form-control" %>
 											</div>
 										</div>
 									</div>
@@ -851,18 +716,13 @@
 							<div class="panel panel-default">
 								<div class="panel-heading font-regular">Have you had previous diabetes education?</div>
 								<div class="panel-body">
-									<label class="checkbox-inline">
-									  <input type="checkbox" value="">No
-									</label>
-									<label class="checkbox-inline">
-									  <input type="checkbox" value="">Yes -from whom?
-									</label>
-									<label class="checkbox-inline">
-									  <input type="checkbox" value="">Do Page Medical Group
-									</label>
-									<label class="checkbox-inline">
-									  <input type="checkbox" value="">Other
-									</label>
+
+									<%["No","Yes -from whom?","Do Page Medical Group","Other"].each do |value|%>
+										<label class="checkbox-inline">
+											<%= fd.radio_button :any_one_in_family_have_diabetes, true %><%= value%>
+										</label>
+									<%end%>
+
 								</div>
 							</div>
 							
@@ -870,7 +730,7 @@
 								<div class="panel-heading font-regular">In your own words, what is diabetes?</div>
 								<div class="panel-body">
 									<div class="form-group">
-										<textarea class="form-control"></textarea>
+										<%= fd.text_field :own_words_diabetes,:class=>"form-control" %>
 									</div>
 								</div>
 							</div>
@@ -879,41 +739,14 @@
 								<div class="panel-heading font-regular">What are you most interested in learning from these diabetes education sessions?</div>
 								<div class="panel-body">
 									<div class="row">
+
+										<% DiabetesHistory::EDUCATION_SESSION_OPTIONS.each do |value| %>
 										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Healthy Eating
-											</label>
+										  <%= check_box_tag "patient[diabetes_history_attributes]previous_diabetes_education[]",value %>
+										  <%= value %>
 										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Impact of Physical Activity
-											</label>
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Using Medications
-											</label>
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Checking My Blood Sugar
-											</label>
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Behavior Change Strategies
-											</label>
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Lowering My Risk for Complications
-											</label>
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Coping Skills
-											</label>
-										</div>
+										<% end %>
+
 									</div>
 								
 								</div>
@@ -925,17 +758,17 @@
 							<div class="panel panel-default">
 								<div class="panel-heading font-regular">Do you test your blood sugar at home? </div>
 								<div class="panel-body">
-									<label class="checkbox-inline">
-									  <input type="checkbox" value="">No
-									</label>
-									<label class="checkbox-inline">
-									  <input type="checkbox" value="">Yes
-									</label>
+
+									<%= fd.radio_button :test_blood_sugar_at_home, true %> 
+								  <%= label :test_blood_sugar_at_home, 'Yes' %>
+								  <%= fd.radio_button :test_blood_sugar_at_home, false %>
+								  <%= label :test_blood_sugar_at_home, 'No' %>
+
 									<div class="row">
 										<div class="col-md-5 col-sm-5 col-xs-12">
 											<div class="form-group">
 												<label>If yes, what meter do you use?</label>
-												<input type="text" class="form-control">
+												<%= fd.text_field :what_meter_use,:class=>"form-control" %>
 											</div>
 										</div>
 									</div>
@@ -945,23 +778,18 @@
 							<div class="panel panel-default">
 								<div class="panel-heading font-regular">How often do you test your blood sugar each day?</div>
 								<div class="panel-body">
-									<label class="radio-inline">
-									  <input type="radio" value="">1
-									</label>
-									<label class="radio-inline">
-									  <input type="radio" value="">2
-									</label>
-									<label class="radio-inline">
-									  <input type="radio" value="">3
-									</label>
-									<label class="radio-inline">
-									  <input type="radio" value="">4+ time per day
-									</label>
+
+									<%["1","2","3","4+ time per day"].each do |value|%>
+									 <label class="radio-inline">
+										<%= fd.radio_button :how_often_test_sugar, value %>&nbsp; <%= value %>
+									 </label>	
+									<%end%>
+
 									<div class="row">
 										<div class="col-md-5 col-sm-5 col-xs-12">
 											<div class="form-group">
 												<label>Other</label>
-												<input type="text" class="form-control">
+												<%= fd.text_field :how_often_test_sugar_other,:class=>"form-control" %>
 											</div>
 										</div>
 									</div>
@@ -972,6 +800,8 @@
 								<div class="panel-heading font-regular">When do you test?</div>
 								<div class="panel-body">
 									<div class="row">
+									
+
 										<div class="col-md-3 col-sm-3 col-xs-12">
 											<label class="checkbox-inline">
 											  <input type="checkbox" value="">Before Breakfast
@@ -992,6 +822,8 @@
 											  <input type="checkbox" value="">Bedtime
 											</label>
 										</div>
+
+
 									</div>
 									<div class="row">
 										<div class="col-md-3 col-sm-3 col-xs-12">
@@ -1098,7 +930,8 @@
 									
 								</div>
 							</div>
-							
+
+							<%end%>
 						</div>
 						<!-- 4 -->
 						

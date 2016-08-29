@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class NutritionHistoryEatOutPlaceTest < ActiveSupport::TestCase
+class DiabetesHistoryTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -33,6 +33,7 @@ class AppsController < ActionController::Base
     end
 
   	def render_errors(errors)
+      errors = [errors]
     	render json: { errors: errors ,status: ERROR}
     end
 

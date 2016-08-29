@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160827103854) do
+ActiveRecord::Schema.define(version: 20160827132510) do
+
+  create_table "diabetes_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "type"
+    t.string   "diagnosed_month"
+    t.string   "diagnosed_year"
+    t.boolean  "any_one_in_family_have_diabetes"
+    t.string   "whome_have_diabetes_family"
+    t.string   "previous_diabetes_education"
+    t.string   "own_words_diabetes"
+    t.string   "intersting_learning_diabetes_session"
+    t.boolean  "test_blood_sugar_at_home"
+    t.string   "what_meter_use"
+    t.string   "how_often_test_sugar"
+    t.string   "how_often_test_sugar_other"
+    t.string   "when_did_you_test"
+    t.string   "when_did_you_test_other"
+    t.string   "last_month_low_blood_sugar"
+    t.string   "what_you_do_when_sugar_high"
+    t.string   "what_you_do_when_sugar_low"
+    t.string   "emergency_room_for_diabets_related_event"
+    t.integer  "patient_id"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.index ["patient_id"], name: "index_diabetes_histories_on_patient_id", using: :btree
+  end
 
   create_table "eat_out_places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -174,6 +199,7 @@ ActiveRecord::Schema.define(version: 20160827103854) do
     t.index ["reset_password_token"], name: "index_patients_on_reset_password_token", using: :btree
   end
 
+  add_foreign_key "diabetes_histories", "patients"
   add_foreign_key "exercises", "nutrition_histories"
   add_foreign_key "health_histories", "patients"
   add_foreign_key "histories", "patients"
