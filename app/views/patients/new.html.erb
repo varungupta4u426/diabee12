@@ -801,53 +801,20 @@
 								<div class="panel-body">
 									<div class="row">
 									
-
+										<% DiabetesHistory::EDUCATION_SESSION_OPTIONS.each do |value| %>
 										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Before Breakfast
-											</label>
+										  <%= check_box_tag "patient[diabetes_history_attributes]when_did_you_test[]",value %>
+										  <%= value %>
 										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Before Lunch
-											</label>
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Before Dinner
-											</label>
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Bedtime
-											</label>
-										</div>
-
-
-									</div>
-									<div class="row">
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">2 hours after Breakfast
-											</label>
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">2 hours after Lunch
-											</label>
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">2 hours after Dinner
-											</label>
-										</div>
+										<% end %>
 										
 									</div>
+
 									<div class="row">
 										<div class="col-md-5 col-sm-5 col-xs-12">
 											<div class="form-group">
 												<label>Other</label>
-												<input type="text" class="form-control">
+												<%= fd.text_field :when_did_you_test_other,:class=>"form-control" %>
 											</div>
 										</div>
 									</div>
@@ -859,26 +826,14 @@
 								<div class="panel-heading font-regular">In the last month, how often have you had a low blood sugar reaction?</div>
 								<div class="panel-body">
 									<div class="row">
-										<div class="col-md-2 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Never
-											</label>
-										</div>
-										<div class="col-md-2 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Once
-											</label>
-										</div>
+
+										<% DiabetesHistory::LOW_BLOOD_SUGAR.each do |value| %>
 										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Two or more times/week
-											</label>
+										  <%= check_box_tag "patient[diabetes_history_attributes]last_month_low_blood_sugar[]",value %>
+										  <%= value %>
 										</div>
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<label class="checkbox-inline">
-											  <input type="checkbox" value="">Bedtime
-											</label>
-										</div>
+										<% end %>
+
 									</div>
 								</div>
 							</div>
@@ -889,7 +844,7 @@
 									<div class="row">
 										<div class="col-md-5 col-sm-5 col-xs-12">
 											<div class="form-group">
-												<input type="text" class="form-control">
+												<%= fd.text_field :what_you_do_when_sugar_high,:class=>"form-control" %>
 											</div>
 										</div>
 									</div>
@@ -902,7 +857,7 @@
 									<div class="row">
 										<div class="col-md-5 col-sm-5 col-xs-12">
 											<div class="form-group">
-												<input type="text" class="form-control">
+												<%= fd.text_field :what_you_do_when_sugar_low,:class=>"form-control" %>
 											</div>
 										</div>
 									</div>
@@ -912,14 +867,12 @@
 							<div class="panel panel-default">
 								<div class="panel-heading font-regular">In the last 12 months, have you been to an emergency room for a diabetes related event?</div>
 								<div class="panel-body">
-									<label class="checkbox-inline">
-									  <input type="checkbox" value="">No
-									</label>
-									<label class="checkbox-inline">
-									  <input type="checkbox" value="">Yes
-									</label>
-								
 									
+									<%= fd.radio_button :emergency_room_for_diabets_related_event, true %> 
+								  <%= label :emergency_room_for_diabets_related_event, 'Yes' %>
+								  <%= fd.radio_button :emergency_room_for_diabets_related_event, false %>
+								  <%= label :emergency_room_for_diabets_related_event, 'No' %>
+								
 								</div>
 							</div>
 							<div class="row">

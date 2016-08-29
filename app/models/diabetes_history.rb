@@ -19,7 +19,9 @@ class DiabetesHistory < ApplicationRecord
   					"2 hours after Breakfast",
   					"2 hours after Lunch",
   					"2 hours after Dinner"
-  				]  							  
+  				]  			
+
+  LOW_BLOOD_SUGAR = ["Never","Once","Two or more times/week","Bedtime"]        				  
 
 end
 

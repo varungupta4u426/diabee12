@@ -15,7 +15,7 @@ class Api::V1::SessionsController < AppsController
 
 	def destroy
 		sign_out
-		render json: {result: true, messages: "Logged out successfully"}
+		render json: {result: true, messages: "Logged out successfully",status: 200}
 	end	
  	
  	private
