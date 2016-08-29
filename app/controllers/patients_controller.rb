@@ -14,9 +14,11 @@ class PatientsController < ApplicationController
   def create
   	@patient = Patient.new(patient_params)
     @patient.password = "12345" 
-  	@patient.save
-
-    redirect_to root_path
+  	if @patient.save
+      redirect_to root_path
+    else
+      render 'new'
+    end  
   end	
 
 
