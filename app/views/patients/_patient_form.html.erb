@@ -111,7 +111,7 @@
 								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 									<div class="form-group">
 										<label>State</label>
-										<%= f.select :state, options_for_select(CS.states(:in).map{|key, value| [value, key]}),{prompt: true}, {:class => 'form-control',:id => "state"}%>
+										<%= f.select :state, options_for_select(CS.states(:in).map{|key, value| [value, key]},:selected=>f.object.state),{prompt: true}, {:class => 'form-control',:id => "state"}%>
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
