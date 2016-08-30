@@ -41,4 +41,30 @@ class Patient < ApplicationRecord
    PACKAGE_OPTIONS  = ["Pharma-sales", "Pharma – Lite", "Pharma-Heavy", "Corporate-Lite",
      "Corporate-Heavy", "Doctor-1", "Doctor-2", "Doctor-3", "Doctor-4"]
 
+
+  def self.image_data(data)
+    return nil unless data
+    image_out = []
+    data.each do |data|
+      io = CarrierStringIO.new(Base64.decode64(data[:picture]))
+      hs = {:picture => io}
+      image_out << hs
+    end
+    image_out
+  end
+
+
+end
+
+
+class CarrierStringIO < StringIO
+  def original_filename
+    # the real name does not matter
+    "photo.jpeg"
+  end
+
+  def content_type
+    # this should reflect real content type, but for this example it's ok
+    "image/jpeg"
+  end
 end
