@@ -27,7 +27,7 @@ class Api::V1::PatientsController < AppsController
 
 	private 
 	def patient_params
-		params.require(:patient).permit(:first_name, :last_name, :email, :gender, :mobile, 
+		params.require(:patient).permit(:first_name, :last_name,:city, :email, :gender, :mobile, 
 			:password,:profile_pic,:doctor_name,:nok_name,:nok_number )
 	end	
 

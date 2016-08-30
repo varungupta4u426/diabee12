@@ -7,6 +7,7 @@ json.last_name patient.last_name.blank? ? "" : patient.last_name
 json.dob patient.dob.blank? ? "" : patient.dob
 json.gender patient.gender.blank? ? "" : patient.gender  
 json.street_address patient.street_address.blank? ? "" : patient.street_address
+json.city patient.city.blank? ? "" : patient.city  
 json.doctor_name patient.doctor_name.blank? ? "" : patient.doctor_name
 json.nok_name patient.nok_name.blank? ? "" : patient.nok_name
 json.nok_number patient.nok_number.blank? ? "" : patient.nok_number
