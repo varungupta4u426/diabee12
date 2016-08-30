@@ -45,7 +45,11 @@ Rails.application.routes.draw do
 		
 		
 		resources :patients  
-		resources :counsellors  
+		resources :counsellors, only: [:new,:index] do
+			collection do
+			   post 'create'
+			end
+		end	
 
 end
 

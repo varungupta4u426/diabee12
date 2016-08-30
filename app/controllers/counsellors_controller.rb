@@ -1,4 +1,6 @@
 class CounsellorsController < ApplicationController
+	 
+	before_action :authenticate_counsellor?
 
 	def index
 		@counsellor = Counsellor.all
@@ -11,8 +13,14 @@ class CounsellorsController < ApplicationController
 	def create
 		@counsellor = Counsellor.new(counsellor_params)
 
+		password = SecureRandom.hex(3)
+		
+		@counsellor.password = password
+		
 		if @counsellor.save
+			redirect_to counsellors_path
 		else
+			render 'new'
 		end	
 	end	
 
