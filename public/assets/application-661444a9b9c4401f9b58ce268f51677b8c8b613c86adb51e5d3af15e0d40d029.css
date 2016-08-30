@@ -8453,7 +8453,7 @@ select:focus {
     display: block;
     width: 100%;
     height: 40px;
-    padding: 16px 12px;
+    padding: 6px;
     font-size: 14px;
     line-height: 1.42857143;
     color: #555;
@@ -8467,7 +8467,7 @@ select:focus {
     -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out 0s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out 0s;
 }
-.signin-div .s-tr form .warp button[type="submit"] {
+.signin-div .s-tr form .warp .actions input[type="submit"] {
     color: #fff;
     background: rgb(23, 78, 99);
 	width: 100%;
