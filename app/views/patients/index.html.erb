@@ -2,12 +2,12 @@
 			<div class="page-title">
 				<h1 class="pull-left">Dashboard</h1>
 				<div class="pull-right">
-					<a href="" class="add-btn blue-bg"><i class="icon icon-small-calendar"></i> Date of Enrolment</a>
 					<a href="" class="add-btn red-bg"><i class="icon icon-import"></i> Export Patient Data</a>
 					<a href="/patients/new" class="add-btn"><i class="icon icon-add-1"></i> Add New Patient</a>
 				</div>
 			</div>
 			<div class="white-bg">
+			<div class="table-overflow">
 				<table class="table" id="example">
 					<thead>
 					  <tr>
@@ -23,12 +23,10 @@
 					  </tr>
 					</thead>
 					<tbody>
-					<%#= @patients %>
-						<%= render 'patients_data' ,locals: {p: @patients}%>
-					  
+						<%= render 'patients_data'%>
 					</tbody>
 				  </table>
-		
+			</div>
 			</div>
 		</div>
 

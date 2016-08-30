@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+   # devise_for :counsellors
+   
+
+   	devise_for :counsellors, controllers: {
+        sessions: 'counsellor/sessions',
+        passwords: 'counsellor/passwords'
+      }
+
+	 devise_scope :counsellor do
+	  root :to => 'counsellor/sessions#new'
+	end   
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
@@ -30,7 +42,7 @@ Rails.application.routes.draw do
 
 		get 'cities/:state', to: 'application#cities'
 
-		root 'patients#index'
+		
 		
 		resources :patients  
 

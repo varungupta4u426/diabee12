@@ -253,7 +253,9 @@
 				 				<% HealthHistory::EVER_HAD_CONDITION.each do |value| %>
 				 				<div class="col-md-3 col-sm-4 col-xs-12">
 								<label class="checkbox-inline">
-								  <%= check_box_tag "patient[health_history_attributes]ever_had_condition[]",value %> <%= value %>
+									<%status = ff.object.ever_had_condition.include?(value) if !ff.object.ever_had_condition.blank? %>
+								  <%= check_box_tag "patient[health_history_attributes]ever_had_condition[]",value, status %>
+								  <%= value %> 
 								</label>
 								</div>
 								<% end %>
@@ -575,7 +577,8 @@
 										<% NutritionHistory::EATOUT_OPTIONS.each do |value| %>
 										<div class="col-md-3 col-sm-3 col-xs-12">
 										<label class="checkbox-inline">
-										  <%= check_box_tag "patient[nutrition_history_attributes]places_eat_ot_at[]",value %>
+										<%status = fn.object.places_eat_ot_at.include?(value) if !fn.object.places_eat_ot_at.blank? %>
+										  <%= check_box_tag "patient[nutrition_history_attributes]places_eat_ot_at[]",value,status %>
 										  <%= value %>
 										 </label>
 										</div>
@@ -740,7 +743,7 @@
 
 									<%["No","Yes -from whom?","Do Page Medical Group","Other"].each do |value|%>
 										<label class="checkbox-inline">
-											<%= fd.radio_button :any_one_in_family_have_diabetes, true %><%= value%>
+											<%= fd.radio_button :previous_diabetes_education, value %><%= value%>
 										</label>
 									<%end%>
 
@@ -763,7 +766,8 @@
 
 										<% DiabetesHistory::EDUCATION_SESSION_OPTIONS.each do |value| %>
 										<div class="col-md-3 col-sm-3 col-xs-12">
-										  <%= check_box_tag "patient[diabetes_history_attributes]previous_diabetes_education[]",value %>
+										<%status = fd.object.intersting_learning_diabetes_session.include?(value) if !fd.object.intersting_learning_diabetes_session.blank? %>
+										  <%= check_box_tag "patient[diabetes_history_attributes]intersting_learning_diabetes_session[]",value,status %>
 										  <%= value %>
 										</div>
 										<% end %>
@@ -822,9 +826,10 @@
 								<div class="panel-body">
 									<div class="row">
 									
-										<% DiabetesHistory::EDUCATION_SESSION_OPTIONS.each do |value| %>
+										<% DiabetesHistory::TEST_OPTIONS.each do |value| %>
+										<%status = fd.object.when_did_you_test.include?(value) if !fd.object.when_did_you_test.blank? %>
 										<div class="col-md-3 col-sm-3 col-xs-12">
-										  <%= check_box_tag "patient[diabetes_history_attributes]when_did_you_test[]",value %>
+										  <%= check_box_tag "patient[diabetes_history_attributes]when_did_you_test[]",value,status %>
 										  <%= value %>
 										</div>
 										<% end %>
@@ -849,8 +854,9 @@
 									<div class="row">
 
 										<% DiabetesHistory::LOW_BLOOD_SUGAR.each do |value| %>
+										<%status = fd.object.last_month_low_blood_sugar.include?(value) if !fd.object.last_month_low_blood_sugar.blank? %>
 										<div class="col-md-3 col-sm-3 col-xs-12">
-										  <%= check_box_tag "patient[diabetes_history_attributes]last_month_low_blood_sugar[]",value %>
+										  <%= check_box_tag "patient[diabetes_history_attributes]last_month_low_blood_sugar[]",value,status %>
 										  <%= value %>
 										</div>
 										<% end %>

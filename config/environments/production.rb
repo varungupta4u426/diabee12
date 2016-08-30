@@ -72,15 +72,25 @@ Rails.application.configure do
   #   :openssl_verify_mode => 'none', 
   #   :enable_starttls_auto => true  }
 
-  config.action_mailer.smtp_settings = {
-    :address              => "mail.soberplaces.org",
-    :port                 => 25,
-    :domain               => 'soberplaces.org',
-    :user_name            => 'soberplacesorg',
-    :password             => 'Katie2014',
-    :authentication       => 'plain',
-    :openssl_verify_mode => 'none', 
-    :enable_starttls_auto => true  }
+  # config.action_mailer.smtp_settings = {
+  #   :address              => "mail.soberplaces.org",
+  #   :port                 => 25,
+  #   :domain               => 'soberplaces.org',
+  #   :user_name            => 'soberplacesorg',
+  #   :password             => 'Katie2014',
+  #   :authentication       => 'plain',
+  #   :openssl_verify_mode => 'none', 
+  #   :enable_starttls_auto => true  }
+
+   config.action_mailer.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => 'app31730141@heroku.com',
+    :password       => 'k6ijb9zq7356',
+    :domain         => "heroku.com",
+    :enable_starttls_auto => true
+  }
 
 
   # Ignore bad email addresses and do not raise email delivery errors.

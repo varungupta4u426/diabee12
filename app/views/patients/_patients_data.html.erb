@@ -1,10 +1,10 @@
 	<%@patients.each do |patient|%>
 	  <tr>
 		<td><%= patient.id%>.</td>
-		<td><a href="patient-dashboard.html"><%= patient.username%></a></td>
-		<td><a href="patient-dashboard.html">PharmaLite</a></td>
-		<td><a href="patient-dashboard.html">9015536209</a></td>
-		<td><a href="patient-dashboard.html">doctor</a></td>
+		<td><a href="patient-dashboard.html"><%= patient.full_name%></a></td>
+		<td><a href="patient-dashboard.html"><%= patient.package%></a></td>
+		<td><a href="patient-dashboard.html"><%= patient.mobile%></a></td>
+		<td><a href="patient-dashboard.html"><%= patient.doctor_name%></a></td>
 		<td><a href="patient-dashboard.html"><i class="circle blue-color icon-circal"></i></a></td>
 		<td><a href="patient-dashboard.html"><i class="rectangle blue-color icon-box"></i></a></td>
 		<td>

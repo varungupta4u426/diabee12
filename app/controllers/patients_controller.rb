@@ -1,6 +1,10 @@
 class PatientsController < ApplicationController
+
+  before_action :authenticate_counsellor?
+
+
   def index
-  	@patients = Patient.all
+    @patients = Patient.all
   end
 
   def new
@@ -58,7 +62,7 @@ class PatientsController < ApplicationController
     :take_vitamin_mineral_diet_supplement_type,:do_you_exercise_now,exercises_attributes: [:type_of_exercise,:amount_of_time,:times_per_weak,:_destroy] ],
     
      diabetes_history_attributes:[:diabetes_type, :diagnosed_month, :diagnosed_year, :any_one_in_family_have_diabetes,
-    :whome_have_diabetes_family, {previous_diabetes_education:[]}, :own_words_diabetes, :intersting_learning_diabetes_session, 
+    :whome_have_diabetes_family, :previous_diabetes_education, :own_words_diabetes, {intersting_learning_diabetes_session:[]}, 
     :test_blood_sugar_at_home, :what_meter_use, :how_often_test_sugar, :how_often_test_sugar_other, {when_did_you_test:[]}, 
     :when_did_you_test_other, {last_month_low_blood_sugar:[]}, :what_you_do_when_sugar_high, :what_you_do_when_sugar_low, 
     :emergency_room_for_diabets_related_event] )
