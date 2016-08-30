@@ -43,14 +43,9 @@ class Patient < ApplicationRecord
 
 
   def self.image_data(data)
+    p "====================="
     return nil unless data
-    image_out = []
-    data.each do |data|
-      io = CarrierStringIO.new(Base64.decode64(data[:picture]))
-      hs = {:picture => io}
-      image_out << hs
-    end
-    image_out
+    io = CarrierStringIO.new(Base64.decode64(data))
   end
 
 
@@ -59,12 +54,10 @@ end
 
 class CarrierStringIO < StringIO
   def original_filename
-    # the real name does not matter
     "photo.jpeg"
   end
 
   def content_type
-    # this should reflect real content type, but for this example it's ok
     "image/jpeg"
   end
 end
