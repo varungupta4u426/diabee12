@@ -10,7 +10,8 @@ class AppsController < ActionController::Base
       unless logged_in?
         respond_to do |format|
           format.html { redirect_to :sign_in, alert: 'You need to login' }
-          format.json { render :json => { :result => false,status: ERROR ,:message => "Patient not found!" } }
+          error = ["Patient not found!"]
+          format.json { render :json => { :result => false,status: ERROR ,:error => error  } }
         end
       end
     end
