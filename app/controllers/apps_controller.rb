@@ -11,7 +11,7 @@ class AppsController < ActionController::Base
         respond_to do |format|
           format.html { redirect_to :sign_in, alert: 'You need to login' }
           error = ["Patient not found!"]
-          format.json { render :json => { :result => false,status: ERROR ,:error => error  } }
+          format.json { render :json => { :result => 401,status: ERROR ,:error => error  } }
         end
       end
     end
