@@ -6,6 +6,20 @@
 		</div>
 	</div>
 
+	 <% if @counsellor.errors.any? %>
+	    <div id="error_explanation">
+	      <h2>
+	        <%= pluralize(@counsellor.errors.count, "error") %> prohibited
+	        this counsellor from being saved:
+	      </h2>
+	      <ul>
+	        <% @counsellor.errors.full_messages.each do |msg| %>
+	          <li><%= msg %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+
 	<%= render 'counsellors_form'%>
 
 </div>	

@@ -12,13 +12,12 @@ class CounsellorsController < ApplicationController
 
 	def create
 		@counsellor = Counsellor.new(counsellor_params)
-
-		password = SecureRandom.hex(3)
-		
-		@counsellor.password = password
+		@counsellor.role = "junior"
+		password = @counsellor.generate_password
 		
 		if @counsellor.save
-			redirect_to counsellors_path
+			@counsellor.send_welcome_mail(password)
+			redirect_to "/counsellors"
 		else
 			render 'new'
 		end	
