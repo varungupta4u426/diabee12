@@ -1,0 +1,62 @@
+<div class="main-div">
+			<div class="page-title">
+				<h1 class="pull-left">View Counsellor</h1>
+				<div class="pull-right">
+					<a href="/counsellors/<%= @counsellor.id%>/edit" class="add-btn blue-bg"><i class="icon icon-edit-1"></i> Edit</a>
+					<a href="/counsellors" class="add-btn"><i class="icon icon-left-arrow"></i> Back</a> 
+				</div>
+			</div>
+
+			<div class="white-bg">
+							
+							<div class="row">
+								<div class="col-md-2 col-sm-3 col-xs-12">
+									<div class="form-group">
+									  <label>First Name</label>
+									  <input type="text" class="form-control" value=<%= @counsellor.first_name%> readonly>
+									</div>
+								</div>
+								<div class="col-md-2 col-sm-3 col-xs-12">
+									<div class="form-group">
+									  <label>Last Name</label>
+									  <input type="text" class="form-control" value=<%= @counsellor.last_name%> readonly>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<div class="form-group">
+										<label>Speciality</label>
+										<input type="text" class="form-control" value=<%= @counsellor.speciality%> readonly>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<div class="form-group">
+										<label>Profile</label>
+										<input type="text" class="form-control" value=<%= @counsellor.profile%> readonly>
+									</div>
+								</div>
+								
+							</div>
+							
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<div class="form-group">
+										<label>HCAH Landline</label>
+										<input type="text" class="form-control" value=<%= @counsellor.hcah_landline%> readonly>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<div class="form-group">
+										<label>Mobile</label>
+										<input type="text" class="form-control" value=<%= @counsellor.mobile%> readonly>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+</div>						

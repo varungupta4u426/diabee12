@@ -28,16 +28,18 @@ class CounsellorsController < ApplicationController
 	end	
 
 	def update
-		p "*****update****#{params.inspect}*****"
-		@counsellor = Counsellor.update(counsellor_params)
 
-		p "*****update****#{@counsellor.inspect}*****"
+		@counsellor = Counsellor.find(params[:id])
 
-		if @counsellor == true
-			redirect_to 
+		if @counsellor.update(counsellor_params)
+			redirect_to "/counsellors"
 		else
 			render 'edit'
 		end	
+	end	
+
+	def show
+		@counsellor = Counsellor.find(params[:id])
 	end	
 
 

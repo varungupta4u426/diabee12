@@ -5,7 +5,7 @@ class Counsellor < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 
-   
+   validates :email, presence: true,uniqueness: true
 
    def generate_password
    		password = SecureRandom.hex(3)
@@ -20,5 +20,14 @@ class Counsellor < ApplicationRecord
    def full_name
    		"#{self.first_name} #{self.last_name}"
    end
+
+   def is_master?
+    p "*********#{self.inspect}******"
+     if self.role == "master"
+      true
+     else
+      false
+     end 
+   end 
 
 end
