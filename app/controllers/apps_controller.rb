@@ -10,7 +10,7 @@ class AppsController < ActionController::Base
       unless logged_in?
         respond_to do |format|
           format.html { redirect_to :sign_in, alert: 'You need to login' }
-          error = ["Patient not found!"]
+          error = ["Token expire, please login again to continue."]
           format.json { render :json => { :result => 401,status: ERROR ,:error => error  } }
         end
       end
