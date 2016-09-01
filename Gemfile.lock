@@ -49,6 +49,8 @@ GEM
       json (>= 1.7)
       mime-types (>= 1.16)
       mimemagic (>= 0.3.0)
+    carrierwave-video-thumbnailer (0.1.4)
+      carrierwave
     city-state (0.0.13)
       rubyzip (~> 1.1)
     cloudinary (1.2.3)
@@ -203,6 +205,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   carrierwave
+  carrierwave-video-thumbnailer
   city-state
   cloudinary
   coffee-rails (~> 4.2)

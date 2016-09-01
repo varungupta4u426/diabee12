@@ -23,6 +23,23 @@ class CounsellorsController < ApplicationController
 		end	
 	end	
 
+	def edit
+		@counsellor =Counsellor.find(params[:id])
+	end	
+
+	def update
+		p "*****update****#{params.inspect}*****"
+		@counsellor = Counsellor.update(counsellor_params)
+
+		p "*****update****#{@counsellor.inspect}*****"
+
+		if @counsellor == true
+			redirect_to 
+		else
+			render 'edit'
+		end	
+	end	
+
 
 	def counsellor_params
 		params.require(:counsellor).permit(:first_name, :last_name, :email, :profile, :hcah_landline, :mobile)

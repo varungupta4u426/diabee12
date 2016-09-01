@@ -1,14 +1,14 @@
-					
+					<%@counsellors.each do |counsellor|%>
 						<tr>
-							<td>Andy</td>
-							<td><a href="counsellor-data-report.html">Prateek</a></td>
-							<td>PharmaLite</td>
-							<td>Profile</td>
-							<td>120-4522750</td>
-							<td>9999 999 999</td>
+							<td><%= counsellor.id%></td>
+							<td><a href="counsellor-data-report.html"><%= counsellor.full_name%></a></td>
+							<td><%= counsellor.speciality%></td>
+							<td><%= counsellor.profile%></td>
+							<td><%= counsellor.hcah_landline%></td>
+							<td><%= counsellor.mobile%></td>
 							<td class="text-right">
-								<a href="edit-counsellor.html" class="yello-btn"><i class="icon icon-edit-1"></i></a>
-								<a href="view-counsellor.html" class="blue-btn"><i class="icon icon-document"></i></a>
+								<a href="/counsellors/<%= counsellor.id%>/edit" class="yello-btn"><i class="icon icon-edit-1"></i></a>
+								<a href="/counsellors/<%= counsellor.id%>" class="blue-btn"><i class="icon icon-document"></i></a>
 							</td>
 					  </tr>
-					
+					<%end%>

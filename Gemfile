@@ -18,6 +18,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'city-state'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'carrierwave-video-thumbnailer'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
