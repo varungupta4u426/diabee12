@@ -3,7 +3,7 @@ class CounsellorsController < ApplicationController
 	before_action :authenticate_counsellor?
 
 	def index
-		@counsellor = Counsellor.all
+		@counsellors = Counsellor.all
 	end
 	
 	def new
