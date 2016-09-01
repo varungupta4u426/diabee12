@@ -43,7 +43,6 @@ class Patient < ApplicationRecord
 
 
   def self.image_data(data)
-    p "====================="
     return nil unless data
     io = CarrierStringIO.new(Base64.decode64(data))
   end

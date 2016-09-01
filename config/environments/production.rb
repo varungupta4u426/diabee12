@@ -60,7 +60,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = {:host => 'diabee12.herokuapp.com', protocol: 'http://' }
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
+  config.action_mailer.perform_deliveries = false
 
   # config.action_mailer.smtp_settings = {
   #   :address              => "mail.lptpl.com",
@@ -72,15 +72,24 @@ Rails.application.configure do
   #   :openssl_verify_mode => 'none', 
   #   :enable_starttls_auto => true  }
 
+  # config.action_mailer.smtp_settings = {
+  #   :address              => "mail.soberplaces.org",
+  #   :port                 => 25,
+  #   :domain               => 'soberplaces.org',
+  #   :user_name            => 'soberplacesorg',
+  #   :password             => 'Katie2014',
+  #   :authentication       => 'plain',
+  #   :openssl_verify_mode => 'none', 
+  #   :enable_starttls_auto => true  }
+
   config.action_mailer.smtp_settings = {
-    :address              => "mail.soberplaces.org",
-    :port                 => 25,
-    :domain               => 'soberplaces.org',
-    :user_name            => 'soberplacesorg',
-    :password             => 'Katie2014',
-    :authentication       => 'plain',
-    :openssl_verify_mode => 'none', 
-    :enable_starttls_auto => true  }
+    :address        => 'smtp.sendgrid.net',
+    :port           => '25',
+    :authentication => :plain,
+    :user_name      => 'ashish.mittal',
+    :password       => 'mittal123',
+    :domain         => "sendgrid.com"
+  }
 
   #  config.action_mailer.smtp_settings = {
   #   :address        => 'smtp.sendgrid.net',
