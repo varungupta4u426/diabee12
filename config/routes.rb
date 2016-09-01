@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 					end
 				  end
 		          resource :passwords,only: [:edit]	
+		          resources :blog_posts,only: [:index]
 		    end
 		  end 
 

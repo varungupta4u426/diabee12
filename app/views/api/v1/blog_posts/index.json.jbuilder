@@ -1,5 +1,6 @@
 json.result true
 json.status SUCCESS_CODE
-json.blog_posts do
-	json.partial! "blog_posts",blog_posts: @blog_posts
+json.object do
+	json.partial! "blog_posts",collection: @blog_posts,as: :blog_posts
 end
+
