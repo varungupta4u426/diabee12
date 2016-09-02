@@ -36,6 +36,7 @@ class PatientsController < ApplicationController
     else
       render 'edit'
     end
+    
   end  
 
 
