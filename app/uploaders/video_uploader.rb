@@ -24,7 +24,6 @@ class VideoUploader < CarrierWave::Uploader::Base
   version :thumb do
     process thumbnail: [{format: 'png', quality: 10, size: 192, strip: true, logger: Rails.logger}]
     def full_filename for_file
-      p "********#{for_file}********"
       png_name for_file, version_name
     end
   end
