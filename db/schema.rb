@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901053859) do
+ActiveRecord::Schema.define(version: 20160902072908) do
 
   create_table "blog_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -113,6 +113,33 @@ ActiveRecord::Schema.define(version: 20160901053859) do
     t.index ["patient_id"], name: "index_health_histories_on_patient_id", using: :btree
   end
 
+  create_table "medicine_frequencies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "dosage"
+    t.integer  "frequency_of_days"
+    t.integer  "frequency_in_a_day"
+    t.integer  "medicine_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["medicine_id"], name: "index_medicine_frequencies_on_medicine_id", using: :btree
+  end
+
+  create_table "medicine_frequency_times", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "medicine_time"
+    t.boolean  "reminder_req"
+    t.integer  "medicine_frequency_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["medicine_frequency_id"], name: "index_medicine_frequency_times_on_medicine_frequency_id", using: :btree
+  end
+
+  create_table "medicines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "patient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_medicines_on_patient_id", using: :btree
+  end
+
   create_table "nutrition_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "height"
     t.string   "weight"
@@ -178,5 +205,8 @@ ActiveRecord::Schema.define(version: 20160901053859) do
   add_foreign_key "diabetes_histories", "patients"
   add_foreign_key "exercises", "nutrition_histories"
   add_foreign_key "health_histories", "patients"
+  add_foreign_key "medicine_frequencies", "medicines"
+  add_foreign_key "medicine_frequency_times", "medicine_frequencies"
+  add_foreign_key "medicines", "patients"
   add_foreign_key "nutrition_histories", "patients"
 end

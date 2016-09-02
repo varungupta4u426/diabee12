@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dosage: MyString
+  frequency_of_days: 1
+  frequency_in_a_day: 1
+  medicine: one
+
+two:
+  dosage: MyString
+  frequency_of_days: 1
+  frequency_in_a_day: 1
+  medicine: two

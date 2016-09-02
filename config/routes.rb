@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 					end
 				  end
 		          resource :passwords,only: [:edit]	
+		          resources :medicines,only: [:create,:index]
 		          resources :blog_posts,only: [:index]
 		    end
 		  end 
@@ -51,6 +52,8 @@ Rails.application.routes.draw do
 			   post 'create'
 			end
 		end	
+
+
 
 end
 

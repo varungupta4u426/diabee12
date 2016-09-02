@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  medicine_time: MyString
+  reminder_req: false
+  medicine_frequency: one
+
+two:
+  medicine_time: MyString
+  reminder_req: false
+  medicine_frequency: two

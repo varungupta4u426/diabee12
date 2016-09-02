@@ -8,6 +8,8 @@ class Patient < ApplicationRecord
    # validates :email, presence: true,uniqueness: true
    # validates :mobile, presence: true,uniqueness: true 
 
+   has_many :medicines, dependent: :destroy
+
    has_one :health_history , :inverse_of => :patient, dependent: :destroy
    accepts_nested_attributes_for :health_history, :allow_destroy => true
 
