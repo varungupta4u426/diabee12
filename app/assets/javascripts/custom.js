@@ -52,14 +52,8 @@ $(document).ready(function(){
     $('li a.active').removeClass('active');
     $(this).addClass('active');
 	});
-	
-});
 
-	
-	
-	
-	
-//------------------------------------------//
+	//------------------------------------------//
 
     $('#example').DataTable({
         language: {
@@ -78,6 +72,14 @@ $(document).ready(function(){
     $('.dataTables_length select').addClass('browser-default');
 	
 /* ============ */
+	
+});
+
+	
+	
+	
+	
+
 $(function() {
 
   // We can attach the `fileselect` event to all file inputs on the page
