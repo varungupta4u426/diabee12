@@ -23,10 +23,10 @@ class Api::V1::MedicinesController < AppsController
 	end	
 
 	def update_medicine
-		p "********************#{params.inspect}********"
+		# p "********************#{params.inspect}********"
 		@medicine = Medicine.find_by(id: params[:medicine_id])
 
-		p "====medicine=========#{@medicine.inspect}======="
+		# p "====medicine=========#{@medicine.inspect}======="
 
 		@last_frequency = @medicine.medicine_frequencies.last
 
@@ -77,19 +77,21 @@ class Api::V1::MedicinesController < AppsController
 	end
 
 	def get_graph
-		medicines = Medicine.includes(:medicine_frequencies).where(patient_id: @patient.id).first
-		@medicine = []
-
+		medicines  = Medicine.includes(:medicine_frequencies).where(patient_id: @patient.id)
+		@medicines = []
 		medicines.each do |medicine|
+			@medicine = []
 			medicine.medicine_frequencies.group_by(&:created_at).each do |m|
 			    key = m[0]
 			    count = m[1][0]["frequency_of_days"].to_i + m[1][0]["frequency_in_a_day"].to_i
 			    value = m[1][0].as_json.merge("total_taken"=>count)
-			    hash = {key => value}
-			    @medicine << hash
+			    hash1 = {key => value}
+			    @medicine << hash1
 			end
+			hash2 = {medicine.id => @medicine}
+			@medicines << hash2
 		end	
-		render json: {result: true, status: SUCCESS_CODE, messages: "Graph fetched succeefully", graph: @medicine}
+		render json: {result: true, status: SUCCESS_CODE, messages: "Graph fetched succeefully", graph: @medicines}
 	end	
 
 	
