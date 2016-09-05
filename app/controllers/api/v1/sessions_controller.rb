@@ -9,7 +9,7 @@ class Api::V1::SessionsController < AppsController
 			generate_access_token @patient
 			render :create
 		else
-			error = ["Invalid Credentials"]
+			error = ["Mobile no. OR Password is invalid!! Please try again"]
 			render_errors error
 		end	
 	end	

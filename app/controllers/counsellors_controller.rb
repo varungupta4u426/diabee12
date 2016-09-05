@@ -46,7 +46,7 @@ class CounsellorsController < ApplicationController
 
 
 	def counsellor_params
-		params.require(:counsellor).permit(:first_name, :last_name, :email, :profile, :hcah_landline, :mobile)
+		params.require(:counsellor).permit(:first_name, :last_name,:profile_pic, :email, :profile, :hcah_landline, :mobile)
 	end
 	
 end

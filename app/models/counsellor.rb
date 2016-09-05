@@ -6,7 +6,8 @@ class Counsellor < ApplicationRecord
 
 
   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/,:message => "invalid"
-
+  mount_uploader :profile_pic, AvatarUploader
+  
    def generate_password
    		password = SecureRandom.hex(3)
    		self.password = password
