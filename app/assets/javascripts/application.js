@@ -12,12 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require dataTables.bootstrap
-//= require bootstrap-datepicker
-//= require jquery.canvasjs
-//= require cable
-//= require jquery.canvasjs
-//= require jquery.dataTables
+//= require dataTables.bootstrap.min.js
+//= require bootstrap-datepicker.min.js
+//= require jquery.canvasjs.min.js
+//= require cable.js
+//= require jquery.dataTables.min.js
 //= require turbolinks
 //= require_tree .
 
