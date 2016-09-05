@@ -101,7 +101,7 @@ class Api::V1::MedicinesController < AppsController
 					"dosage" => frequency.dosage,
 					"frequency_of_days" => frequency.frequency_of_days,
 					"frequency_in_a_day"=> frequency.frequency_in_a_day,
-					"total_taken" => frequency.frequency_of_days.to_i + frequency.frequency_in_a_day.to_i,
+					"total_taken" => frequency.total_taken,
 					"created_at" => frequency.created_at
 				}
 				arr << hash
