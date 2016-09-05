@@ -97,7 +97,7 @@ class Api::V1::MedicinesController < AppsController
 			arr = []
 			medicine.medicine_frequencies.each do |frequency|
 				hash = {
-					"name" => medicine.name
+					"name" => medicine.name,
 					"dosage" => frequency.dosage,
 					"frequency_of_days" => frequency.frequency_of_days,
 					"frequency_in_a_day"=> frequency.frequency_in_a_day,
