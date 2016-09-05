@@ -86,8 +86,8 @@ Rails.application.configure do
     :address        => 'smtp.sendgrid.net',
     :port           => '25',
     :authentication => :plain,
-    :user_name      => 'ashish.mittal',
-    :password       => 'mittal123',
+    :user_name      => 'rahul.purohit',
+    :password       => 'Mobiloitte56',
     :domain         => "sendgrid.com"
   }
 
