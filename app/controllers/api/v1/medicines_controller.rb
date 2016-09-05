@@ -1,6 +1,6 @@
 class Api::V1::MedicinesController < AppsController
 	
-	before_action :authenticate_user, only: [:create,:index]
+	before_action :authenticate_user, only: [:create,:index,:get_graph,:show,:update_medicine,:get_graph]
 	
 	def create
 		@medicine = Medicine.new(medicine_params)
@@ -23,10 +23,10 @@ class Api::V1::MedicinesController < AppsController
 	end	
 
 	def update_medicine
-		
-		@medicine = Medicine.find_by(params[:medicine_id])
+		p "********************#{params.inspect}********"
+		@medicine = Medicine.find_by(id: params[:medicine_id])
 
-		# p "====medicine=========#{@medicine.inspect}======="
+		p "====medicine=========#{@medicine.inspect}======="
 
 		@last_frequency = @medicine.medicine_frequencies.last
 
@@ -77,23 +77,23 @@ class Api::V1::MedicinesController < AppsController
 	end
 
 	def get_graph
-		medicine = Medicine.includes(:medicine_frequencies).where(id: params[:medicine_id]).first
+		medicines = Medicine.includes(:medicine_frequencies).where(patient_id: @patient.id).first
 		@medicine = []
-		medicine.medicine_frequencies.group_by(&:created_at).each do |m|
-		    key = m[0]
-		    count = m[1][0]["frequency_of_days"].to_i + m[1][0]["frequency_in_a_day"].to_i
-		    value = m[1][0].as_json.merge("total_taken"=>count)
-		    hash = {key => value}
-		    @medicine << hash
-		end
+
+		medicines.each do |medicine|
+			medicine.medicine_frequencies.group_by(&:created_at).each do |m|
+			    key = m[0]
+			    count = m[1][0]["frequency_of_days"].to_i + m[1][0]["frequency_in_a_day"].to_i
+			    value = m[1][0].as_json.merge("total_taken"=>count)
+			    hash = {key => value}
+			    @medicine << hash
+			end
+		end	
 		render json: {result: true, status: SUCCESS_CODE, messages: "Graph fetched succeefully", graph: @medicine}
 	end	
 
 	
 	private 
-	# def frequency_params
-	# 	params[:medicine][:medicine_frequencies_attributes][0].require
-	# end	
 	def medicine_params
 		params.require(:medicine).permit(:name,medicine_frequencies_attributes:[:dosage,:frequency_of_days,:frequency_in_a_day,medicine_frequency_times_attributes: [:medicine_time,:reminder_req] ])
 	end 	
