@@ -105,8 +105,8 @@ class Api::V1::MedicinesController < AppsController
 				}
 				arr << hash
 			end	
-			h = {key => arr}
-			@medicines << h 
+			# h = {key => arr}
+			@medicines << arr 
 		end	
 
 		render json: {result: true, status: SUCCESS_CODE, messages: "Graph fetched succeefully", graph: @medicines}

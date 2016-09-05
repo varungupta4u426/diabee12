@@ -4,6 +4,8 @@ class CounsellorsController < ApplicationController
 
 	def index
 		@counsellors = Counsellor.all.order('id desc')
+		@c_tab = "active"
+		@p_tab = ""
 	end
 	
 	def new
@@ -17,7 +19,7 @@ class CounsellorsController < ApplicationController
 		
 		if @counsellor.save
 			@counsellor.send_welcome_mail(password)
-			redirect_to "/counsellors"
+			redirect_to "/counsellors/#{@counsellor.id}",:notice => "Counsellor Added Successfully."
 		else
 			render 'new'
 		end	
@@ -32,7 +34,7 @@ class CounsellorsController < ApplicationController
 		@counsellor = Counsellor.find(params[:id])
 
 		if @counsellor.update(counsellor_params)
-			redirect_to "/counsellors"
+			redirect_to "/counsellors/#{@counsellor.id}",:notice => "Counsellor Details Updated Successfully."
 		else
 			render 'edit'
 		end	

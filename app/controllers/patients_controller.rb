@@ -5,6 +5,8 @@ class PatientsController < ApplicationController
 
   def index
     @patients = Patient.all.order('id desc')
+    @c_tab = ""
+    @p_tab = "active"
   end
 
   def new
