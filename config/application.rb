@@ -14,11 +14,13 @@ module Diabee
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    config.assets.paths << "#{Rails.root}/app/assets/"
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
+    config.assets.paths << "#{Rails.root}/app/assets/javascripts"
     # Precompile additional assets
-    config.assets.precompile += %w( .svg .eot .woff .ttf .png .jpg .gif .woff2) 
+    config.assets.precompile += %w( .svg .eot .woff .ttf .png .jpg .gif .woff2 .js) 
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.paths << Rails.root.join("app", "assets", "javascripts")
 
   end
 end
