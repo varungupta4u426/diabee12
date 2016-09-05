@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902072908) do
+ActiveRecord::Schema.define(version: 20160905081847) do
 
   create_table "blog_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(version: 20160902072908) do
     t.string   "url"
     t.string   "data"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "content_type"
   end
 
   create_table "counsellors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -199,6 +200,7 @@ ActiveRecord::Schema.define(version: 20160902072908) do
     t.string   "package"
     t.string   "doctor_name"
     t.string   "profile_pic"
+    t.date     "date_of_enrollment"
     t.index ["reset_password_token"], name: "index_patients_on_reset_password_token", using: :btree
   end
 

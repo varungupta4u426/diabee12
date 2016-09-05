@@ -8,10 +8,11 @@
 $('#state').change(function () {
   $.getJSON('/cities/' +$(this).val() , function (data) {
     $('#city').empty();
+    var opt = '<option value=>Please Select</option>';
     $.each(data, function (i,value) {
-      var opt = '<option value='+ value +'>' + value + '</option>';
-      $('#city').append(opt);
+       opt += '<option value='+ value +'>' + value + '</option>';
     });
+    $('#city').append(opt);
   });
   $('#city').empty();
 });

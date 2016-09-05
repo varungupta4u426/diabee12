@@ -24,7 +24,7 @@ class Api::V1::MedicinesController < AppsController
 
 	def update_medicine
 		
-		@medicine = Medicine.find_by(params[:id])
+		@medicine = Medicine.find_by(params[:medicine_id])
 
 		# p "====medicine=========#{@medicine.inspect}======="
 
@@ -76,6 +76,19 @@ class Api::V1::MedicinesController < AppsController
 
 	end
 
+	def get_graph
+		medicine = Medicine.includes(:medicine_frequencies).where(id: params[:medicine_id]).first
+		@medicine = []
+		medicine.medicine_frequencies.group_by(&:created_at).each do |m|
+		    key = m[0]
+		    count = m[1][0]["frequency_of_days"].to_i + m[1][0]["frequency_in_a_day"].to_i
+		    value = m[1][0].as_json.merge("total_taken"=>count)
+		    hash = {key => value}
+		    @medicine << hash
+		end
+		render json: {result: true, status: SUCCESS_CODE, messages: "Graph fetched succeefully", graph: @medicine}
+	end	
+
 	
 	private 
 	# def frequency_params
@@ -85,5 +98,6 @@ class Api::V1::MedicinesController < AppsController
 		params.require(:medicine).permit(:name,medicine_frequencies_attributes:[:dosage,:frequency_of_days,:frequency_in_a_day,medicine_frequency_times_attributes: [:medicine_time,:reminder_req] ])
 	end 	
 end
+
 
 

@@ -67,13 +67,13 @@
 								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 									<div class="form-group">
 										<label>Height</label>
-										<%= f.text_field :height, :class=>"form-control",:placeholder => "cms"%>
+										<%= f.text_field :height, :class=>"form-control",:placeholder => "Centimeter"%>
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 									<div class="form-group">
 										<label>Ethnicity</label>
-										<%= f.text_field :ethnicity, :class=>"form-control"%>
+										<%= f.text_field :ethnicity, :class=>"form-control",:placeholder => "Ethnicity"%>
 									</div>
 								</div>
 							</div>
@@ -82,13 +82,13 @@
 								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 									<div class="form-group">
 										<label>Mobile</label>
-										<%= f.text_field :mobile, :class=>"form-control"%>
+										<%= f.text_field :mobile, :class=>"form-control",:placeholder => "Mobile"%>
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 									<div class="form-group">
 										<label>Email</label>
-										<%= f.text_field :email, :class=>"form-control"%>
+										<%= f.text_field :email, :class=>"form-control",:placeholder => "xyz@example.com"%>
 									</div>
 								</div>
 							</div>
@@ -97,15 +97,15 @@
 								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
 									<div class="form-group">
 										<label>Street Address</label>
-										<%= f.text_area :street_address, :class=>"form-control"%>
+										<%= f.text_area :street_address, :class=>"form-control",:placeholder => "Street Address"%>
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 									<div class="form-group">
-										<label>Pin</label>
-										<%= f.text_field :pin, :class=>"form-control"%>
+										<label>Pin code</label>
+										<%= f.text_field :pin, :class=>"form-control",:placeholder => "Pin code"%>
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -161,13 +161,13 @@
 								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 									<div class="form-group">
 										<label>Smoker/Drinker</label>
-										<%= f.text_field :smoke_drink, :class=>"form-control"%>
+										<%= f.text_field :smoke_drink, :class=>"form-control",:placeholder => "Smoker/Drinker"%>
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 									<div class="form-group">
 										<label>Date of Enrollment</label>
-										<input type="text" id="date" name="date" class="form-control date-picker">
+										<%= f.text_field :date_of_enrollment, :class=>"form-control",:placeholder => "yyyy-mm-dd"%>
 									</div>
 								</div>
 							</div>
@@ -200,19 +200,19 @@
 								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 									<div class="form-group">
 										<label>Reason for non-enrollment</label>
-										<%= f.text_field :reason_for_non_enrollment, :class=>"form-control"%>			
+										<%= f.text_field :reason_for_non_enrollment, :class=>"form-control",:placeholder => "Reason for non-enrollment"%>			
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 									<div class="form-group">
 										<label>Date of Dropout</label>
-										<%= f.text_field :date_of_dropout, :class=>"form-control date-picker"%>
+										<%= f.text_field :date_of_dropout, :class=>"form-control date-picker",:placeholder => "yyyy-mm-dd"%>
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 									<div class="form-group">
 										<label>Reason for Dropout</label>
-										<%= f.text_field :reason_for_dropout, :class=>"form-control"%>
+										<%= f.text_field :reason_for_dropout, :class=>"form-control",:placeholder => "Reason for Dropout"%>
 									</div>
 								</div>
 							</div>
@@ -221,19 +221,19 @@
 								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 									<div class="form-group">
 										<label>NOK_Number</label>
-										<%= f.text_field :nok_number, :class=>"form-control"%>
+										<%= f.text_field :nok_number, :class=>"form-control",:placeholder => "NOK_Number"%>
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 									<div class="form-group">
 										<label>NOK_Name</label>
-										<%= f.text_field :nok_name, :class=>"form-control"%>
+										<%= f.text_field :nok_name, :class=>"form-control",:placeholder => "NOK_Name"%>
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 									<div class="form-group">
 										<label>NOK_Relationship with patients.</label>
-										<%= f.text_field :nok_relation_with_patient, :class=>"form-control"%>										
+										<%= f.text_field :nok_relation_with_patient, :class=>"form-control",:placeholder => "NOK_Relationship with patients."%>										
 									</div>
 								</div>
 								
@@ -274,7 +274,7 @@
 									
 									<div class="form-group">
 									  <label>Please List.</label>
-									 <%= ff.text_field :listing_special_diet, :class=>"form-control"%>
+									 <%= ff.text_field :listing_special_diet, :class=>"form-control",:placeholder => "Please List."%>
 									</div>
 									
 							  </div>
@@ -357,19 +357,19 @@
 										<div class="col-md-2 col-sm-3 col-xs-12">
 											<div class="form-group">
 												<label>Wine</label>
-												<%= ff.text_field :drinks_per_week_wine, :class=>"form-control"%>
+												<%= ff.text_field :drinks_per_week_wine, :class=>"form-control",:placeholder=>"Count"%>
 											</div>
 										</div>
 										<div class="col-md-2 col-sm-3 col-xs-12">
 											<div class="form-group">
 												<label>Beer</label>
-												<%= ff.text_field :drinks_per_week_beer, :class=>"form-control"%>
+												<%= ff.text_field :drinks_per_week_beer, :class=>"form-control",:placeholder=>"Count"%>
 											</div>
 										</div>
 										<div class="col-md-2 col-sm-3 col-xs-12">
 											<div class="form-group">
 												<label>Mixed drinks</label>
-												<%= ff.text_field :drinks_per_week_mixed, :class=>"form-control"%>
+												<%= ff.text_field :drinks_per_week_mixed, :class=>"form-control",:placeholder=>"Count"%>
 											</div>
 										</div>
 									</div>
@@ -396,13 +396,13 @@
 										<div class="col-md-3 col-sm-3 col-xs-12">
 											<div class="form-group">
 												<label>Packs per day</label>
-												<%= ff.text_field :smoke_packs_per_day, :class=>"form-control"%>
+												<%= ff.text_field :smoke_packs_per_day, :class=>"form-control",:placeholder=>"Count"%>
 											</div>
 										</div>
 										<div class="col-md-3 col-sm-3 col-xs-12">
 											<div class="form-group">
 												<label>Number of years</label>
-												<%= ff.text_field :smoke_years, :class=>"form-control"%>
+												<%= ff.text_field :smoke_years, :class=>"form-control",:placeholder=>"Count"%>
 											</div>
 										</div>
 										
@@ -431,7 +431,7 @@
 									<div class="row">
 										<div class="col-md-4 col-sm-4 col-xs-12">
 											<div class="form-group">
-												<%= ff.text_field :smoke_quit, :class=>"form-control"%>
+												<%= ff.text_field :smoke_quit, :class=>"form-control",:placeholder=>"When did you quit?"%>
 											</div>
 										</div>
 										
@@ -445,7 +445,7 @@
 									<div class="row">
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<%= ff.text_field :alergies_any_othr_health_condition, :class=>"form-control"%>
+												<%= ff.text_field :alergies_any_othr_health_condition, :class=>"form-control",:placeholder=>"Allergies/Any other Health Condition."%>
 											</div>
 										</div>
 									</div>
@@ -471,13 +471,13 @@
 										<div class="col-md-2 col-sm-3 col-xs-12">
 											<div class="form-group">
 												<label>Height</label>
-												<%= fn.text_field :height, :class=>"form-control"%>
+												<%= fn.text_field :height, :class=>"form-control",:placeholder=>"Centimeter"%>
 											</div>
 										</div>
 										<div class="col-md-2 col-sm-3 col-xs-12">
 											<div class="form-group">
 												<label>Weight</label>
-												<%= fn.text_field :weight, :class=>"form-control"%>
+												<%= fn.text_field :weight, :class=>"form-control",:placeholder=>"Kgs"%>
 											</div>
 										</div>
 									</div>

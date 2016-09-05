@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 		          resource :passwords,only: [:edit]	
 		          resources :medicines,only: [:create,:index,:show] do 
 		          	post 'update_medicine'
+		          	get 'get_graph'
 		          end	
 		          resources :blog_posts,only: [:index]
 		    end
