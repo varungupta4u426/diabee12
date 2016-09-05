@@ -47,6 +47,11 @@ $(document).ready(function(){
 	$("#exerciseBtn").click(function(){
         $(".exerciseFeild").append("<input type='text' class='form-control margin-bottom10'>");
     });
+
+    $('#accordion1 li a').on('click', function(){
+    $('li a.active').removeClass('active');
+    $(this).addClass('active');
+	});
 	
 });
 

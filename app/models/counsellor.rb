@@ -5,6 +5,7 @@ class Counsellor < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 
+  validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/,:message => "invalid"
 
    def generate_password
    		password = SecureRandom.hex(3)
