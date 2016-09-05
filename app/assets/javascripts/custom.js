@@ -54,7 +54,8 @@ $(document).ready(function(){
 	});
 
 	//------------------------------------------//
-
+	alert();
+	
     $('#example').DataTable({
         language: {
             searchPlaceholder: 'Search records',
