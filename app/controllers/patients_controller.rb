@@ -4,7 +4,7 @@ class PatientsController < ApplicationController
 
 
   def index
-    @patients = Patient.all
+    @patients = Patient.all.order('id desc')
   end
 
   def new

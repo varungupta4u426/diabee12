@@ -3,13 +3,11 @@ class CounsellorsController < ApplicationController
 	before_action :authenticate_counsellor?
 
 	def index
-		@counsellors = Counsellor.all
+		@counsellors = Counsellor.all.order('id desc')
 	end
 	
 	def new
 		@counsellor = Counsellor.new
-
-		p "*************#{@counsellors}*********"
 	end
 
 	def create
