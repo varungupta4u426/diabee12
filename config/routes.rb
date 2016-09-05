@@ -34,7 +34,9 @@ Rails.application.routes.draw do
 					end
 				  end
 		          resource :passwords,only: [:edit]	
-		          resources :medicines,only: [:create,:index]
+		          resources :medicines,only: [:create,:index,:show] do 
+		          	post 'update_medicine'
+		          end	
 		          resources :blog_posts,only: [:index]
 		    end
 		  end 

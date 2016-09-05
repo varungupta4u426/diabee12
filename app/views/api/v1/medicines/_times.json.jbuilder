@@ -1,0 +1,2 @@
+json.medicine_time medicine_frequency_time.medicine_time
+json.reminder_req medicine_frequency_time.reminder_req
