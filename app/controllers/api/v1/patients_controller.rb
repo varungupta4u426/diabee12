@@ -31,7 +31,7 @@ class Api::V1::PatientsController < AppsController
 	private 
 	def patient_params
 		params[:patient][:profile_pic] = Patient.image_data(params[:patient][:profile_pic]) if params[:patient][:profile_pic].present? 
-		params.require(:patient).permit(:first_name, :last_name,:city,:dob :email, :gender, :mobile, 
+		params.require(:patient).permit(:first_name, :last_name,:city,:dob, :email, :gender, :mobile, 
 			:password,:doctor_name,:nok_name,:nok_number,:profile_pic,:street_address )
 	end	
 
