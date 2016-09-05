@@ -5,7 +5,6 @@ class Counsellor < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 
-   validates :email, presence: true,uniqueness: true
 
    def generate_password
    		password = SecureRandom.hex(3)

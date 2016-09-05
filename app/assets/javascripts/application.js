@@ -27,3 +27,15 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g")
   $(link).parent().before(content.replace(regexp, new_id));
 }
+
+$(document).on('click','.side-bar',function(){
+ 
+ var a = $(this);
+
+ $( ".side-bar" ).each(function() {
+  $( this ).removeClass( "active" );
+});
+
+ a.addClass('active');
+
+});

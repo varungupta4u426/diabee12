@@ -8,6 +8,8 @@ class CounsellorsController < ApplicationController
 	
 	def new
 		@counsellor = Counsellor.new
+
+		p "*************#{@counsellors}*********"
 	end
 
 	def create
