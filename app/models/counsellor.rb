@@ -22,7 +22,6 @@ class Counsellor < ApplicationRecord
    end
 
    def is_master?
-    p "*********#{self.inspect}******"
      if self.role == "master"
       true
      else
