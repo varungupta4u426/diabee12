@@ -1,5 +1,7 @@
 $(document).ready(function(){
+	alert();
 	$("#counsellor-profile").change(function(){
+		alert();
 	    readURL(this);
 	});
 });
