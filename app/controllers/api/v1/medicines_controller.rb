@@ -6,7 +6,7 @@ class Api::V1::MedicinesController < AppsController
 		@medicine = Medicine.new(medicine_params)
 		@medicine.patient_id = @patient.id
 		if @medicine.save
-			render json: {result: true, status: SUCCESS_CODE, messages: "Medicine added succeefully"}
+			render json: {result: true, status: SUCCESS_CODE, messages: "Medicine added successfully"}
 		else
 			render_errors @medicine.errors.full_messages
 		end	
@@ -53,12 +53,12 @@ class Api::V1::MedicinesController < AppsController
 				# p "*******inside********"
 				  @last_frequency.medicine_frequency_times.destroy_all
 				  @last_frequency.update(medicine_frequency)
-				  render json: {result: true, status: SUCCESS_CODE, messages: "Medicine updated succeefully"}
+				  render json: {result: true, status: SUCCESS_CODE, messages: "Medicine updated successfully"}
 			else
 				# p "*****outside*****"
 				  @last_frequency.medicine_frequency_times.destroy_all
 				  @last_frequency.update(medicine_frequency)
-				  render json: {result: true, status: SUCCESS_CODE, messages: "Medicine updated succeefully"}
+				  render json: {result: true, status: SUCCESS_CODE, messages: "Medicine updated successfully"}
 			end	
 
 		else
@@ -66,11 +66,11 @@ class Api::V1::MedicinesController < AppsController
 				#p "*********************"
 				@last_frequency.medicine_frequency_times.destroy_all
 				@last_frequency.update(medicine_frequency)
-				render json: {result: true, status: SUCCESS_CODE, messages: "Medicine updated succeefully"}
+				render json: {result: true, status: SUCCESS_CODE, messages: "Medicine updated successfully"}
 			else
 				#p "============="
 				@medicine.medicine_frequencies.create(medicine_frequency)
-				render json: {result: true, status: SUCCESS_CODE, messages: "Medicine updated succeefully"}
+				render json: {result: true, status: SUCCESS_CODE, messages: "Medicine updated successfully"}
 			end	
 		end 
 
