@@ -37,12 +37,13 @@ class Patient < ApplicationRecord
    end 
 
    GENDER_OPTIONS   = ["Male","Female","Other"]
-   LANGUAGE_OPTIONS = ["Hindi","English"]
+   LANGUAGE_OPTIONS = ["Hindi","English","Bengali","Telugu", "Marathi", "Urdu", "Gujarati", 
+    "Kannada", "Malayalam", "Punjabi", "Tamil"  ]
    BOOLEAN_OPTIONS  = [ ["Yes",1],["No",0] ]
    SOURCE_OPTIONS   = ["Dr. Anup Misra", "Dr. Sharma", "Humrahi", "DRL", "Others"]
-   PACKAGE_OPTIONS  = ["Pharma-sales", "Pharma – Lite", "Pharma-Heavy", "Corporate-Lite",
-     "Corporate-Heavy", "Doctor-1", "Doctor-2", "Doctor-3", "Doctor-4"]
-
+   PACKAGE_OPTIONS  = ["Pharmacy Sales", "Pharma lite", "pharma heavy", "corporate-lite", 
+    "corporate-heavy", "insurance l-te", "insurance-heavy", "Doctor-1", "Doctor-2", "Doctor-3", "Doctor-4"]
+   DAY_OPTIONS = ["Sunday","Monday","Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
   def self.image_data(data)
     return nil unless data

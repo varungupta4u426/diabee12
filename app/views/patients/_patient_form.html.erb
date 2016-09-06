@@ -26,51 +26,55 @@
 				<div class="tab-pill">
 				<!-- ................. -->
 						<ul class="nav nav-tabs">
-							<li class="active"><a data-toggle="tab" href="#AddNewPatient">Add New Patient</a></li>
-							<li><a data-toggle="tab" href="#HealthHistory">Health History</a></li>
-							<li><a data-toggle="tab" href="#NutritionHistory">Nutrition History</a></li>
-							<li><a data-toggle="tab" href="#DiabetesHistory">Diabetes History</a></li>
-						  </ul>
+							<li class= "<%= tab_active(@_tab,1)%>" ><a data-toggle="tab" href="#AddNewPatient">Basic Information</a></li>
+
+							<li class= "<%= tab_active(@_tab,2)%>" ><a data-toggle="tab" href="#HealthHistory">Health History</a></li>
+
+							<li class= "<%= tab_active(@_tab,3)%>" ><a data-toggle="tab" href="#DiabetesMedications">Diabetes Medications</a></li>
+
+							<li class= "<%= tab_active(@_tab,4)%>"><a data-toggle="tab" href="#NutritionHistory">Nutrition History</a></li>
+
+							<li class= "<%= tab_active(@_tab,5)%>"><a data-toggle="tab" href="#DiabetesHistory">Diabetes History</a></li>
+
+							<li class= "<%= tab_active(@_tab,6)%>"><a data-toggle="tab" href="#ExitForm">Exit Form</a></li>
+
+						</ul>
+
 						<%= form_for(@patient) do |f|%>
 					  <div class="tab-content">
 
-						<div id="AddNewPatient" class="tab-pane fade in active">
-							<h3>Add New Patient</h3>
+						<div id="AddNewPatient" class="tab-pane fade in <%= tab_active(@_tab,1)%>" >
+							<h3>Basic Information</h3>
 						
 							<div class="row">
-								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>First Name</label>
-										<%= f.text_field :first_name, :class=>"form-control",:placeholder => "First Name" %>
+										<%= f.text_field :first_name, :class=>"form-control",:placeholder => "First Name"%>
 									</div>
 								</div>
-								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>Last Name</label>
-										<%= f.text_field :last_name, :class=>"form-control",:placeholder => "Last Name" %>
+										<%= f.text_field :last_name, :class=>"form-control",:placeholder => "Last Name"%>
 									</div>
 								</div>
-								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>Gender</label>
-										  <%= f.select :gender, options_for_select(Patient::GENDER_OPTIONS),{prompt: true}, {:class => 'form-control'}%>
+										<%= f.select :gender, options_for_select(Patient::GENDER_OPTIONS),{prompt: true}, {:class => 'form-control'}%>
 									</div>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>Date of Birth</label>
-										<%= f.text_field :dob, :class=>"form-control", :id=>"date",:placeholder => "yyyy-mm-dd" %>
+										<%= f.text_field :dob, :class=>"form-control date-picker",:placeholder => "yyyy-mm-dd"%>
 									</div>
 								</div>
-								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-									<div class="form-group">
-										<label>Height</label>
-										<%= f.text_field :height, :class=>"form-control",:placeholder => "Centimeter"%>
-									</div>
-								</div>
-								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+								
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>Ethnicity</label>
 										<%= f.text_field :ethnicity, :class=>"form-control",:placeholder => "Ethnicity"%>
@@ -78,14 +82,16 @@
 								</div>
 							</div>
 							
+							
+							
 							<div class="row">
-								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>Mobile</label>
-										<%= f.text_field :mobile, :class=>"form-control",:placeholder => "Mobile"%>
+										<%= f.text_field :mobile, :class=>"form-control",:placeholder => "XXXXXXXXXX"%>
 									</div>
 								</div>
-								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 									<div class="form-group">
 										<label>Email</label>
 										<%= f.text_field :email, :class=>"form-control",:placeholder => "xyz@example.com"%>
@@ -94,7 +100,7 @@
 							</div>
 							
 							<div class="row">
-								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 									<div class="form-group">
 										<label>Street Address</label>
 										<%= f.text_area :street_address, :class=>"form-control",:placeholder => "Street Address"%>
@@ -102,148 +108,139 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>Pin code</label>
 										<%= f.text_field :pin, :class=>"form-control",:placeholder => "Pin code"%>
 									</div>
 								</div>
-								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>State</label>
 										<%= f.select :state, options_for_select(CS.states(:in).map{|key, value| [value, key]},:selected=>f.object.state),{prompt: true}, {:class => 'form-control',:id => "state"}%>
 									</div>
 								</div>
-								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
-									<label>City</label>
+										<label>City</label>
 										<%= f.select :city, options_for_select(CS.cities(f.object.state),:selected => f.object.city),{prompt: true}, {:class => 'form-control',:id => "city"}%>
 									</div>
 								</div>
 							</div>
 							
 							<div class="row">
-								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
-									<label>Preferred Language</label>
+										<label>Preferred Language</label>
 										<%= f.select :preferred_language, options_for_select(Patient::LANGUAGE_OPTIONS),{prompt: true}, {:class => 'form-control'}%>
 									</div>
 								</div>
-								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-									<div class="form-group">
-										<label>Preferred Time to Call</label>
-										<div class="row">
-											<div class="col-md-6 col-sm-6">
-											<%= f.text_field :preferred_time_call_start, :class=>"form-control",:placeholder=>"Start"%>
-											</div>
-											<div class="col-md-6 col-sm-6">
-											<%= f.text_field :preferred_time_call_end, :class=>"form-control", :placeholder=>"End"%>
-											</div>
-										</div>
-										
-									</div>
-								</div>
-								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>Disability</label>
-										<%= f.select :disability, options_for_select(Patient::BOOLEAN_OPTIONS),{prompt: true}, {:class => 'form-control'} %>
+										<%= f.select :disability, options_for_select(Patient::BOOLEAN_OPTIONS),{prompt: true}, {:class => 'form-control'}%>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+									<div class="form-group">
+										<label>Date of Enrolment</label>
+										<%= f.text_field :date_of_enrollment, :class=>"form-control date-picker",:placeholder => "yyyy-mm-dd"%>
 									</div>
 								</div>
 							</div>
 							
 							<div class="row">
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<label style="margin-top: 16px;margin-bottom: 0px;">Preferred Time to Call</label>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
-										<label>Lifestyle/Do you Exercise?</label>
-										<%= f.select :exercise, options_for_select(Patient::BOOLEAN_OPTIONS),{prompt: true}, {:class => 'form-control'} %>
+										<label>Day</label>
+										<%= f.select :preffered_day_for_call, options_for_select(Patient::DAY_OPTIONS),{prompt: true}, {:class => 'form-control'}%>
 									</div>
 								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
-										<label>Smoker/Drinker</label>
-										<%= f.text_field :smoke_drink, :class=>"form-control",:placeholder => "Smoker/Drinker"%>
+										<label>First Preferred Time</label>
+										<%= f.text_field :preferred_time_call_start, :class=>"form-control",:placeholder => "HH:MM"%>
 									</div>
 								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
-										<label>Date of Enrollment</label>
-										<%= f.text_field :date_of_enrollment, :class=>"form-control",:placeholder => "yyyy-mm-dd"%>
+										<label>Second Preferred Time</label>
+										<%= f.text_field :preferred_time_call_end, :class=>"form-control",:placeholder => "HH:MM"%>
 									</div>
 								</div>
 							</div>
 							
+							
+							
+							
+							
+							
 							<div class="row">
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>Doctor</label>
 										<select class="form-control">
 											<option>Doctor</option>
 											<option>Doctor</option>
+											<option>Other</option>
 										</select>
 									</div>
 								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>Source</label>
 										<%= f.select :source, options_for_select(Patient::SOURCE_OPTIONS),{prompt: true}, {:class => 'form-control'}%>
 									</div>
 								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
-										<label>Package</label>
+										<label>Packages</label>
 										<%= f.select :package, options_for_select(Patient::PACKAGE_OPTIONS),{prompt: true}, {:class => 'form-control'}%>
 									</div>
 								</div>
 								
 							</div>
-							<div class="row">
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-									<div class="form-group">
-										<label>Reason for non-enrollment</label>
-										<%= f.text_field :reason_for_non_enrollment, :class=>"form-control",:placeholder => "Reason for non-enrollment"%>			
-									</div>
-								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-									<div class="form-group">
-										<label>Date of Dropout</label>
-										<%= f.text_field :date_of_dropout, :class=>"form-control date-picker",:placeholder => "yyyy-mm-dd"%>
-									</div>
-								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-									<div class="form-group">
-										<label>Reason for Dropout</label>
-										<%= f.text_field :reason_for_dropout, :class=>"form-control",:placeholder => "Reason for Dropout"%>
-									</div>
-								</div>
-							</div>
 							
 							<div class="row">
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>NOK_Number</label>
 										<%= f.text_field :nok_number, :class=>"form-control",:placeholder => "NOK_Number"%>
 									</div>
 								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>NOK_Name</label>
 										<%= f.text_field :nok_name, :class=>"form-control",:placeholder => "NOK_Name"%>
 									</div>
 								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>NOK_Relationship with patients.</label>
-										<%= f.text_field :nok_relation_with_patient, :class=>"form-control",:placeholder => "NOK_Relationship with patients."%>										
+										<%= f.text_field :nok_relation_with_patient, :class=>"form-control",:placeholder => "NOK_Relationship with patients"%>
 									</div>
 								</div>
 								
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<div class="form-group">
+										<button class="add-btn blue-bg btn-lg"><i class="icon icon-dashboard"></i> Save & Continue</button>
+									</div>
+									
+								</div>
 							</div>
 				    
 						
 				</div>						
 				<!-- 1 -->
 						
-						<div id="HealthHistory" class="tab-pane fade">
+						<div id="HealthHistory" class="tab-pane fade in <%= tab_active(@_tab,2)%>">
 						<%= f.fields_for :health_history do |ff| %>
 						  <h3>Health History</h3>
 						  <p class="font-medium">Check box if you've ever had of the following conditions:</p>
@@ -261,6 +258,12 @@
 								<% end %>
 
 						  </div>
+
+						  <div class="form-group">
+								<label>Other</label>
+								<textarea class="form-control"></textarea>
+							</div>
+						  <br>
 						  
 						  
 							<div class="panel panel-default">
@@ -274,27 +277,34 @@
 									
 									<div class="form-group">
 									  <label>Please List.</label>
-									 <%= ff.text_field :listing_special_diet, :class=>"form-control",:placeholder => "Please List."%>
+									 <%= ff.text_area :listing_special_diet, :class=>"form-control",:placeholder => "Please List."%>
 									</div>
 									
 							  </div>
 							</div>
-							
+
 							<div class="panel panel-default">
-								<div class="panel-heading font-regular">When was your last dilated eye exam &#63;</div>
+								<div class="panel-heading font-regular">When was your last dilated eye exam?</div>
 								<div class="panel-body">
 									<div class="row">
-										<div class="col-md-2 col-sm-3">
+										<div class="col-md-3 col-sm-4">
 											<div class="form-group">
-												<%= ff.text_field :dilated_eye_exam_month, :class=>"form-control",:placeholder=>"Month"%>
+												<label>Last Exam Date</label>
+												<%= ff.text_field :last_dialated_eye_exam_date, :class=>"form-control",:placeholder=>"yyyy-mm-dd", :id=>"date" %>
 											</div>
 										</div>
-										<div class="col-md-2 col-sm-3">
+										
+										<div class="col-md-3 col-sm-3">
+											
 											<div class="form-group">
-												<%= ff.text_field :dilated_eye_exam_year, :class=>"form-control",:placeholder=>"Year"%>
+											<label>Next frequency in month</label>
+												<%= ff.select :next_frequency_in_month, options_for_select((1..24).collect{|value| [value,value]},:selected => ff.object.next_frequency_in_month),{prompt: true}, {:class => 'form-control',:id => "city"}%>
 											</div>
 										</div>
 									</div>
+									
+									
+									
 								</div>
 							</div>
 							
@@ -330,10 +340,18 @@
 								<div class="panel-heading font-regular">Do you check your feet daily?</div>
 								<div class="panel-body">
 									
-									<%= ff.radio_button :check_feet_daily, true %> 
-								  <%= label :check_feet_daily, 'Yes' %>
-								  <%= ff.radio_button :check_feet_daily, false %>
-								  <%= label :check_feet_daily, 'No' %>
+								  <label class="checkbox-inline">
+									  <%= ff.radio_button :check_your_feet, "Daily" %>Daily
+									</label>
+									<label class="checkbox-inline">
+									  <%= ff.radio_button :check_your_feet, "Weekly" %>Weekly 
+									</label>
+									<label class="checkbox-inline">
+									  <%= ff.radio_button :check_your_feet, "Monthly" %>Monthly 
+									</label>
+									<label class="checkbox-inline">
+									  <%= ff.radio_button :check_your_feet, "None" %>None 
+									</label>
 
 								</div>
 							</div>
@@ -372,6 +390,13 @@
 												<%= ff.text_field :drinks_per_week_mixed, :class=>"form-control",:placeholder=>"Count"%>
 											</div>
 										</div>
+										<div class="col-md-2 col-sm-3 col-xs-12">
+											<div class="form-group">
+												<label>Number of years</label>
+												<%= ff.text_field :drink_number_of_years, :class=>"form-control",:placeholder=>"Count"%>
+											</div>
+										</div>
+
 									</div>
 									
 								</div>
@@ -431,8 +456,12 @@
 									<div class="row">
 										<div class="col-md-4 col-sm-4 col-xs-12">
 											<div class="form-group">
-												<%= ff.text_field :smoke_quit, :class=>"form-control",:placeholder=>"When did you quit?"%>
+										
+
+												<%= ff.select :smoke_quit, options_for_select([["1 Month","1 Month"],["2 Month","2 Month"],["60 Month","60 Month"]]),{prompt: true}, {:class => 'form-control'}%>
+
 											</div>
+
 										</div>
 										
 									</div>
@@ -440,49 +469,239 @@
 								</div>
 							</div>
 							<div class="panel panel-default">
-								<div class="panel-heading font-regular">Allergies/Any other Health Condition.</div>
+								<div class="panel-heading font-regular">Allergies Food.</div>
 								<div class="panel-body">
 									<div class="row">
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											<div class="form-group">
-												<%= ff.text_field :alergies_any_othr_health_condition, :class=>"form-control",:placeholder=>"Allergies/Any other Health Condition."%>
+												<%= ff.text_field :food_alergies, :class=>"form-control",:placeholder=>"Allergies Food."%>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Allergies Medicine.</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<div class="form-group">
+												<%= ff.text_field :medicine_alergies, :class=>"form-control",:placeholder=>"Allergies Medicine."%>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<div class="form-group">
+										<button class="add-btn blue-bg btn-lg"><i class="icon icon-dashboard"></i> Save & Continue</button>
+									</div>
+									
+								</div>
+							</div>
+
 						
 						<%end%>
 						</div>
 						
 						<!-- 2 -->
-						
-						
-						
-						
-						
-						<div id="NutritionHistory" class="tab-pane fade">
-						<%= f.fields_for :nutrition_history do |fn| %>
-						  <h3>Nutrition History</h3>
-						  <div class="panel panel-default">
-								<div class="panel-heading font-regular">-</div>
+						<div id="DiabetesMedications" class="tab-pane fade">
+							<h3>Diabetes Medications</h3>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Medications you take for diabetes</div>
 								<div class="panel-body">
-									<div class="row">
-										<div class="col-md-2 col-sm-3 col-xs-12">
-											<div class="form-group">
-												<label>Height</label>
-												<%= fn.text_field :height, :class=>"form-control",:placeholder=>"Centimeter"%>
-											</div>
-										</div>
-										<div class="col-md-2 col-sm-3 col-xs-12">
-											<div class="form-group">
-												<label>Weight</label>
-												<%= fn.text_field :weight, :class=>"form-control",:placeholder=>"Kgs"%>
-											</div>
-										</div>
+									<label class="checkbox-inline">
+									  <input type="checkbox" value="">No
+									</label>
+									<label class="checkbox-inline">
+									  <input type="checkbox" value="">Yes
+									</label>
+									<br>
+									<div class="table-overflow">
+										<table class="table table-bordered">
+											<thead>
+												<tr>
+													<th>Name of Medications</th>
+													<th>Does</th>
+													<th>Time(s) taken?</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+														<input type="text" class="form-control">
+													</td>
+													<td><input type="text" class="form-control"></td>
+													<td><input type="text" class="form-control"></td>
+												</tr>
+											</tbody>
+										</table>
 									</div>
 								</div>
 							</div>
+							
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Medications Behavior</div>
+								<div class="panel-body">
+									
+									
+									
+									
+									
+									<ol class="margin-left30">
+										<li>
+											<div class="form-group">
+												<label>In typical week, how often do you forget to take your medicine?
+												<input type="text" placeholder=""> times per week/month (circle)
+												</label>
+											</div>
+										</li>
+										<li>
+											<div class="form-group">
+												<label>When you feel better, do you sometimes stop taking your medicine?</label>
+											</div>
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">No
+											</label>
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Yes
+											</label>
+										</li>
+										<li>
+											<div class="form-group">
+												<label>Sometimes if you feel worse when you take the medicine, do you stop taking it?</label>
+											</div>
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">No
+											</label>
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Yes
+											</label>
+										</li>
+									</ul>
+									
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Medications Beliefs</div>
+								<div class="panel-body">
+									
+									<ol class="margin-left30">
+										
+										<li>
+											<div class="form-group">
+												<label>Do you think medications can help you control your diabetes and better your health?</label>
+											</div>
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">No
+											</label>
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Yes
+											</label>
+										</li>
+										<li>
+											<div class="form-group">
+												<label>Do you know about why these medications have been recommended and how they work?</label>
+											</div>
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">No
+											</label>
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Yes
+											</label>
+										</li>
+									</ul>
+									
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular">Medications Contraints</div>
+								<div class="panel-body">
+									
+									<ol class="margin-left30">
+										
+										<li>
+											<div class="form-group">
+												<label>Do you ever cut back on your medications because of out of pocket costs?</label>
+											</div>
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">No
+											</label>
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Yes
+											</label>
+										</li>
+										<li>
+											<div class="form-group">
+												<label>Do you ever feel confused or overwhelmed about when to take your medication?</label>
+											</div>
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">No
+											</label>
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Yes
+											</label>
+										</li>
+									</ul>
+									
+								</div>
+							</div>
+							
+							
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<div class="form-group">
+										<button class="add-btn blue-bg btn-lg"><i class="icon icon-dashboard"></i> Save &amp; Continue</button>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+
+
+						<!-- 3 -->
+						
+						
+						
+						
+						<div id="NutritionHistory" class="tab-pane fade in <%= tab_active(@_tab,3)%>">
+						<%= f.fields_for :nutrition_history do |fn| %>
+						  <h3>Nutrition History</h3>
+
+
+						  <div class="panel panel-default">
+								<div class="panel-heading font-regular">BMI (Body Mass Index)</div>
+								<div class="panel-body">
+
+									<div class="row">
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<div class="form-group">
+												<label>Height (cm)</label>
+												<%= fn.select :height, options_for_select([["100 centimeter","100"],["110 centimeter","110"],["120 centimeter","120"],["130 centimeter","130"]]),{prompt: true}, {:class => 'form-control'}%>
+											</div>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-12">
+											<div class="form-group">
+												<label>Weight (kg)</label>
+												<%= fn.select :weight, options_for_select([["50 Kg","50"],["60 Kg","60"],["70 Kg","70"]]),{prompt: true}, {:class => 'form-control'}%>
+											</div>
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+
+
+
+
 							<div class="panel panel-default">
 								<div class="panel-heading font-regular">Has your weight changed in the last year?</div>
 								<div class="panel-body">
@@ -501,7 +720,7 @@
 									<div class="row">
 										<div class="col-md-4 col-sm-4 col-xs-12">
 											<div class="form-group">
-												<label>Lbs</label>
+												<label>KG (kilogram)</label>
 												<%= fn.text_field :realistic_weight_for_you, :class=>"form-control"%>
 											</div>
 										</div>
@@ -522,26 +741,16 @@
 							</div>
 							
 							<div class="panel panel-default">
-								<div class="panel-heading font-regular">Rate your CONFIDENCE in your ability to make dietary changes (1=low, 10=high)</div>
+								<div class="panel-heading font-regular">Rate your CONFIDENCE / MOTIVATION in your ability to make dietary changes (1=low, 10=high)</div>
 								<div class="panel-body">
 
 									<% (1..10).each do |i| %>
-									  <%= fn.radio_button :confidence_diaterey_change, i ,:class=>"radio-inline"%> <%=i%>
+									  <%= fn.radio_button :rate_motivation_confidence, i ,:class=>"radio-inline"%> <%=i%>
 									<%end%>
 
 								</div>
 							</div>
-							
-							<div class="panel panel-default">
-								<div class="panel-heading font-regular">Rate your MOTIVATION level for making dietary changes(1=low, 10=high)</div>
-								<div class="panel-body">
 
-									<% (1..10).each do |i| %>
-									  <%= fn.radio_button :motivation_diatery_change, i ,:class=>"radio-inline"%> <%=i%>
-									<%end%>
-
-								</div>
-							</div>
 							
 							<div class="panel panel-default">
 								<div class="panel-heading font-regular">Do How many times a week do you eat out for</div>
@@ -592,9 +801,22 @@
 								<div class="panel-heading font-regular">What types of beverages do you drink during the day?</div>
 								<div class="panel-body">
 									<div class="row">
-										<div class="col-md-12 col-sm-12 col-xs-12">
+										<div class="col-md-4 col-sm-4 col-xs-12">
 											<div class="form-group">
-												<%= fn.text_area :type_of_bevrages_drink_a_day, :class=>"form-control"%>
+												<label>Tea</label>
+												<%= fn.number_field :beverages_drink_in_day_tea, :class=>"form-control"%>
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-4 col-xs-12">
+											<div class="form-group">
+												<label>coffee</label>
+												<%= fn.number_field :beverages_drink_in_day_coffee, :class=>"form-control"%>
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-4 col-xs-12">
+											<div class="form-group">
+												<label>Other</label>
+												<%= fn.text_field :beverages_drink_in_day_other, :class=>"form-control"%>
 											</div>
 										</div>
 									</div>
@@ -655,7 +877,7 @@
 											
 											<label class="exer">
 												if yes, what do you do and how often do you do it?
-												
+												<span id="exerciseBtn"><%= link_to_add_fields "Add More", fn, :exercises %></span>
 											</label>
 
 											<div class="exerciseNow">
@@ -663,7 +885,7 @@
 											    <%= render "/patients/exercise_fields", :f => builder %>
 											  <% end %>
 											  
-												<p><%= link_to_add_fields "Add Exercise", fn, :exercises %></p>
+												<p><%#= link_to_add_fields "Add Exercise", fn, :exercises %></p>
 
 											</div>
 
@@ -671,14 +893,24 @@
 									</div>
 								</div>
 							</div>
+
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<div class="form-group">
+										<button class="add-btn blue-bg btn-lg"><i class="icon icon-dashboard"></i> Save & Continue</button>
+									</div>
+									
+								</div>
+							</div>
+
 							<%end%>
 							
 						</div>
-						<!-- 3 -->
+						<!-- 4 -->
 						
 						
 						
-						<div id="DiabetesHistory" class="tab-pane fade">
+						<div id="DiabetesHistory" class="tab-pane fade in <%= tab_active(@_tab,4)%>">
 						  <h3>Diabetes History</h3>
 						  <%= f.fields_for :diabetes_history do |fd| %>
 						  
@@ -688,7 +920,7 @@
 
 									<% DiabetesHistory::DIABETES_TYPE.each do |type|%>
 									<label class="checkbox-inline">
-										<%= fd.radio_button :diabetes_type, type %><%= type%>
+										<%= fd.radio_button :diabetes_type, type %>&nbsp;<%= type%>
 									</label>
 									<%end%>
 								
@@ -702,13 +934,13 @@
 										<div class="col-md-2 col-sm-3 col-xs-12">
 											<div class="form-group">
 												<label>Month</label>
-												<%= fd.text_field :diagnosed_month,:class=>"form-control" %>
+												<%= fd.text_field :diagnosed_month,:class=>"form-control",:placeholder =>"Month" %>
 											</div>
 										</div>
 										<div class="col-md-2 col-sm-3 col-xs-12">
 											<div class="form-group">
 												<label>Year</label>
-												<%= fd.text_field :diagnosed_year,:class=>"form-control" %>
+												<%= fd.text_field :diagnosed_year,:class=>"form-control",:placeholder =>"Year" %>
 											</div>
 										</div>
 									</div>
@@ -736,25 +968,36 @@
 								</div>
 							</div>
 							
-							
 							<div class="panel panel-default">
 								<div class="panel-heading font-regular">Have you had previous diabetes education?</div>
 								<div class="panel-body">
 
-									<%["No","Yes -from whom?","Do Page Medical Group","Other"].each do |value|%>
-										<label class="checkbox-inline">
-											<%= fd.radio_button :previous_diabetes_education, value %><%= value%>
-										</label>
-									<%end%>
 
+									<label class="checkbox-inline">
+									  <%= fd.radio_button :have_previous_diabets_education, false %>No 
+									</label>
+									<label class="checkbox-inline">
+									  <%= fd.radio_button :have_previous_diabets_education, true %>Yes
+									</label>
+
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<label>from whom?</label>
+												<%= fd.text_field :previous_diabetes_education_from_whome,:class=>"form-control" %>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
+
+
 							
 							<div class="panel panel-default">
 								<div class="panel-heading font-regular">In your own words, what is diabetes?</div>
 								<div class="panel-body">
 									<div class="form-group">
-										<%= fd.text_field :own_words_diabetes,:class=>"form-control" %>
+										<%= fd.text_area :own_words_diabetes,:class=>"form-control" %>
 									</div>
 								</div>
 							</div>
@@ -799,42 +1042,42 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<div class="panel panel-default">
 								<div class="panel-heading font-regular">How often do you test your blood sugar each day?</div>
 								<div class="panel-body">
-
-									<%["1","2","3","4+ time per day"].each do |value|%>
-									 <label class="radio-inline">
-										<%= fd.radio_button :how_often_test_sugar, value %>&nbsp; <%= value %>
-									 </label>	
-									<%end%>
-
 									<div class="row">
-										<div class="col-md-5 col-sm-5 col-xs-12">
+										<div class="col-md-3 col-sm-4 col-xs-12">
 											<div class="form-group">
-												<label>Other</label>
-												<%= fd.text_field :how_often_test_sugar_other,:class=>"form-control" %>
+												<label>In a day</label>
+												<%= fd.select :test_blood_sugar_in_a_day, options_for_select([["1",1],["2",2],["3",3],["4",4]]),{prompt: true}, {:class => 'form-control'}%>
+											</div>
+										</div>
+										<div class="col-md-3 col-sm-4 col-xs-12">
+											<div class="form-group">
+												<label>In a week</label>
+												<%= fd.select :test_blood_sugar_in_a_week, options_for_select([["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7]]),{prompt: true}, {:class => 'form-control'}%>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+
+
 							
 							<div class="panel panel-default">
 								<div class="panel-heading font-regular">When do you test?</div>
 								<div class="panel-body">
-									<div class="row">
-									
+										<div class ="row">
 										<% DiabetesHistory::TEST_OPTIONS.each do |value| %>
 										<%status = fd.object.when_did_you_test.include?(value) if !fd.object.when_did_you_test.blank? %>
-										<div class="col-md-3 col-sm-3 col-xs-12">
+										<div class="col-md-4 col-sm-4 col-xs-12">
 										  <%= check_box_tag "patient[diabetes_history_attributes]when_did_you_test[]",value,status %>
 										  <%= value %>
 										</div>
 										<% end %>
-										
-									</div>
+										</div>
+
 
 									<div class="row">
 										<div class="col-md-5 col-sm-5 col-xs-12">
@@ -844,6 +1087,9 @@
 											</div>
 										</div>
 									</div>
+
+
+
 								</div>
 							</div>
 							
@@ -894,18 +1140,92 @@
 							<div class="panel panel-default">
 								<div class="panel-heading font-regular">In the last 12 months, have you been to an emergency room for a diabetes related event?</div>
 								<div class="panel-body">
+									<label class="checkbox-inline">
+									  <%= fd.radio_button :in_emergency_room_for_diabets, false %> No
+									</label>
+									<label class="checkbox-inline">
+									  <%= fd.radio_button :in_emergency_room_for_diabets, true %> Yes
+									</label>
 									
-									<%= fd.radio_button :emergency_room_for_diabets_related_event, true %> 
-								  <%= label :emergency_room_for_diabets_related_event, 'Yes' %>
-								  <%= fd.radio_button :emergency_room_for_diabets_related_event, false %>
-								  <%= label :emergency_room_for_diabets_related_event, 'No' %>
-								
+									<div class="row">
+										<div class="col-md-4 col-sm-4 col-xs-12">
+											<div class="form-group">
+												<label>Month</label>
+												<%= fd.select :in_emergency_room_for_diabets_month, options_for_select([["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10],["11",11],["12",12]]),{prompt: true}, {:class => 'form-control'}%>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
+
+							<div class="panel panel-default">
+								<div class="panel-heading font-regular"><b>Pregnancy:</b> Have you ever been pregnant?</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-3 col-sm-4 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Not applicable
+											</label>
+										</div>
+										<div class="col-md-2 col-sm-4 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">No
+											</label>
+										</div>
+										<div class="col-md-2 col-sm-4 col-xs-12">
+											<label class="checkbox-inline">
+											  <input type="checkbox" value="">Yes
+											</label>
+										</div>
+									</div>
+									<br>
+									<div class="table-overflow">
+										<table class="table table-bordered">
+											<thead>
+												<tr>
+													<th width="300">Child's birth year</th>
+													<th width="300">Child's birth weight</th>
+													<th class="text-right">Did you have gestational diabetes?</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+														<select class="form-control">
+															<option>select year</option>
+															<option>1990</option>
+															<option>1990</option>
+															<option>1990</option>
+														</select>
+													</td>
+													<td>
+														<select class="form-control">
+															<option>select weight</option>
+															<option>2kg</option>
+															<option>3kg</option>
+															<option>5kg</option>
+														</select>
+													</td>
+													<td class="text-right">
+														<label class="checkbox-inline">
+															<input type="checkbox" value="">No
+														</label>
+														<label class="checkbox-inline">
+															<input type="checkbox" value="">Yes
+														</label>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+
+
 							<div class="row">
 								<div class="col-md-3 col-sm-4 col-xs-12">
 									<div class="form-group">
-										<button class="add-btn blue-bg btn-lg"><i class="icon icon-paper-plane"></i> Submit</button>
+										<button class="add-btn blue-bg btn-lg"><i class="icon icon-dashboard"></i> Save & Continue</button>
 									</div>
 									
 								</div>
@@ -913,7 +1233,42 @@
 
 							<%end%>
 						</div>
-						<!-- 4 -->
+						<!-- 5 -->
+
+						<div id="ExitForm" class="tab-pane fade">
+							<div class="row">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+									<div class="form-group">
+										<label>Reason for non-enrolment</label>
+										<%= f.text_field :reason_for_non_enrollment,:class=>"form-control",:placeholder=>"Reason for non-enrolment" %>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+									<div class="form-group">
+										<label>Date of Dropout</label>
+										<%= f.text_field :reason_for_non_enrollment,:class=>"form-control",:placeholder=>"yyyy-mm-dd" %>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+									<div class="form-group">
+										<label>Reason for Dropout</label>
+										<%= f.text_field :reason_for_non_enrollment,:class=>"form-control",:placeholder=>"Reason for Dropout" %>
+									</div>
+								</div>
+							</div>
+							
+							
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<div class="form-group">
+										<button class="add-btn blue-bg btn-lg"><i class="icon icon-dashboard"></i> Submit</button>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+
+						<!-- 6 -->
 						
 					  </div>	
 				    <%end%>
