@@ -4,12 +4,13 @@ class PatientsController < ApplicationController
 
 
   def index
-    @patients = Patient.all.order('id desc')
+    @patients = Patient.paginate(:page => params[:page], :per_page => 10)
     @c_tab = ""
     @p_tab = "active"
   end
 
   def new
+    @_tab = 1
   	@patient = Patient.new
   	@patient.build_health_history
     nutrition = @patient.build_nutrition_history
@@ -21,7 +22,7 @@ class PatientsController < ApplicationController
   	@patient = Patient.new(patient_params)
     @patient.password = "12345" 
   	if @patient.save
-      redirect_to root_path
+      redirect_to edit_patient_path(@patient,:tab=>2)
     else
       render 'new'
     end  
@@ -29,12 +30,14 @@ class PatientsController < ApplicationController
 
   def edit
     @patient = Patient.find(params[:id])
+    @_tab = params[:tab].present? ? ++params[:tab] : 1 
   end  
 
   def update
     @patient = Patient.find(params[:id])
     if @patient.update(patient_params)
-      redirect_to root_path
+      @_tab = params[:tab].present? ? ++params[:tab] : 1 
+      redirect_to edit_patient_path(@patient,:tab=>@_tab)
     else
       render 'edit'
     end

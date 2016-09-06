@@ -3,7 +3,7 @@ class CounsellorsController < ApplicationController
 	before_action :authenticate_counsellor?
 
 	def index
-		@counsellors = Counsellor.all.order('id desc')
+		@counsellors = Counsellor.paginate(:page => params[:page], :per_page => 10)
 		@c_tab = "active"
 		@p_tab = ""
 	end

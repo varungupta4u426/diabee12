@@ -26,17 +26,20 @@
 				<div class="tab-pill">
 				<!-- ................. -->
 						<ul class="nav nav-tabs">
+						<%if !@_tab.present? %>
+						<%@_tab = 1%>
+						<%end%>
 							<li class= "<%= tab_active(@_tab,1)%>" ><a data-toggle="tab" href="#AddNewPatient">Basic Information</a></li>
 
 							<li class= "<%= tab_active(@_tab,2)%>" ><a data-toggle="tab" href="#HealthHistory">Health History</a></li>
 
 							<!-- <li class= ><a data-toggle="tab" href="#DiabetesMedications">Diabetes Medications</a></li> -->
 
-							<li class= "<%= tab_active(@_tab,4)%>"><a data-toggle="tab" href="#NutritionHistory">Nutrition History</a></li>
+							<li class= "<%= tab_active(@_tab,3)%>"><a data-toggle="tab" href="#NutritionHistory">Nutrition History</a></li>
 
-							<li class= "<%= tab_active(@_tab,5)%>"><a data-toggle="tab" href="#DiabetesHistory">Diabetes History</a></li>
+							<li class= "<%= tab_active(@_tab,4)%>"><a data-toggle="tab" href="#DiabetesHistory">Diabetes History</a></li>
 
-							<li class= "<%= tab_active(@_tab,6)%>"><a data-toggle="tab" href="#ExitForm">Exit Form</a></li>
+							<li class= "<%= tab_active(@_tab,5)%>"><a data-toggle="tab" href="#ExitForm">Exit Form</a></li>
 
 						</ul>
 
@@ -858,27 +861,27 @@
 								</div>
 							</div>
 							
-							<div class="panel panel-default">
+							<!-- <div class="panel panel-default">
 								<div class="panel-heading font-regular">Do you exercise now?</div>
 								<div class="panel-body">
 
-									<%= fn.radio_button :do_you_exercise_now, true %> 
-								  <%= label :do_you_exercise_now, 'Yes' %>
-								  <%= fn.radio_button :do_you_exercise_now, false %>
-								  <%= label :do_you_exercise_now, 'No' %>
+									<%#= fn.radio_button :do_you_exercise_now, true %> 
+								  <%#= label :do_you_exercise_now, 'Yes' %>
+								  <%#= fn.radio_button :do_you_exercise_now, false %>
+								  <%#= label :do_you_exercise_now, 'No' %>
 
 									<div class="row margin-top10">
 										<div class="col-md-12 col-sm-12 col-xs-12">
 											
 											<label class="exer">
 												if yes, what do you do and how often do you do it?
-												<span id="exerciseBtn"><%= link_to_add_fields "Add More", fn, :exercises %></span>
+												<span id="exerciseBtn"><%#= link_to_add_fields "Add More", fn, :exercises %></span>
 											</label>
 
 											<div class="exerciseNow">
-											  <%= fn.fields_for :exercises do |builder| %>
-											    <%= render "/patients/exercise_fields", :f => builder %>
-											  <% end %>
+											  <%#= fn.fields_for :exercises do |builder| %>
+											    <%#= render "/patients/exercise_fields", :f => builder %>
+											  <%# end %>
 											  
 												<p><%#= link_to_add_fields "Add Exercise", fn, :exercises %></p>
 
@@ -887,7 +890,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
 							<div class="row">
 								<div class="col-md-4 col-sm-4 col-xs-12">

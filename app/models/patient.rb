@@ -5,8 +5,8 @@ class Patient < ApplicationRecord
 
    mount_uploader :profile_pic, AvatarUploader
 
-   # validates :email, presence: true,uniqueness: true
-   # validates :mobile, presence: true,uniqueness: true 
+   validates :email, presence: true,uniqueness: true
+   validates :mobile, presence: true,uniqueness: true 
 
    has_many :medicines, dependent: :destroy
 
