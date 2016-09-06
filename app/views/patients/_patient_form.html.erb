@@ -30,7 +30,7 @@
 
 							<li class= "<%= tab_active(@_tab,2)%>" ><a data-toggle="tab" href="#HealthHistory">Health History</a></li>
 
-							<li class= "<%= tab_active(@_tab,3)%>" ><a data-toggle="tab" href="#DiabetesMedications">Diabetes Medications</a></li>
+							<!-- <li class= ><a data-toggle="tab" href="#DiabetesMedications">Diabetes Medications</a></li> -->
 
 							<li class= "<%= tab_active(@_tab,4)%>"><a data-toggle="tab" href="#NutritionHistory">Nutrition History</a></li>
 
@@ -70,7 +70,7 @@
 								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>Date of Birth</label>
-										<%= f.text_field :dob, :class=>"form-control date-picker",:placeholder => "yyyy-mm-dd"%>
+										<%= f.text_field :dob, :class=>"form-control date-picker",:placeholder => "Select date"%>
 									</div>
 								</div>
 								
@@ -145,7 +145,7 @@
 								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>Date of Enrolment</label>
-										<%= f.text_field :date_of_enrollment, :class=>"form-control date-picker",:placeholder => "yyyy-mm-dd"%>
+										<%= f.text_field :date_of_enrollment, :class=>"form-control date-picker",:placeholder => "Select date"%>
 									</div>
 								</div>
 							</div>
@@ -290,7 +290,7 @@
 										<div class="col-md-3 col-sm-4">
 											<div class="form-group">
 												<label>Last Exam Date</label>
-												<%= ff.text_field :last_dialated_eye_exam_date, :class=>"form-control",:placeholder=>"yyyy-mm-dd", :id=>"date" %>
+												<%= ff.text_field :last_dialated_eye_exam_date, :class=>"form-control date-picker",:placeholder=>"Select date" %>
 											</div>
 										</div>
 										
@@ -320,18 +320,13 @@
 								  <%= label :seen_foot_doctor, 'No' %>
 
 									<div class="row">
-										<div class="col-md-2 col-sm-3">
+										<div class="col-md-3 col-sm-3">
 											<div class="form-group">
-												<label>When &#63;</label>
-												<%= ff.text_field :seen_foot_doctor_month, :class=>"form-control",:placeholder=>"Month"%>
+												<label>When?</label>
+												<%= f.text_field :seen_foot_doctor,:class=>"form-control date-picker",:placeholder =>"Select date" %>
 											</div>
 										</div>
-										<div class="col-md-2 col-sm-3">
-											<div class="form-group">
-												<label>&nbsp;</label>
-												<%= ff.text_field :seen_foot_doctor_year, :class=>"form-control",:placeholder=>"Year"%>
-											</div>
-										</div>
+										
 									</div>
 								</div>
 							</div>
@@ -508,7 +503,7 @@
 						</div>
 						
 						<!-- 2 -->
-						<div id="DiabetesMedications" class="tab-pane fade">
+					<!-- 	<div id="DiabetesMedications" class="tab-pane fade">
 							<h3>Diabetes Medications</h3>
 							
 							<div class="panel panel-default">
@@ -663,7 +658,7 @@
 									
 								</div>
 							</div>
-						</div>
+						</div> -->
 
 
 						<!-- 3 -->
@@ -1158,7 +1153,7 @@
 								</div>
 							</div>
 
-							<div class="panel panel-default">
+						<!-- 	<div class="panel panel-default">
 								<div class="panel-heading font-regular"><b>Pregnancy:</b> Have you ever been pregnant?</div>
 								<div class="panel-body">
 									<div class="row">
@@ -1219,7 +1214,7 @@
 										</table>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
 
 							<div class="row">
@@ -1246,7 +1241,7 @@
 								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>Date of Dropout</label>
-										<%= f.text_field :reason_for_non_enrollment,:class=>"form-control",:placeholder=>"yyyy-mm-dd" %>
+										<%= f.text_field :reason_for_non_enrollment,:class=>"form-control date-picker",:placeholder=>"Select date" %>
 									</div>
 								</div>
 								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">

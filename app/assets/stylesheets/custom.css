@@ -1554,7 +1554,7 @@ fieldset[disabled] .form-control {
     line-height: 37px;
     display: inline-block;
 }
-.table-overflow {overflow: auto; width: 100%;} 
+.table-overflow {overflow: visible; width: 100%;} 
 .mobile-menu-close i {
     font-size: 12px;
 }

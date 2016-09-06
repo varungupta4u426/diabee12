@@ -33,7 +33,7 @@ function remove_fields(link) {
 function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g")
-  $(link).parent().before(content.replace(regexp, new_id));
+  $('.exerciseNow').before(content.replace(regexp, new_id));
 }
 
 // $(document).on('click','.side-bar',function(){
