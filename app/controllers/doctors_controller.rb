@@ -5,7 +5,7 @@ class DoctorsController < ApplicationController
   # GET /doctors
   # GET /doctors.json
   def index
-    @doctors = Doctor.paginate(:page => params[:page], :per_page => 10)
+    @doctors = Doctor.paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /doctors/1
