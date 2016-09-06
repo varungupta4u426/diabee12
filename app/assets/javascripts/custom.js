@@ -56,21 +56,7 @@ $(document).ready(function(){
 
 	//------------------------------------------//
 
-    $('#example').DataTable({
-        language: {
-            searchPlaceholder: 'Search records',
-            sSearch: '',
-            sLengthMenu: 'Show _MENU_',
-            sLength: 'dataTables_length',
-            oPaginate: {
-                sFirst: '<i class="icon icon-left-chevron"></i>',
-                sPrevious: '<i class="icon icon-left-chevron"></i>',
-                sNext: '<i class="icon icon-right-chevron"></i>',
-                sLast: '<i class="icon icon-right-chevron"></i>' 
-        }
-        }
-    });
-    $('.dataTables_length select').addClass('browser-default');
+    
 	
 /* ============ */
 	

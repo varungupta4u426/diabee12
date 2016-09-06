@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906062411) do
+ActiveRecord::Schema.define(version: 20160906112436) do
 
   create_table "blog_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -69,8 +69,15 @@ ActiveRecord::Schema.define(version: 20160906062411) do
     t.string   "what_you_do_when_sugar_low"
     t.string   "emergency_room_for_diabets_related_event"
     t.integer  "patient_id"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "have_previous_diabets_education"
+    t.string   "previous_diabetes_education_from_whome"
+    t.integer  "test_blood_sugar_in_a_day"
+    t.integer  "test_blood_sugar_in_a_week"
+    t.boolean  "in_emergency_room_for_diabets"
+    t.integer  "in_emergency_room_for_diabets_month"
+    t.boolean  "have_you_been_pragnent"
     t.index ["patient_id"], name: "index_diabetes_histories_on_patient_id", using: :btree
   end
 
@@ -129,8 +136,14 @@ ActiveRecord::Schema.define(version: 20160906062411) do
     t.string   "smoke_quit"
     t.string   "alergies_any_othr_health_condition"
     t.integer  "patient_id"
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.date     "last_dialated_eye_exam_date"
+    t.integer  "next_frequency_in_month"
+    t.string   "check_your_feet"
+    t.string   "drink_number_of_years"
+    t.string   "food_alergies"
+    t.string   "medicine_alergies"
     t.index ["patient_id"], name: "index_health_histories_on_patient_id", using: :btree
   end
 
@@ -182,6 +195,10 @@ ActiveRecord::Schema.define(version: 20160906062411) do
     t.integer  "patient_id"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.date     "rate_motivation_confidence"
+    t.integer  "beverages_drink_in_day_tea"
+    t.integer  "beverages_drink_in_day_coffee"
+    t.string   "beverages_drink_in_day_other"
     t.index ["patient_id"], name: "index_nutrition_histories_on_patient_id", using: :btree
   end
 
@@ -221,6 +238,7 @@ ActiveRecord::Schema.define(version: 20160906062411) do
     t.string   "doctor_name"
     t.string   "profile_pic"
     t.date     "date_of_enrollment"
+    t.string   "preffered_day_for_call"
     t.index ["reset_password_token"], name: "index_patients_on_reset_password_token", using: :btree
   end
 
