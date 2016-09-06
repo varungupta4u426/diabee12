@@ -1,0 +1,118 @@
+<%= form_for(doctor) do |f| %>
+  <div class="main-div">
+    <div class="page-title">
+      <h1 class="pull-left">
+        <%=  doctor.id.present? ? "Edit New Doctor" : "Add New Doctor"%>
+      </h1>
+      <div class="pull-right">
+        <a href="/doctors" class="add-btn"><i class="icon icon-left-arrow"></i> Back</a> 
+      </div>
+    </div>
+    <div class="white-bg">
+      <% if doctor.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
+          <ul>
+            <% doctor.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="row">
+        <div class="col-md-2 col-sm-3 col-xs-12">
+          <div class="form-group">
+            <label>Title</label>   
+            <%= f.select :title, options_for_select([ "Dr.", "Counsellor" ], "Dr."), {}, {class: "form-control"} %>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-12">
+          <div class="form-group">
+            <label>First Name</label>
+            <%= f.text_field :first_name, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-12">
+          <div class="form-group">
+            <label>Last Name</label>
+            <%= f.text_field :last_name, :class => 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2 col-sm-4 col-xs-12">
+          <div class="form-group">
+            <label>Phone</label>
+            <%= f.text_field :phone, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="form-group">
+            <label>Email</label>
+            <%= f.text_field :email, :class => 'form-control' %>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="form-group">
+            <label>Address</label>
+            <%= f.text_area :address, :class => 'form-control', :rows => "3", :maxlength => 250 %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+          <div class="form-group">
+            <label>Postal Code</label>
+            <%= f.text_field :postal_code, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12">
+          <div class="form-group">
+            <label>City</label>
+            <%= f.select :city, options_for_select([ "Noida", "" ], "Dr."), {}, {class: "form-control"} %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-sm-4 col-xs-12">
+          <div class="form-group">
+            <label>Speciality</label>
+            <%= f.select :speciality, options_for_select([ "Speciality", "Speciality", "Speciality" ], "Speciality"), {}, {class: "form-control"} %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2 col-sm-4 col-xs-12">
+          <div class="form-group">
+            <label>Attendant's Name</label>
+            <%= f.text_field :attendant_name, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-12">
+          <div class="form-group">
+            <label>Attendant's Phone</label>
+            <%= f.text_field :attendant_phone, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-12">
+          <div class="form-group">
+            <label>Patient's Prescribed</label>
+            <%= f.text_field :patient_prescribed, :class => 'form-control' %>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="form-group">
+            <button class="add-btn blue-bg btn-lg"><i class="icon icon-paper-plane"></i> Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

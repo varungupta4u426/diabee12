@@ -1,0 +1,50 @@
+<!-- Design Part Starts -->
+<div class="main-div">
+  <div class="page-title">
+    <h1 class="pull-left">Doctors</h1>
+    <div class="pull-right">      
+      <a href="/doctors/new" class="add-btn green-bg"><i class="icon icon-add-1"></i> Add New Doctor</a>
+      <a href="/counsellors" class="add-btn"><i class="icon icon-left-arrow"></i> Back</a>
+    </div>
+  </div>
+  <div class="white-bg">
+  <div class="table-overflow">
+    <table class="table"  id="doctors_data">
+      <thead>
+        <tr>
+        <th>SNo.</th>
+        <th>Doctor's Name</th>
+        <th>Speciality</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Attendant's Name</th>
+        <th>Attendant's Phone</th>
+        <th class="text-right">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @doctors.each do |doctor| %>
+          <tr>
+          <td>1.</td>
+          <td><%= "#{doctor.title.titleize} #{doctor.first_name} #{doctor.last_name}" %></td>
+          <td><%= doctor.speciality %></td>
+          <td><%= doctor.phone %></td>
+          <td><%= doctor.email %></td>
+          <td><%= doctor.attendant_name %></td>
+          <td><%= doctor.attendant_phone %></td>
+          <td class="text-right">
+            <a href="/doctors/<%= doctor.id %>/edit" class="yello-btn"><i class="icon icon-edit-1"></i></a>
+            <a href="/doctors/<%= doctor.id %>" class="blue-btn"><i class="icon icon-document"></i></a>
+          </td>
+          </tr>
+        <% end %>
+      </tbody>
+      </table>
+      <div class="digg_pagination">
+      
+        <%= will_paginate @doctors, :container => false %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Design Part Ends -->

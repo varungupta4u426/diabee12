@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905100939) do
+ActiveRecord::Schema.define(version: 20160906062411) do
 
   create_table "blog_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -72,6 +72,24 @@ ActiveRecord::Schema.define(version: 20160905100939) do
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.index ["patient_id"], name: "index_diabetes_histories_on_patient_id", using: :btree
+  end
+
+  create_table "doctors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "address"
+    t.string   "postal_code"
+    t.string   "city"
+    t.string   "state"
+    t.string   "speciality"
+    t.string   "attendant_name"
+    t.string   "attendant_phone"
+    t.string   "patient_prescribed"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "eat_out_places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
