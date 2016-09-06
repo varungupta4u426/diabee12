@@ -1,7 +1,7 @@
 class DiabetesHistory < ApplicationRecord
   belongs_to :patient
 
-  DIABETES_TYPE   = ["Type 1","Type 2","Pre-Diabetes","Don't know"]
+  DIABETES_TYPE   = ["Gestational","Type 1","Type 2","Pre-Diabetes","Don't know"]
   EDUCATION_SESSION_OPTIONS = [
 							  	"Healthy Eating",
 								"Impact of Physical Activity",
