@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	alert("from custom js");
 	$(".settings-div img").click(function(){
 		$(".settings-list").fadeToggle();
 	});
