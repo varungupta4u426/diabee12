@@ -20,6 +20,7 @@
 //= require cable.js
 //= require prism.js
 //= require jquery.dataTables.min.js
+//= require custom.js
 //= require turbolinks
 //= require_tree .
 
