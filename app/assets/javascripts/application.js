@@ -12,10 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap.min.js
+//= require chosen.jquery.js
 //= require dataTables.bootstrap.min.js
 //= require bootstrap-datepicker.min.js
 //= require jquery.canvasjs.min.js
 //= require cable.js
+//= require prism.js
 //= require jquery.dataTables.min.js
 //= require turbolinks
 //= require_tree .
