@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160907053216) do
+ActiveRecord::Schema.define(version: 20160908113924) do
 
   create_table "blog_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 20160907053216) do
     t.string   "url"
     t.string   "data"
     t.string   "description"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "content_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "thumb"
+    t.integer  "patient_group_id"
   end
 
   create_table "counsellors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 20160907053216) do
     t.string   "diagnosed_year"
     t.boolean  "any_one_in_family_have_diabetes"
     t.string   "whome_have_diabetes_family"
-    t.string   "previous_diabetes_education"
     t.string   "own_words_diabetes"
     t.string   "intersting_learning_diabetes_session"
     t.boolean  "test_blood_sugar_at_home"
@@ -67,7 +66,6 @@ ActiveRecord::Schema.define(version: 20160907053216) do
     t.string   "last_month_low_blood_sugar"
     t.string   "what_you_do_when_sugar_high"
     t.string   "what_you_do_when_sugar_low"
-    t.string   "emergency_room_for_diabets_related_event"
     t.integer  "patient_id"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
@@ -118,13 +116,10 @@ ActiveRecord::Schema.define(version: 20160907053216) do
   create_table "health_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "ever_had_condition"
     t.boolean  "follow_special_diet"
-    t.text     "listing_special_diet",               limit: 65535
-    t.string   "dilated_eye_exam_month"
-    t.string   "dilated_eye_exam_year"
+    t.text     "listing_special_diet",        limit: 65535
     t.boolean  "seen_foot_doctor"
     t.string   "seen_foot_doctor_month"
     t.string   "seen_foot_doctor_year"
-    t.boolean  "check_feet_daily"
     t.boolean  "drink_alcohol"
     t.string   "drinks_per_week_wine"
     t.string   "drinks_per_week_beer"
@@ -134,7 +129,6 @@ ActiveRecord::Schema.define(version: 20160907053216) do
     t.string   "smoke_years"
     t.boolean  "ever_smoke"
     t.string   "smoke_quit"
-    t.string   "alergies_any_othr_health_condition"
     t.integer  "patient_id"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
@@ -180,13 +174,10 @@ ActiveRecord::Schema.define(version: 20160907053216) do
     t.boolean  "weight_chamge_last_year"
     t.string   "realistic_weight_for_you"
     t.string   "since_you_at_that_weight"
-    t.integer  "confidence_diaterey_change"
-    t.integer  "motivation_diatery_change"
     t.integer  "eat_out_for_breakfast_count"
     t.integer  "eat_out_for_lunch_count"
     t.integer  "eat_out_for_dinner_count"
     t.string   "places_eat_ot_at"
-    t.string   "type_of_bevrages_drink_a_day"
     t.boolean  "eat_regular_meal"
     t.string   "eat_regular_meal_comment"
     t.boolean  "take_vitamin_mineral_diet_supplement"
@@ -200,6 +191,12 @@ ActiveRecord::Schema.define(version: 20160907053216) do
     t.integer  "beverages_drink_in_day_coffee"
     t.string   "beverages_drink_in_day_other"
     t.index ["patient_id"], name: "index_nutrition_histories_on_patient_id", using: :btree
+  end
+
+  create_table "patient_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "patients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

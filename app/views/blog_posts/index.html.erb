@@ -1,0 +1,36 @@
+    <div class="main-div">
+      <div class="page-title">
+        <h1 class="pull-left">Blog Post</h1>
+        <div class="pull-right">
+          <a href="/blog_posts/new" class="add-btn blue-bg"><i class="icon icon-add-1"></i> Add Blog Post</a>
+          <a href="/counsellors" class="add-btn"><i class="icon icon-left-arrow"></i> Back</a>
+        </div>
+      </div>
+      <div class="white-bg">
+      <div class="table-overflow">
+        <table class="table" id="example">
+          <thead>
+            <tr>
+            <th width="50">SNo.</th>
+            <th>Title</th>
+            <th>Group</th>
+            <th class="text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @blog_posts.each_with_index do |blog_post, index| %>
+              <tr>
+                <td><%= index+1 %>.</td>
+                <td><a href="#"><%= blog_post.title %></a></td>
+                <td><%= blog_post.patient_group.name rescue "" %></td>
+                <td class="text-right">
+                  <a href="/blog_posts/<%= blog_post.id %>/edit" class="yello-btn" title="Edit"><i class="icon icon-edit-1"></i></a>
+                  <a href="/blog_posts/<%= blog_post.id %>" class="blue-btn" title="Preview"><i class="icon icon-document"></i></a>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+          </table>
+        </div>
+      </div>
+    </div>

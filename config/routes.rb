@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :blog_posts
   resources :doctors
    # devise_for :counsellors
    

@@ -1,0 +1,80 @@
+<%= form_for(blog_post, :html => { :multipart => true }) do |f| %>
+  <% if blog_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(blog_post.errors.count, "error") %> prohibited this blog post from being saved:</h2>
+      <ul>
+      <% blog_post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-4 col-sm-5">
+      <div class="form-group">
+        <%= f.label :title%>
+        <%= f.text_field :title, class: "form-control"%>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-sm-5">
+      <div class="form-group">
+        <%= f.label :group%>
+        <%= f.select :patient_group_id, options_for_select(@patient_groups, blog_post.patient_group_id), {include_blank: "Select Patient Group"}, {:class => "form-control"} %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-sm-5">
+      <div class="form-group">
+        <%= f.label :subtitle%>
+        <%= f.text_field :subtitle, class: "form-control"%>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-sm-5">
+      <div class="form-group">
+        <%= f.label :url, "URL"%>
+        <%= f.text_field :url, class: "form-control"%>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-sm-5">
+      <div class="form-group">
+        <label>Image/Video/Blog Upload</label>
+        <div class="input-group">
+          <label class="input-group-btn">
+            <span class="btn btn-primary">
+              Upload <input type="file" name="blog_post[data]" id="blog_post_data" style="display: none;" multiple>
+            </span>
+          </label>
+          <input type="text" id="blog_post_data_text" class="form-control" value="<%= @blog_post.asset_name %>" readonly>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <div class="form-group">
+        <%= f.label :description%>
+        <%= f.text_area :description, class: "form-control", rows: 5%>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-sm-4 col-xs-12">
+      <div class="form-group">
+        <button type="submit" name="commit" class="add-btn blue-bg btn-lg"><i class="icon icon-paper-plane"></i> Submit</button>
+      </div>
+      
+    </div>
+  </div>
+<% end %>
+<script>
+  $("#blog_post_data").change(function(){
+    $("#blog_post_data_text").val($(this).val().split("\\")[$(this).val().split("\\").length - 1])
+  });
+  </script>
