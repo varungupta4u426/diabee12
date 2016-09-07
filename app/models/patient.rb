@@ -7,6 +7,9 @@ class Patient < ApplicationRecord
 
    validates :email, presence: true,uniqueness: true
    validates :mobile, presence: true,uniqueness: true 
+   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/,:message => "format not invalid"
+   validates_format_of :mobile,:with => /\A[0-9]{10,10}\z/
+   # validates_format_of :pin, :with => /\A[0-9]{6,6}\z/
 
    has_many :medicines, dependent: :destroy
 
