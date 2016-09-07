@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906142508) do
+ActiveRecord::Schema.define(version: 20160907053216) do
 
   create_table "blog_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -235,11 +235,12 @@ ActiveRecord::Schema.define(version: 20160906142508) do
     t.string   "username"
     t.string   "reset_password_token"
     t.string   "package"
-    t.string   "doctor_name"
     t.string   "profile_pic"
     t.date     "date_of_enrollment"
     t.string   "preffered_day_for_call"
     t.date     "seen_foot_doctor"
+    t.integer  "doctor_id"
+    t.index ["doctor_id"], name: "index_patients_on_doctor_id", using: :btree
     t.index ["reset_password_token"], name: "index_patients_on_reset_password_token", using: :btree
   end
 

@@ -19,6 +19,8 @@ class Patient < ApplicationRecord
    has_one :diabetes_history, :inverse_of => :patient, dependent: :destroy
    accepts_nested_attributes_for :diabetes_history, :allow_destroy => true
 
+   belongs_to :doctor
+
    def send_forget_password_mail
    	 generate_reset_password_token(self)
    	 PatientMailer.send_reset_password_link(self).deliver

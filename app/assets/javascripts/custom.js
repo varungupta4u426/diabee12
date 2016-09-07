@@ -56,7 +56,13 @@ $(document).ready(function(){
 	//------------------------------------------//
 
     
-	
+	$('.click-tab').click(function(){
+		var persisted = $('.patient-submit').attr('persisted');
+		if(persisted == "false"){
+			alert("Please submit patient first");
+			return false
+		}		
+	});
 /* ============ */
 	
 });

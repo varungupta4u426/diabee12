@@ -10,7 +10,6 @@ class PatientsController < ApplicationController
   end
 
   def new
-    @_tab = 1
   	@patient = Patient.new
   	@patient.build_health_history
     nutrition = @patient.build_nutrition_history
@@ -30,14 +29,14 @@ class PatientsController < ApplicationController
 
   def edit
     @patient = Patient.find(params[:id])
-    @_tab = params[:tab].present? ? ++params[:tab] : 1 
+    # @_tab = params[:tab].present? ? ++params[:tab] : 1 
   end  
 
   def update
     @patient = Patient.find(params[:id])
     if @patient.update(patient_params)
-      @_tab = params[:tab].present? ? ++params[:tab] : 1 
-      redirect_to edit_patient_path(@patient,:tab=>@_tab)
+      # @_tab = params[:tab].present? ? ++params[:tab] : 1 
+      redirect_to edit_patient_path(@patient)
     else
       render 'edit'
     end
@@ -50,7 +49,7 @@ class PatientsController < ApplicationController
   def patient_params
 	params.require(:patient).permit(:first_name,:last_name,:email,:gender,:password,:dob,
     :height,:ethnicity,:mobile,:street_address,:pin,:source,:package,:state,:city,:preferred_language,
-    :preferred_time_call_start,:preferred_time_call_end,:disability,
+    :preferred_time_call_start,:preferred_time_call_end,:disability,:doctor_id,
     :exercise,:smoke_drink,:reason_for_non_enrollment,:date_of_dropout,
     :reason_for_dropout,:nok_number,:nok_name, :nok_relation_with_patient,
      
