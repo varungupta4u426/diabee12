@@ -36,6 +36,9 @@ function add_fields(link, association, content) {
   $(link).parent().before(content.replace(regexp, new_id));
 }
 
+$(document).ready(function(){
+$("input[type='patient[health_history_attributes][follow_special_diet]']").click(function(){alert();});
+});
 // $(document).on('click','.side-bar',function(){
  
 //  var a = $(this);

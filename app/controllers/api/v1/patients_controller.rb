@@ -22,9 +22,8 @@ class Api::V1::PatientsController < AppsController
 	def update_profile
 
 		patient = @patient.update(patient_params)
-
 		if patient == true
-			profile_pic = patient.profile_pic.blank? ? "" : patient.profile_pic.url
+			profile_pic = @patient.profile_pic.blank? ? "" : @patient.profile_pic.url
 			render json: {result: true, messages: "Profile updated successfully",status: SUCCESS_CODE,profile_pic: profile_pic }
 		else
 			render_errors @patient.errors.full_messages
