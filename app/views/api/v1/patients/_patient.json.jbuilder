@@ -8,7 +8,7 @@ json.dob patient.dob.blank? ? "" : patient.dob
 json.gender patient.gender.blank? ? "" : patient.gender  
 json.street_address patient.street_address.blank? ? "" : patient.street_address
 json.city patient.city.blank? ? "" : patient.city  
-json.doctor_name patient.doctor_name.blank? ? "" : patient.doctor_name
+json.doctor_name patient.doctor.blank? ? "" : patient.doctor.try(:full_name)
 json.nok_name patient.nok_name.blank? ? "" : patient.nok_name
 json.nok_number patient.nok_number.blank? ? "" : patient.nok_number
 json.profile_pic patient.profile_pic.blank? ? "" : patient.profile_pic.url

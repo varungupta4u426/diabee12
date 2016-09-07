@@ -5,6 +5,9 @@ class Api::V1::PatientsController < AppsController
 	def create 
 		@patient = Patient.new(patient_params)	
 		@patient.pic = Patient.image_data(params[:patient][:profile_pic]) if params[:patient][:profile_pic].present?
+		@patient.build_health_history
+		@patient.build_nutrition_history
+		@patient.build_diabetes_history
 		if @patient.save
 			generate_access_token @patient
 			render :create

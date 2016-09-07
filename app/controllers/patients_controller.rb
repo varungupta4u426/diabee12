@@ -44,6 +44,7 @@ class PatientsController < ApplicationController
         redirect_to edit_patient_path(@patient,:tab => @_tab)
       end  
     else
+      @_tab = 1
       render 'edit'
     end
     
