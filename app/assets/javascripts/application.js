@@ -37,7 +37,23 @@ function add_fields(link, association, content) {
 }
 
 $(document).ready(function(){
-$("input[type='patient[health_history_attributes][follow_special_diet]']").click(function(){alert();});
+
+$(".boolean-checked").click(function(){
+	
+	var $target = $(this);
+	// console.log($target.val() == 'true');
+	if($target.val() == 'true')
+		{
+			alert("aa");
+			$target.parent().find('div > textarea').show();
+		}
+	else($target.val() == 'false')
+		{	
+			alert("bb");
+			$target.parent().find('div > textarea').val('').hide();
+		}
+
+});
 });
 // $(document).on('click','.side-bar',function(){
  
