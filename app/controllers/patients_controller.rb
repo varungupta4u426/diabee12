@@ -10,6 +10,7 @@ class PatientsController < ApplicationController
   end
 
   def new
+    @_tab = 1
   	@patient = Patient.new
   	@patient.build_health_history
     nutrition = @patient.build_nutrition_history
@@ -23,20 +24,25 @@ class PatientsController < ApplicationController
   	if @patient.save
       redirect_to edit_patient_path(@patient,:tab=>2)
     else
+      @_tab = 1
       render 'new'
     end  
   end	
 
   def edit
     @patient = Patient.find(params[:id])
-    # @_tab = params[:tab].present? ? ++params[:tab] : 1 
+    @_tab = params[:tab].present? ? (params[:tab]) : 1
   end  
 
   def update
     @patient = Patient.find(params[:id])
     if @patient.update(patient_params)
-      # @_tab = params[:tab].present? ? ++params[:tab] : 1 
-      redirect_to edit_patient_path(@patient)
+      @_tab = params[:tab].present? ? (params[:tab].to_i + 1) : 1 
+      if @_tab >5 
+        redirect_to patients_path
+      else
+        redirect_to edit_patient_path(@patient,:tab => @_tab)
+      end  
     else
       render 'edit'
     end

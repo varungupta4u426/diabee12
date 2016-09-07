@@ -22,24 +22,24 @@
 				<div class="tab-pill">
 				<!-- ................. -->
 						<ul class="nav nav-tabs">
-							<li class= "active"><a data-toggle="tab" href="#AddNewPatient">Basic Information</a></li>
+							<li class= "<%= tab_active(@_tab,1)%> click-tab" value ="1"><a data-toggle="tab" href="#AddNewPatient">Basic Information</a></li>
 
-							<li class= "click-tab" ><a data-toggle="tab" href="#HealthHistory">Health History</a></li>
+							<li class= "click-tab <%= tab_active(@_tab,2)%>" value ="2"><a data-toggle="tab" href="#HealthHistory">Health History</a></li>
 
 							<!-- <li class= ><a data-toggle="tab" href="#DiabetesMedications">Diabetes Medications</a></li> -->
 
-							<li class= "click-tab"><a data-toggle="tab" href="#NutritionHistory">Nutrition History</a></li>
+							<li class= "click-tab <%= tab_active(@_tab,3)%>" value ="3"><a data-toggle="tab" href="#NutritionHistory">Nutrition History</a></li>
 
-							<li class= "click-tab"><a data-toggle="tab" href="#DiabetesHistory">Diabetes History</a></li>
+							<li class= "click-tab <%= tab_active(@_tab,4)%>" value ="4"><a data-toggle="tab" href="#DiabetesHistory">Diabetes History</a></li>
 
-							<li class= "click-tab"><a data-toggle="tab" href="#ExitForm">Exit Form</a></li>
+							<li class= "click-tab <%= tab_active(@_tab,5)%>" value ="5"><a data-toggle="tab" href="#ExitForm">Exit Form</a></li>
 
 						</ul>
 
 						<%= form_for(@patient) do |f|%>
 					  <div class="tab-content">
-
-						<div id="AddNewPatient" class="tab-pane fade in active" >
+					  <%= hidden_field_tag "tab", @_tab%>
+						<div id="AddNewPatient" class="tab-pane fade in <%= tab_active(@_tab,1)%>" >
 							<h3>Basic Information</h3>
 						
 							<div class="row">
@@ -232,7 +232,7 @@
 				</div>						
 				<!-- 1 -->
 						
-						<div id="HealthHistory" class="tab-pane fade in">
+						<div id="HealthHistory" class="tab-pane fade in <%= tab_active(@_tab,2)%>">
 						<%= f.fields_for :health_history do |ff| %>
 						  <h3>Health History</h3>
 						  <p class="font-medium">Check box if you've ever had of the following conditions:</p>
@@ -662,7 +662,7 @@
 						
 						
 						
-						<div id="NutritionHistory" class="tab-pane fade in">
+						<div id="NutritionHistory" class="tab-pane fade in <%= tab_active(@_tab,3)%>">
 						<%= f.fields_for :nutrition_history do |fn| %>
 						  <h3>Nutrition History</h3>
 
@@ -896,7 +896,7 @@
 						
 						
 						
-						<div id="DiabetesHistory" class="tab-pane fade in">
+						<div id="DiabetesHistory" class="tab-pane fade in <%= tab_active(@_tab,4)%>">
 						  <h3>Diabetes History</h3>
 						  <%= f.fields_for :diabetes_history do |fd| %>
 						  
@@ -1221,7 +1221,7 @@
 						</div>
 						<!-- 5 -->
 
-						<div id="ExitForm" class="tab-pane fade">
+						<div id="ExitForm" class="tab-pane fade in <%= tab_active(@_tab,5)%>">
 							<div class="row">
 								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">

@@ -61,11 +61,6 @@ $(document).ready(function(){
 		if(persisted == "false"){
 			alert("Please submit patient first");
 			return false
-		}
-		else
-		{
-			var tab_count = $(this).attr('value');
-			$("#tab").attr('value',tab_count);			
 		}		
 	});
 /* ============ */
