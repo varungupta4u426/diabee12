@@ -33,8 +33,20 @@ $(document).ready(function(){
 				container: container,
 				todayHighlight: true,
 				autoclose: true,
-			})
-		})
+			});
+			$('.click-tab').click(function(){
+				var persisted = $('.patient-submit').attr('persisted');
+				var tab_count = $(this).attr('value');
+				if((persisted == "false") && (tab_count != "1") ){
+					alert("Please submit patient first");
+					return false
+				}
+				else
+				{
+					$("#tab").attr('value',tab_count);			
+				}		
+			});
+		});
 
 
 </script>
