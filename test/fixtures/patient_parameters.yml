@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  part_of_day: MyString
+  time: MyString
+  reading: MyString
+  date_of_recall: 2016-09-08
+  patient: one
+  parameter: one
+
+two:
+  part_of_day: MyString
+  time: MyString
+  reading: MyString
+  date_of_recall: 2016-09-08
+  patient: two
+  parameter: two

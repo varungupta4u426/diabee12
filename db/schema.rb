@@ -199,6 +199,25 @@ ActiveRecord::Schema.define(version: 20160908113924) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "parameters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "patient_parameters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "part_of_day"
+    t.string   "time"
+    t.string   "reading"
+    t.date     "date_of_recall"
+    t.integer  "patient_id"
+    t.integer  "parameter_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["parameter_id"], name: "index_patient_parameters_on_parameter_id", using: :btree
+    t.index ["patient_id"], name: "index_patient_parameters_on_patient_id", using: :btree
+  end
+
   create_table "patients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email"
     t.string   "password_digest"
@@ -248,4 +267,6 @@ ActiveRecord::Schema.define(version: 20160908113924) do
   add_foreign_key "medicine_frequency_times", "medicine_frequencies"
   add_foreign_key "medicines", "patients"
   add_foreign_key "nutrition_histories", "patients"
+  add_foreign_key "patient_parameters", "parameters"
+  add_foreign_key "patient_parameters", "patients"
 end

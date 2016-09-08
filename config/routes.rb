@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 		          	post 'update_medicine'
 		          	get 'get_graph'
 		          end	
+            	          resource  :parameters, only: [:create,:show]
 		          resources :blog_posts,only: [:index]
 		    end
 		  end 
