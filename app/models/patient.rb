@@ -47,7 +47,7 @@ class Patient < ApplicationRecord
     if search.blank?
       all
     else
-      where('first_name LIKE ? OR last_name LIKE ? OR concat("first_name ","last_name") LIKE ?', "%#{search}%","%#{search}%","%#{search}%" )
+      where('first_name LIKE ? OR last_name LIKE ? OR concat("first_name","last_name") LIKE ?', "%#{search}%","%#{search}%","%#{search}%" )
       # where('first_name LIKE ? OR last_name LIKE ? OR concat("first_name ","last_name") LIKE ?', "%#{search}%","%#{search}%","%#{search}%" )
     end #REPLACE(column,column,column+' ')
   end
