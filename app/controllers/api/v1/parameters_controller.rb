@@ -3,7 +3,7 @@ class Api::V1::ParametersController < AppsController
 	
 
 	def create 
-		@parameter = Parameter.find(params[:parameter][:name]) 
+		@parameter = Parameter.find_by_name(params[:parameter][:name]) 
 		@_parameter = @patient.patientparameters.new(parameter_params)
 		@_parameter.parameter_id = @parameter.id
 
