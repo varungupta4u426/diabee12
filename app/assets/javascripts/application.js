@@ -36,7 +36,12 @@ function add_fields(link, association, content) {
   $(link).parent().before(content.replace(regexp, new_id));
 }
 
-// $(function() {
+$(function() {
+	 $("#search").on("keyup",function() {
+    $.get($("#patient_search").attr("action"), $("#patient_search").serialize(), null, "script");
+    return false;
+  });
+});	 
 //   $(".main-div .white-bg #patients").on("click","#example a", function() {
 //     $.getScript(this.href);
 //     return false;
@@ -48,7 +53,7 @@ function add_fields(link, association, content) {
 //     return false;
 //   });
 
-// });
+
 
 // $(document).ready(function(){
 
