@@ -11,8 +11,6 @@ class Patient < ApplicationRecord
    validates_format_of :mobile,:allow_blank => true,:with => /\A[0-9]{10,10}\z/
    validates_format_of :pin,:allow_blank => true, :with => /\A[0-9]{6,6}\z/
 
-   # validates :email,:presence => {:message => "Your email is used to save your greeting."}, :allow_blank => true,:uniqueness => { :case_sensitive => false } 
-
    has_many :medicines, dependent: :destroy
 
    has_one :health_history , :inverse_of => :patient, dependent: :destroy
@@ -42,6 +40,20 @@ class Patient < ApplicationRecord
    def full_name
      "#{self.first_name} #{self.last_name}"
    end 
+
+
+
+  def self.search(search)
+    if search.blank?
+      all
+    else
+      where('first_name LIKE ? OR last_name LIKE ? OR concat("first_name ","last_name") LIKE ?', "%#{search}%","%#{search}%","%#{search}%" )
+      # where('first_name LIKE ? OR last_name LIKE ? OR concat("first_name ","last_name") LIKE ?', "%#{search}%","%#{search}%","%#{search}%" )
+    end #REPLACE(column,column,column+' ')
+  end
+
+# "first_name LIKE ? or last_name LIKE ? or concat(last_name, ', ', first_name) LIKE ?"
+
 
    GENDER_OPTIONS   = ["Male","Female","Other"]
    LANGUAGE_OPTIONS = ["Hindi","English","Bengali","Telugu", "Marathi", "Urdu", "Gujarati", 

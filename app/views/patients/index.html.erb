@@ -7,47 +7,25 @@
 				</div>
 			</div>
 			<div class="white-bg">
-			<div class="table-overflow">
-				<table class="table" id="example">
-					<thead>
-					  <tr>
-						<th>SNo.</th>
-						<th>Name</th>
-						<th>Package</th>
-						<th>Mobile</th>
-						<th>Source</th>
-						<th>Modules Due Today</th>
-						<th>Medicine Refill Due</th>
-						<th>Messages</th>
-						<th class="text-right">Action</th>
-					  </tr>
-					</thead>
-					<tbody>
-						<%= render 'patients_data'%>
-					</tbody>
-				  </table>
-				   <div class="digg_pagination">
-       			 <%= will_paginate @patients, :container => false %>
-      	 	 </div>
-    </div>
+			
+				
+
+				<%= form_tag patients_path, :method => 'get', :id => "patient_search" do %>
+				  <div class="search_div_parent">
+				  	<%= hidden_field_tag :direction, params[:direction] %>
+						<%= hidden_field_tag :sort, params[:sort] %>
+						<div class="search_div">
+				    <%= text_field_tag :search, params[:search],{:class=>"form-control",:placeholder => "search"} %>
+				  </div>
+				  </div>
+				   <!-- <div id="patients"><%#= render 'patients' %></div>  -->
+				<% end %>
+
+
+		
+			<div id="patients"><%= render 'patients' %></div>
+
+
 			</div>
 			</div>
 		</div>
-
-<script>
-		// $('#example').DataTable({
-  //       language: {
-  //           searchPlaceholder: 'Search records',
-  //           sSearch: '',
-  //           sLengthMenu: 'Show _MENU_',
-  //           sLength: 'dataTables_length',
-  //           oPaginate: {
-  //               sFirst: '<i class="icon icon-left-chevron"></i>',
-  //               sPrevious: '<i class="icon icon-left-chevron"></i>',
-  //               sNext: '<i class="icon icon-right-chevron"></i>',
-  //               sLast: '<i class="icon icon-right-chevron"></i>' 
-  //       }
-  //       }
-  //   });
-  //   $('.dataTables_length select').addClass('browser-default');
-		</script>

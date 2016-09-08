@@ -1,0 +1,59 @@
+	<div class="table-overflow">
+	<table class="table" id="example">
+		<thead>
+		  <tr>
+			<th><%= sortable "id","SNo." %></th>
+			<th><%= sortable "first_name","Name" %></th>
+			<th><%= sortable "package","Package" %></th>
+			<th><%= sortable "mobile","Mobile" %></th>
+			<th><%= sortable "source","Source" %></th>
+			<th>Modules Due Today</th>
+			<th>Medicine Refill Due</th>
+			<th>Messages</th>
+			<th class="text-right">Action</th>
+		  </tr>
+		</thead>
+		<tbody>
+
+			<%@patients.each do |patient|%>
+			  <tr>
+				<td><%= patient.id%>.</td>
+				<td><a href="patient-dashboard.html"><%= patient.full_name%></a></td>
+				<td><a href="patient-dashboard.html"><%= patient.package%></a></td>
+				<td><a href="patient-dashboard.html"><%= patient.mobile%></a></td>
+				<td><a href="patient-dashboard.html"><%= patient.source%></a></td>
+				<td><a href="patient-dashboard.html"><i class="circle blue-color icon-circal"></i></a></td>
+				<td><a href="patient-dashboard.html"><i class="rectangle blue-color icon-box"></i></a></td>
+				<td>
+					<a class="message blue-color"><i class="icon icon-speech-bubble-1"></i></a>
+				</td>
+				<td class="text-right">
+					<a href="/patients/<%=patient.id%>/edit" class="yello-btn" title="Edit"><i class="icon icon-edit-1"></i></a>
+					<!-- <a href="" class="blue-btn" title="Preview"><i class="icon icon-document"></i></a> -->
+				</td>
+			  </tr>
+			<%end%>
+
+		</tbody>
+	  </table>
+  	 <div class="digg_pagination">
+	 <%= will_paginate @patients, :container => false %>
+	 </div>
+    </div>
+
+
+
+<script>
+$(function() {
+  $("#example th a ,.digg_pagination a").on("click", function() {
+    $.getScript(this.href);
+    return false;
+  });
+  
+  $("#search").on("keyup",function() {
+    $.get($("#patient_search").attr("action"), $("#patient_search").serialize(), null, "script");
+    return false;
+  });
+
+});
+</script>

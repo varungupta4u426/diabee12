@@ -15,3 +15,82 @@
  *= require_tree .
  
  */
+
+ ./*main-div .white-bg #patients #example  th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+	}
+
+	.main-div .white-bg #patients #example  th .asc {
+	  background-image: url(/assets/arrow_up.jpg);
+	  color: red;
+	}*/
+/*background-image: url(/assets/arrow.gif);
+	.main-div .white-bg #patients #example  th .desc {
+		  position: relative;
+	  
+	}
+	.main-div .white-bg #patients #example  th .desc ::before {
+    background: rgba(0, 0, 0, 0) url("/assets/arrow_up.jpg") no-repeat scroll 0 0 / 9px auto;
+    content: "";
+    height: 6px;
+    left: 50px;
+    position: absolute;
+    top: 0;
+    width: 10px;
+    z-index: 99999;
+}*/
+	#search{width: 250px;}
+	.search_div_parent{
+	clear: both;
+    display: inline-block;
+    width: 100%;
+    }
+    .search_div_parent .search_div {
+    clear: both;
+    float: right;
+}
+.main-div .white-bg #patients #example th .asc::before {
+    background: rgba(0, 0, 0, 0) url("/assets/arrow_up.jpg") no-repeat scroll 0 0 / 9px auto;
+    content: "";
+    height: 6px;
+    left: -12px;
+    position: absolute;
+    top: 0;
+    width: 10px;
+    z-index: 999;
+}
+.main-div .white-bg #patients #example th .asc {
+    position: relative;
+}
+
+.main-div .white-bg #patients #example th .desc::before {
+    background: rgba(0, 0, 0, 0) url("/assets/arrow_down.jpg") no-repeat scroll 0 0 / 9px auto;
+    content: "";
+    height: 6px;
+    left: -12px;
+    position: absolute;
+    top: 0;
+    width: 10px;
+    z-index: 999;
+}
+.main-div .white-bg #patients #example th .desc {
+    position: relative;
+}
+.exerciseNow span{
+	display: block;
+	padding-top: 12px;
+}
+.exerciseNow span a{
+	 background: rgb(53, 137, 161) none repeat scroll 0 0;
+    color: #fff;
+    padding: 9px;
+    display: inline-block;
+    margin-top: 6px;
+}
+.exerciseNow .fields  a{
+	background:#f00;
+	color: #fff;
+	padding:6px;
+}

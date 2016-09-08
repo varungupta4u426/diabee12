@@ -1,10 +1,11 @@
 class PatientsController < ApplicationController
 
   before_action :authenticate_counsellor?
-
+  helper_method :sort_column, :sort_direction
+  before_action :set_sidebar
 
   def index
-    @patients = Patient.paginate(:page => params[:page], :per_page => 10)
+    @patients = Patient.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 10)
     @c_tab = ""
     @p_tab = "active"
   end
@@ -51,6 +52,14 @@ class PatientsController < ApplicationController
   end  
 
 
+  def sort_column
+    Patient.column_names.include?(params[:sort]) ? params[:sort] : "first_name"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
 
   private 
   def patient_params
@@ -79,6 +88,11 @@ class PatientsController < ApplicationController
     :emergency_room_for_diabets_related_event] )
   
   end	
+  def set_sidebar
+    @_sidebar = 1
+  end 
+
+  
   	
 end
 

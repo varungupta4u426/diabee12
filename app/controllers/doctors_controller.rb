@@ -1,5 +1,5 @@
 class DoctorsController < ApplicationController
-  before_action :authenticate_counsellor?
+  before_action :authenticate_counsellor?,:set_sidebar
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
 
   # GET /doctors
@@ -62,7 +62,7 @@ class DoctorsController < ApplicationController
     end
   end
 
-  private
+    private
     # Use callbacks to share common setup or constraints between actions.
     def set_doctor
       @doctor = Doctor.find(params[:id])
@@ -72,4 +72,10 @@ class DoctorsController < ApplicationController
     def doctor_params
       params.require(:doctor).permit(:title, :first_name, :last_name, :phone, :email, :address, :postal_code, :city, :state, :speciality, :attendant_name, :attendant_phone, :patient_prescribed)
     end
+
+    def set_sidebar
+      @_sidebar = 2
+    end 
+
+
 end

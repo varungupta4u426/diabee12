@@ -1,9 +1,9 @@
 		<aside>
 			<ul class="nav nav-stacked" id="accordion1">
-				<li><a href="/patients"><i class="icon icon-speedometer-tool"></i> Diabee Dashboard</a></li>
+				<li><a href="/patients" class="<%= set_sidebar @_sidebar, 1 %>"><i class="icon icon-speedometer-tool"></i> Diabee Dashboard</a></li>
 			<%if  current_counsellor.is_master?%>
-				<li><a href="/counsellors" class="active"><i  class="icon icon-user "></i> Master Counsellor</a></li>
-				<li><a href="patient-grouping-sheet.html"  ><i  class="icon icon-task"></i> Patient Grouping Sheet</a></li>
+				<li><a href="/counsellors" class = "<%= set_sidebar @_sidebar, 2%>"><i  class="icon icon-user "></i> Master Counsellor</a></li>
+				<li><a href="patient-grouping-sheet.html" class = "<%= set_sidebar @_sidebar, 3%>" ><i  class="icon icon-task"></i> Patient Grouping Sheet</a></li>
 			<%end%>	
 				
 				

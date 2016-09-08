@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     unless counsellor_signed_in?
       redirect_to root_path
     end  
-  end  
+  end   
 
 
 end

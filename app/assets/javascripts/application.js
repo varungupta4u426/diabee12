@@ -36,25 +36,39 @@ function add_fields(link, association, content) {
   $(link).parent().before(content.replace(regexp, new_id));
 }
 
-$(document).ready(function(){
+// $(function() {
+//   $(".main-div .white-bg #patients").on("click","#example a", function() {
+//     $.getScript(this.href);
+//     return false;
+//   });
+  
+//   $(".search_div_parent").on("keyup","#search",function() {
+//   	alert("sss");
+//     $.get($("#patient_search").attr("action"), $("#patient_search").serialize(), null, "script");
+//     return false;
+//   });
 
-$(".boolean-checked").click(function(){
+// });
+
+// $(document).ready(function(){
+
+// $(".boolean-checked").click(function(){
 	
-	var $target = $(this);
-	// console.log($target.val() == 'true');
-	if($target.val() == 'true')
-		{
-			alert("aa");
-			$target.parent().find('div > textarea').show();
-		}
-	else($target.val() == 'false')
-		{	
-			alert("bb");
-			$target.parent().find('div > textarea').val('').hide();
-		}
+// 	var $target = $(this);
+// 	// console.log($target.val() == 'true');
+// 	if($target.val() == 'true')
+// 		{
+// 			alert("aa");
+// 			$target.parent().find('div > textarea').show();
+// 		}
+// 	else($target.val() == 'false')
+// 		{	
+// 			alert("bb");
+// 			$target.parent().find('div > textarea').val('').hide();
+// 		}
 
-});
-});
+// });
+// });
 // $(document).on('click','.side-bar',function(){
  
 //  var a = $(this);

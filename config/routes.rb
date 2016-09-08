@@ -26,9 +26,9 @@ Rails.application.routes.draw do
 		          
 		          resource :patients, only: [:create,:show] do 
 		          	collection do
-					   post 'update_profile'
-					end
-				  end
+								   post 'update_profile'
+								end
+							 end
 
 		          resource :sessions, only: [:create] do 
 		          	collection do
@@ -51,7 +51,11 @@ Rails.application.routes.draw do
 
 		
 		
-		resources :patients  
+		resources :patients do 
+			collection do 
+			get 'sorting'
+		end	
+	end
 		resources :counsellors, only: [:new,:index,:edit,:update,:show] do
 			collection do
 			   post 'create'

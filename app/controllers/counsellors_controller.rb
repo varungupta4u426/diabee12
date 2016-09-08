@@ -1,6 +1,7 @@
 class CounsellorsController < ApplicationController
 	 
 	before_action :authenticate_counsellor?
+	before_action :set_sidebar
 
 	def index
 		@counsellors = Counsellor.paginate(:page => params[:page], :per_page => 10)
@@ -44,9 +45,13 @@ class CounsellorsController < ApplicationController
 		@counsellor = Counsellor.find(params[:id])
 	end	
 
-
+	private
 	def counsellor_params
 		params.require(:counsellor).permit(:first_name, :last_name,:profile_pic, :email, :profile, :hcah_landline, :mobile)
 	end
+
+	def set_sidebar
+		@_sidebar = 2
+	end	
 	
 end
