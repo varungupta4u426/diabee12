@@ -31,43 +31,8 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-5">
-            <div class="dataTables_info" id="example_info" role="status" aria-live="polite">Showing <%= @lower_limit %> to <%= @upper_limit %> of <%= @count %> entries</div>
-          </div>
-          <div class="col-sm-7">
-            <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
-              <ul class="pagination">
-                <% if @prev_page %>
-                  <li class="paginate_button previous" id="example_previous">
-                    <a href=<%= @prev_page_url %> aria-controls="example" data-dt-idx="0" tabindex="0">
-                      <i class="icon icon-left-chevron"></i>
-                    </a>
-                  </li>
-                <% else %>
-                  <li class="paginate_button previous disabled" id="example_previous">
-                    <a href="#" aria-controls="example" data-dt-idx="0" tabindex="0">
-                      <i class="icon icon-left-chevron"></i>
-                    </a>
-                  </li>
-                <% end %>
-                <li class="paginate_button active">
-                  <a href="#" aria-controls="example" data-dt-idx="1" tabindex="0"><%= @page %></a>
-                </li>
-                <% if @next_page %>
-                  <li class="paginate_button next" id="example_next">
-                    <a href=<%= @next_page_url %> aria-controls="example" data-dt-idx="0" tabindex="0">
-                      <i class="icon icon-right-chevron"></i>
-                    </a>
-                  </li>
-                <% else %>
-                  <li class="paginate_button next disabled" id="example_next">
-                    <a href="#" aria-controls="example" data-dt-idx="0" tabindex="0">
-                      <i class="icon icon-right-chevron"></i>
-                    </a>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
+          <div class="col-sm-12">
+            <%= will_paginate @blog_posts %>
           </div>
         </div>
       </div>

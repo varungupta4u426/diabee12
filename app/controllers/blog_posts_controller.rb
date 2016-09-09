@@ -6,43 +6,7 @@ class BlogPostsController < ApplicationController
   # GET /blog_posts
   # GET /blog_posts.json
   def index
-    @blog_posts = BlogPost.search(params[:search]).order(sort_column + " " + sort_direction)
-    @sort = params[:sort]
-    @direction = params[:direction] || "asc"
-    @count = @blog_posts.count
-    total_pages = (@count%10==0) ? (@count/10) : ((@count/10) + 1)
-    @page = (params[:page] || 1).to_i
-    if @page == 1
-      @prev_page = false
-    else
-      @prev_page = true
-      @prev_page_url = "/blog_posts?sort=#{params[:sort]}&direction=#{params[:direction]}&page=#{@page - 1}"
-    end
-    if @page==total_pages
-      @next_page = false
-    else
-      @next_page = true
-      @next_page_url = "/blog_posts?sort=#{params[:sort]}&direction=#{params[:direction]}&page=#{@page + 1}"
-    end
-    if @direction == "asc"
-      @lower_limit = (@page-1)*10 + 1
-    else
-      @lower_limit = @count - (@page-1)*10
-    end
-    if @page == total_pages
-      if @direction == "asc"
-        @upper_limit = @count
-      else
-        @upper_limit = 1
-      end
-    else
-      if @direction == "asc"
-        @upper_limit = @page*10
-      else
-        @upper_limit = @lower_limit-9
-      end
-    end
-    @blog_posts = @blog_posts.paginate(:page => @page, :per_page => 10)
+    @blog_posts = BlogPost.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /blog_posts/1

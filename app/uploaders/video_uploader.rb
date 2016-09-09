@@ -20,6 +20,9 @@ class VideoUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def cache_dir
+    "#{Rails.root}/tmp/uploads"
+  end
 
   version :thumb do
     process thumbnail: [{format: 'png', quality: 10, size: 192, strip: true, logger: Rails.logger}]
