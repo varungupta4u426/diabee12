@@ -3,7 +3,7 @@ class HealthHistory < ApplicationRecord
 
 
   EVER_HAD_CONDITION = 	[	
-  							"Heart Problems",
+  						"Heart Problems",
 							"Cancer",
 							"Sleep Apnea",
 							"Thyroid Problems",
@@ -23,6 +23,15 @@ class HealthHistory < ApplicationRecord
 							"Stomach or intestinal Problems",
 							"Depression or Mental Illness",
 							]
-end
+  end
+
+  public
+  def co_morbidities
+  	if self.ever_had_condition.nil? or self.ever_had_condition.blank?
+  		return nil
+  	else	 
+  		self.ever_had_condition.delete('"][').split(",") << self.ever_had_condition_other
+  	end	
+  end	
 
 

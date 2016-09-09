@@ -1,0 +1,1446 @@
+		<div class="main-div">
+			<div class="page-title">
+				<h1 class="pull-left">Patient Details Dashboard</h1>
+				<div class="pull-right">
+					<a href="publish-patient-summary.html" target="_blank" class="add-btn blue-bg"><i class="icon icon-add-documents"></i> Publish Patient Summary</a>
+					<a href="view-reports.html" class="add-btn green-bg"><i class="icon icon-rounded-paper-with-text-lines-and-one-folded-corner"></i> View Reports</a>
+					<a href="upload-reports.html" class="add-btn"><i class="icon icon-upload"></i> Upload Reports</a>
+					<a class="add-btn red-bg startT"><i class="icon icon-circular-clock"></i> Start Time</a>
+					<a class="add-btn green-bg stopT"><i class="icon icon-circular-clock"></i> Stop Time</a>
+				</div>
+			</div>
+			<div class="white-bg">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="row">
+							<div class="col-md-2 col-sm-3">
+								<div class="name"><%= @patient.full_name%></div>
+							</div>
+							<div class="col-md-3 col-sm-3">
+								<div class="diabetic"><span>Diabetic</span> <%= @patient.diabetes_history.diabetes_time%></div>
+							</div>
+							<div class="col-md-3 col-sm-3">
+								<div class="preferrT"><span>preferred time to Call</span> <br><%= @patient.prefferd_time_to_call%></div>
+							</div>
+							<div class="col-md-4 col-sm-3">
+								<div class="doctorN"><i class="icon icon-doctor"></i><%= @patient.doctor.try(:full_name)%></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2 col-sm-3">
+								<div class="age"><span>Age</span> <%= @patient.age%></div>
+							</div>
+							<div class="col-md-3 col-sm-3">
+								<div class="sex"><span>Sex</span> <%= @patient.gender%></div>
+							</div>
+							<div class="col-md-3 col-sm-3">
+								<div class="phone"><i class="icon icon-technology-1"></i> <%= @patient.mobile%></div>
+							</div>
+							<div class="col-md-3 col-sm-3">
+								<div class="email"><i class="icon icon-multimedia-1"></i> <%= @patient.email%></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 col-sm-12">
+								<div class="age"><textarea type="text" placeholder="Remarks" rows="3" class="form-control"></textarea></div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-8 col-sm-12">
+							<div class="table-overflow">
+								<table class="table table-striped margin-top30">
+									<thead>
+										<tr>
+											<th>Other Info</th>
+											<th>Last Test</th>
+											<th>Next Test</th>
+										</tr>
+									</thead>
+									<tbody>
+										
+										<tr>
+											<td>Last foot exam</td>
+											<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+											<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+										</tr>
+										<tr>
+											<td>Last eye exam</td>
+											<td><input class="form-control" id="date" name="date" type="text" value = <%= @patient.health_history.last_eye_exam%> /></td>
+											<td><input class="form-control" id="date" name="date" type="text" value = <%= @patient.health_history.%>/></td>
+										</tr>
+										
+										<tr>
+											<td>Prescribed Medicines</td>
+											<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+											<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+										</tr>
+										<tr>
+											<td>Test Reminders</td>
+											<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+											<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+										</tr>
+										
+									</tbody>
+								</table>
+							</div>
+							</div>
+							
+							<div class="col-md-4 col-sm-6">
+							<div class="table-overflow">
+								<table class="table table-striped margin-top30">
+									<thead>
+										<tr>
+											<th>Co-morbidities</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+									<%@patient.health_history.co_morbidities.each do |co_morbidities|%>
+										<tr>
+											<td><%= co_morbidities%></td>
+											<td></td>
+										</tr>
+									<%end%>	
+									</tbody>
+								</table>
+							</div>
+							</div>
+							<div class="col-md-3 col-sm-6">
+								
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12">
+								<button class="add-btn red-bg pull-right" data-toggle="modal" data-target="#AddUnits">
+								<i class="icon icon-add-1"></i>Add Units</button>
+								
+								<!-- Modal -->
+								  <div class="modal fade addUnits" id="AddUnits" role="dialog">
+									<div class="modal-dialog">
+									
+									  <!-- Modal content-->
+									  <div class="modal-content">
+										<div class="modal-header">
+										  <button type="button" class="close" data-dismiss="modal">&times;</button>
+										  <h4 class="modal-title">Add Units</h4>
+										</div>
+										<div class="modal-body">
+											<div class="row">
+												<div class="col-md-8 col-sm-12 col-xs-12">
+											<div class="table-overflow">	
+											<table class="table-custom">
+												<thead>
+													<tr>
+														<th>Title</th>
+														<th>Date</th>
+														<th>Reading</th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>BP-sys</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+														<td><input type="text" value="" class="form-control"></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td>BP-dias</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+														<td><input type="text" value="" class="form-control"></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td>Puls</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+														<td><input type="text" value="" class="form-control"></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td>SMBG fasting</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+														<td><input type="text" value="" class="form-control"></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td>SMBG Normal</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+														<td><input type="text" value="" class="form-control"></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td>SMBG Post Lunch</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+														<td><input type="text" value="" class="form-control"></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td>SMBG 3am</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+														<td><input type="text" value="" class="form-control"></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td>Weight Tracker</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+														<td><input type="text" value="" class="form-control"></td>
+														<td></td>
+													</tr>
+													
+													<tr>
+														<td>BMI</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+														<td><input type="text" value="" class="form-control"></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td>WAIST - Hip Ratio</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+														<td><input type="text" value="" class="form-control"></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td>Calories</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+														<td><input type="text" value="" class="form-control"></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td>Percentage Breaking</td>
+														<td><input class="form-control" placeholder="Cabs" type="text"/></td>
+														<td><input type="text" value="" class="form-control" placeholder="Fat"></td>
+														<td><input type="text" value="" class="form-control" placeholder="Protein"></td>
+													</tr>
+													<tr>
+														<td>Compliance</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+														<td><input type="text" value="" class="form-control"></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td>Cigarette</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+														<td><input type="text" value="" class="form-control"></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td>Smoke</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+														<td><input type="text" value="" class="form-control"></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td>Sleep</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+														<td><input type="text" value="" class="form-control"></td>
+														<td></td>
+													</tr>
+												</tbody>
+											</table>
+											</div>
+											<button class="add-btn blue-bg btn-lg  margin-top30">
+											<i class="icon icon-paper-plane"></i> SUBMIT
+											</button>
+												</div>
+											</div>
+											
+										  
+										</div>
+										
+									  </div>
+									  
+									</div>
+								  </div>
+								<!-- Modal -->
+								
+								
+							</div>
+						</div>
+						
+						<div class="chart">
+							<h2 class="parametersBtn">Parameters <span class="icon icon-sort-1"></span></h2>
+							<div class="parameters">
+								<div class="row">
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>BP</h3>
+										<div class="chart-div">
+											<div id="bp" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>Puls</h3>
+										<div class="chart-div">
+											<div id="puls" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>SMBG Fasting</h3>
+										<div class="chart-div">
+											<div id="smbg-fasting" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>SMBG Normal</h3>
+										<div class="chart-div">
+											<div id="smbg-normal" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>SMBG Post Lunch</h3>
+										<div class="chart-div">
+											<div id="smbg-post-lunch" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>SMBG 3AM</h3>
+										<div class="chart-div">
+											<div id="smbg-post-3am" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>Weight Tracker</h3>
+										<div class="chart-div">
+											<div id="wt" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>BMI</h3>
+										<div class="chart-div">
+											<div id="bmi" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>Waist - Hip Ratio</h3>
+										<div class="chart-div">
+											<div id="waist-hip-ratio" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<h2 class="dietBtn">Diet <span class="icon icon-sort-1"></span></h2>
+							<div class="diet">
+								<div class="row">
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>Calorie</h3>
+										<div class="chart-div">
+											<div id="calorie" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>Histogram</h3>
+										<div class="chart-div">
+											<div id="histogram" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+									
+								</div>
+								
+								
+							</div>
+							
+							<h2 class="medicineBtn">Medicine <span class="icon icon-sort-1"></span></h2>
+							<div class="medicine">
+								<div class="row">
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>Compliance</h3>
+										<div class="chart-div">
+											<div id="medicine-a" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>Medicine B</h3>
+										<div class="chart-div">
+											<div id="medicine-b" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>Medicine C</h3>
+										<div class="chart-div">
+											<div id="medicine-c" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							
+							<h2 class="lifestyleBtn">Lifestyle <span class="icon icon-sort-1"></span></h2>
+							<div class="lifestyle">
+								<div class="row">
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>Cigarette</h3>
+										<div class="chart-div">
+											<div id="cigarette" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>Smoke</h3>
+										<div class="chart-div">
+											<div id="smoke" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<h3>Sleep</h3>
+										<div class="chart-div">
+											<div id="sleep" style="height:200px; width: 100%;"></div>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							
+											
+							
+						</div>
+						
+						<div class="row  margin-top30">
+							<div class="col-md-12">
+								<button class="add-btn red-bg pull-right" data-toggle="modal" data-target="#LabTest">
+								<i class="icon icon-add-1"></i>Add Units</button>
+								
+								<!-- Modal -->
+								  <div class="modal fade addUnits" id="LabTest" role="dialog" style="display: none;">
+									<div class="modal-dialog">
+									
+									  <!-- Modal content-->
+									  <div class="modal-content">
+										<div class="modal-header">
+										  <button type="button" class="close" data-dismiss="modal">×</button>
+										  <h4 class="modal-title">Lab Test</h4>
+										</div>
+										<div class="modal-body">
+											<div class="row">
+												<div class="col-md-8 col-sm-12 col-xs-12">
+											<div class="table-overflow">
+											<table class="table-custom">
+												<thead>
+													<tr>
+														<th>Title</th>
+														<th>Date</th>
+														<th>Reading</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>HBA1C</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>LDL</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>HDL</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>KFT</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>LFT</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>Thyroid</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>Fundoscopy</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>ABI</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>Monofilament Test</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>TMT</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>Ultrasound</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>ECG</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>Vitamin D</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>Vitamin B12</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>Micro-Albumin</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>Urea</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>Cret</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>SGOT</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>SGPT</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>Chol</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													<tr>
+														<td>Tri-Glyc</td>
+														<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"></td>
+														<td><input type="text" value="" class="form-control"></td>
+													</tr>
+													
+												</tbody>
+											</table>
+											</div>
+											<button class="add-btn blue-bg btn-lg  margin-top30">
+											<i class="icon icon-paper-plane"></i> SUBMIT
+											</button>
+												</div>
+											</div>
+											
+										  
+										</div>
+										
+									  </div>
+									  
+									</div>
+								  </div>
+								<!-- Modal -->
+								
+								
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+							<div class="table-overflow">
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<th>Lab Test</th>
+											<th>Reading 1</th>
+											<th>Reading 2</th>
+											<th>Reading 3</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>HBA1C</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>LDL</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>HDL</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>KFT</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>LFT</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>Thyroid</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>Fundoscopy</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>ABI</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>Monofilament Test</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>TMT</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>Ultrasound</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>ECG</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										
+										<tr>
+											<td>Vitamin D</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>Vitamin B12</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										
+										<tr>
+											<td>Micro-Albumin</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>Urea</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>Cret</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>SGOT</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>SGPT</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>Chol</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										<tr>
+											<td>Tri-Glyc</td>
+											<td>20 <span>( 12/02/2016 )</span></td>
+											<td>24 <span>( 12/02/2015 )</td>
+											<td>30 <span>( 12/02/2014 )</td>
+										</tr>
+										
+										
+									</tbody>
+								</table>
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="row">
+							<div class="col-md-6 col-sm-6 col-xs-12">
+							<div class="table-overflow">
+								<table class="table table-striped margin-top30">
+									<thead>
+										<tr>
+											<th>SNo.</th>
+											<th>Module Name</th>
+											<th>Due Date</th>
+											<th class="text-right">Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										
+										<tr>
+											<td>1</td>
+											<td>Module1</td>
+											<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+											<td class="text-right">
+												<input type="checkbox">
+											</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>Module2</td>
+											<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+											<td class="text-right">
+												<input type="checkbox">
+											</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>Module3</td>
+											<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+											<td class="text-right">
+												<input type="checkbox">
+											</td>
+										</tr>
+										
+										<tr>
+											<td>4</td>
+											<td>Module4</td>
+											<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+											<td class="text-right">
+												<input type="checkbox">
+											</td>
+										</tr>
+										<tr>
+											<td>5</td>
+											<td>Module5</td>
+											<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+											<td class="text-right">
+												<input type="checkbox">
+											</td>
+										</tr>
+										<tr>
+											<td>6</td>
+											<td>Module6</td>
+											<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+											<td class="text-right">
+												<input type="checkbox">
+											</td>
+										</tr>
+										<tr>
+											<td>7</td>
+											<td>Module7</td>
+											<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+											<td class="text-right">
+												<input type="checkbox">
+											</td>
+										</tr>
+										<tr>
+											<td>8</td>
+											<td>Module8</td>
+											<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+											<td class="text-right">
+												<input type="checkbox">
+											</td>
+										</tr>
+										<tr>
+											<td>9</td>
+											<td>Module9</td>
+											<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+											<td class="text-right">
+												<input type="checkbox">
+											</td>
+										</tr>
+										<tr>
+											<td>10</td>
+											<td>Module10</td>
+											<td><input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/></td>
+											<td class="text-right">
+												<input type="checkbox">
+											</td>
+										</tr>
+										
+									</tbody>
+								</table>
+							</div>
+							</div>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								
+								
+								<div class="ChatSummary">
+									<p class="ChatStyle">Chat / Call History
+										<!-- <span class="stopT">Stop time</span>
+										<span class="startT">Start time</span> -->
+										
+									</p>
+									<div class="chatBox">
+										<div class="dateDu"><span>11 August 2016</span></div>
+										<div class="leftChat">
+											<div class="Lchatbox">Let's say that we have the following simple html markup</div>
+											<span class="timeDu">15:29</span>
+										</div>
+										
+										<div class="leftChat">
+											<div class="Lchatbox">Have in mind that you are actually adding an element before or after the content. It's not something which appear next to the selected element, but it is related to its content.</div>
+											<span class="timeDu">09:29</span>
+										</div>
+										<div class="leftChat">
+											<div class="Lchatbox">Let's say that we have the following simple html markup</div>
+											<span class="timeDu">16:29</span>
+										</div>
+										
+										<div class="leftChat">
+											<div class="Lchatbox">Have in mind that you are actually adding an element before or after the content. It's not something which appear next to the selected element, but it is related to its content.</div>
+											<span class="timeDu">15:29</span>
+										</div>
+										<div class="dateDu"><span>Today</span></div>
+										<div class="leftChat">
+											<div class="Lchatbox">Let's say that we have the following simple html markup</div>
+											<span class="timeDu">15:29</span>
+										</div>
+										
+										<div class="leftChat">
+											<div class="Lchatbox">Have in mind that you are actually adding an element before or after the content. It's not something which appear next to the selected element, but it is related to its content.</div>
+											<span class="timeDu">20:29</span>
+										</div>
+										<div class="clear"></div>
+									</div>
+									<div class="editArea">
+										<textarea placeholder="type here..."></textarea>
+										<button><i class="icon icon-paper-plane"></i></button>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					
+				</div>
+		
+			</div>
+		</div>
+
+
+		<script>
+
+// 		$(document).ready(function(){
+// 			var date_input=$('input[name="date"]'); //our date input has the name "date"
+// 			var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+// 			date_input.datepicker({
+// 				format: 'dd/mm/yyyy',
+// 				container: container,
+// 				todayHighlight: true,
+// 				autoclose: true,
+// 				orientation: 'auto top',
+// 			});
+// 		});
+
+// 	  // window.onload = function () {
+	  
+// 	  $(function () {
+
+// 		var chart = new CanvasJS.Chart("bp",
+// 		{
+// 		  animationEnabled: true, 
+// 			legend:{
+// 					verticalAlign: "bottom",
+// 					horizontalAlign: "center",
+// 					fontSize: 13,
+// 					//fontFamily: "robotoregular"
+// 					fontFamily: "century_gothicregular"
+
+// 				},	  
+// 		  data: [
+// 		  {        
+// 			type: "spline",
+// 			color: "rgba(54,158,173,.7)",
+// 			showInLegend: true,           
+// 			name: "BP-Sys",
+// 			dataPoints: [
+// 			{y: 1},     
+// 			{y: 8},     
+// 			{y: 18},     
+// 			{y: 28},     
+// 			{y: 31},     
+// 			{y: 14},     
+// 			{y: 26},     
+// 			{y: 9},     
+// 			{y: 18},     
+// 			{y: 11},     
+// 			{y: 7},     
+// 			{y: 1}             
+// 			]
+// 		  },
+// 		  {        
+// 			type: "spline",
+// 			color: "#eab476",
+// 			lineThickness:2,
+// 			showInLegend: true,           
+// 			name: "BP-Dias",
+// 			dataPoints: [
+// 			{y: 14},     
+// 			{y: 23},     
+// 			{y: 21},     
+// 			{y: 16},     
+// 			{y: 12},     
+// 			{y: 14},     
+// 			{y: 18},     
+// 			{y: 14},     
+// 			{y: 5},     
+// 			{y: 12},     
+// 			{y: 17},     
+// 			{y: 14}             
+// 			]
+// 		  }             
+		  
+// 		  ]
+// 		});
+
+// 		chart.render();
+// 	  });
+	  
+// 	$(function () {
+// 	var options = {
+// 		//exportEnabled: true,
+// 			animationEnabled: true,
+// 			data: [
+			
+// 					{
+// 						type: "spline", //change it to splineArea, spline, line, area, bar, pie,column. etc
+// 						color: "#eab476",
+// 						dataPoints: [
+// 							{ y: 100 },
+// 							{ y: 6	},
+// 							{ y: 14 },
+// 							{ y: 12 },
+// 							{ y: 19 },
+// 							{ y: 50 },
+// 							{ y: 26 },
+// 							{ y: 10 },
+// 							{ y: 1 }
+// 						]
+// 					}
+// 					]
+// 				};
+
+// 			$("#puls").CanvasJSChart(options);
+// 		});
+	
+// 	$(function () {
+// 	var options = {
+// 		//exportEnabled: true,
+// 			animationEnabled: true,
+// 			data: [
+			
+// 					{
+// 						type: "spline", //change it to splineArea, spline, line, area, bar, pie,column. etc
+// 						color: "#eab476",
+// 						dataPoints: [
+// 							{ y: 0 },
+// 							{ y: 10	},
+// 							{ y: 70 },
+// 							{ y: 20 },
+// 							{ y: 10 },
+// 							{ y: 50 },
+// 							{ y: 26 },
+// 							{ y: 10 },
+// 							{ y: 1 }
+// 						]
+// 					}
+// 					]
+// 				};
+
+// 			$("#smbg-fasting").CanvasJSChart(options);
+// 		});
+	
+// 	$(function () {
+// 	var options = {
+// 		//exportEnabled: true,
+// 			animationEnabled: true,
+// 			data: [
+			
+// 					{
+// 						type: "spline", //change it to splineArea, spline, line, area, bar, pie,column. etc
+// 						color: "#eab476",
+// 						dataPoints: [
+// 							{ y: 0 },
+// 							{ y: 10	},
+// 							{ y: 70 },
+// 							{ y: 20 },
+// 							{ y: 10 },
+// 							{ y: 50 },
+// 							{ y: 26 },
+// 							{ y: 10 },
+// 							{ y: 1 }
+// 						]
+// 					}
+// 					]
+// 				};
+
+// 			$("#smbg-normal").CanvasJSChart(options);
+// 		});
+	
+// 	$(function () {
+// 	var options = {
+// 		//exportEnabled: true,
+// 			animationEnabled: true,
+// 			data: [
+			
+// 					{
+// 						type: "spline", //change it to splineArea, spline, line, area, bar, pie,column. etc
+// 						color: "#eab476",
+// 						dataPoints: [
+// 							{ y: 0 },
+// 							{ y: 10	},
+// 							{ y: 70 },
+// 							{ y: 20 },
+// 							{ y: 10 },
+// 							{ y: 50 },
+// 							{ y: 26 },
+// 							{ y: 10 },
+// 							{ y: 1 }
+// 						]
+// 					}
+// 					]
+// 				};
+
+// 			$("#smbg-post-lunch").CanvasJSChart(options);
+// 		});
+	
+// 	$(function () {
+// 	var options = {
+// 		//exportEnabled: true,
+// 			animationEnabled: true,
+// 			data: [
+			
+// 					{
+// 						type: "spline", //change it to splineArea, spline, line, area, bar, pie,column. etc
+// 						color: "#eab476",
+// 						dataPoints: [
+// 							{ y: 0 },
+// 							{ y: 10	},
+// 							{ y: 70 },
+// 							{ y: 20 },
+// 							{ y: 10 },
+// 							{ y: 50 },
+// 							{ y: 26 },
+// 							{ y: 10 },
+// 							{ y: 1 }
+// 						]
+// 					}
+// 					]
+// 				};
+
+// 			$("#smbg-post-3am").CanvasJSChart(options);
+// 		});
+	
+// 	$(function () {
+// 	var options = {
+// 		//exportEnabled: true,
+// 			animationEnabled: true,
+// 			data: [
+// 					{
+// 						type: "spline", //change it to splineArea, spline, line, area, bar, pie,column. etc
+// 						color: "#eab476",
+// 						dataPoints: [
+// 							{ y: 10 },
+// 							{ y: 6	},
+// 							{ y: 14 },
+// 							{ y: 12 },
+// 							{ y: 19 },
+// 							{ y: 14 },
+// 							{ y: 26 },
+// 							{ y: 10 },
+// 							{ y: 22 }
+// 						]
+// 					}
+// 					]
+// 				};
+// 			$("#wt").CanvasJSChart(options);
+// 		});
+	
+// 	$(function () {
+// 	var options = {
+// 		//exportEnabled: true,
+// 			animationEnabled: true,
+// 			data: [
+// 					{
+// 						type: "spline", //change it to splineArea, spline, line, area, bar, pie,column. etc
+// 						color: "#eab476",
+// 						dataPoints: [
+// 							{ y: 10 },
+// 							{ y: 6	},
+// 							{ y: 14 },
+// 							{ y: 12 },
+// 							{ y: 19 },
+// 							{ y: 14 },
+// 							{ y: 26 },
+// 							{ y: 10 },
+// 							{ y: 22 }
+// 						]
+// 					}
+// 					]
+// 				};
+// 			$("#bmi").CanvasJSChart(options);
+// 		});
+	
+// 	$(function () {
+// 	var options = {
+// 		//exportEnabled: true,
+// 			animationEnabled: true,
+			
+// 			data: [
+// 					{
+// 						type: "spline", //change it to splineArea, spline, line, area, bar, pie,column. etc
+// 						color: "#eab476",
+// 						dataPoints: [
+// 							{ y: 10 },
+// 							{ y: 6	},
+// 							{ y: 14 },
+// 							{ y: 12 },
+// 							{ y: 19 },
+// 							{ y: 14 },
+// 							{ y: 26 },
+// 							{ y: 10 },
+// 							{ y: 22 }
+// 						]
+// 					}
+// 					]
+// 				};
+// 			$("#waist-hip-ratio").CanvasJSChart(options);
+// 		});
+	
+// 	$(function () {
+// 	var options = {
+// 		//exportEnabled: true,
+// 			animationEnabled: true,
+// 			legend:{
+// 					verticalAlign: "bottom",
+// 					horizontalAlign: "center",
+// 					fontSize: 13,
+// 					fontFamily: "century_gothicregular"
+// 					//fontFamily: "Lucida Sans Unicode"
+
+// 				},
+// 			data: [
+// 			  {        
+// 				type: "spline",
+// 				color: "rgba(54,158,173,.7)",
+// 				showInLegend: true,           
+// 				name: "Waist",
+// 				dataPoints: [
+// 				{y: 1},     
+// 				{y: 8},     
+// 				{y: 18},     
+// 				{y: 28},     
+// 				{y: 31},     
+// 				{y: 14},     
+// 				{y: 26},     
+// 				{y: 9},     
+// 				{y: 18},     
+// 				{y: 11},     
+// 				{y: 7},     
+// 				{y: 1}             
+// 				]
+// 			  },
+// 			  {        
+// 				type: "spline",
+// 				color: "#eab476",
+// 				lineThickness:2,
+// 				showInLegend: true,           
+// 				name: "Hip",
+// 				dataPoints: [
+// 				{y: 14},     
+// 				{y: 23},     
+// 				{y: 21},     
+// 				{y: 16},     
+// 				{y: 12},     
+// 				{y: 14},     
+// 				{y: 18},     
+// 				{y: 14},     
+// 				{y: 5},     
+// 				{y: 12},     
+// 				{y: 17},     
+// 				{y: 14}             
+// 				]
+// 			  }             
+			  
+// 			  ]
+// 				};
+// 			$("#waist-hip-ratio").CanvasJSChart(options);
+// 		});
+	
+// 	$(function () {
+// 	var options = {
+// 			animationEnabled: true,
+// 			data: [
+// 					{
+// 						type: "spline", //change it to splineArea, spline, line, area, bar, pie,column. etc
+// 						color: "#eab476",
+// 						dataPoints: [
+// 							{ y: 10 },
+// 							{ y: 6	},
+// 							{ y: 14 },
+// 							{ y: 12 },
+// 							{ y: 19 },
+// 							{ y: 14 },
+// 							{ y: 26 },
+// 							{ y: 10 },
+// 							{ y: 22 }
+// 						]
+// 					}
+// 					]
+// 				};
+// 			$("#calorie").CanvasJSChart(options);
+// 		});
+	
+// 	$(function () {
+// 	var options = {
+// 		animationEnabled: true,
+// 	legend:{
+// 					verticalAlign: "bottom",
+// 					horizontalAlign: "center",
+// 					fontSize: 13,
+// 					fontFamily: "century_gothicregular"
+// 					//fontFamily: "Lucida Sans Unicode"
+
+// 				},
+// 			data: [
+//       {        
+//         type: "stackedColumn100",
+// 		color:"#eab476",
+//         name: "Cabs",
+//         showInLegend: "true",
+//         dataPoints: [
+//         {  y: 40},
+//         {  y: 10},
+//         {  y: 72},
+//         {  y: 30},
+//         {  y: 30},
+//         {  y: 30},
+//         {  y: 30},
+//         {  y: 21}                
+//         ]
+//       },
+// 	  {        
+//         type: "stackedColumn100",
+//         name: "Fat",
+// 		color:"#f1f1f1",
+//         showInLegend: "true",
+//         dataPoints: [
+//         {  y: 40},
+//         {  y: 10},
+//         {  y: 72},
+//         {  y: 30},
+//         {  y: 30},
+//         {  y: 30},
+//         {  y: 30},
+//         {  y: 21}                
+//         ]
+//       },
+// 	  {        
+//         type: "stackedColumn100",        
+//         name: "Protein",
+// 		color:"#3589a1",
+//         showInLegend: "true",
+//         dataPoints: [
+//         {  y: 20},
+//         {  y: 14},
+//         {  y: 40},
+//         {  y: 40},
+//         {  y: 40},
+//         {  y: 40},
+//         {  y: 43},
+//         {  y: 17}                
+//         ]
+//       }
+
+//       ]
+// 				};
+// 			$("#histogram").CanvasJSChart(options);
+// 		});
+	
+// $(function () {
+// var options = {
+// 	animationEnabled: true,
+// 		data: [
+// 				{
+// 					type: "spline", //change it to splineArea, spline, line, area, bar, pie,column. etc
+// 					color: "#eab476",
+// 					dataPoints: [
+// 						{ y: 10 },
+// 						{ y: 6	},
+// 						{ y: 14 },
+// 						{ y: 12 },
+// 						{ y: 19 },
+// 						{ y: 14 },
+// 						{ y: 26 },
+// 						{ y: 10 },
+// 						{ y: 22 }
+// 					]
+// 				}
+// 				]
+// 			};
+// 		$("#medicine-a").CanvasJSChart(options);
+// 	});
+
+// $(function () {
+// var options = {
+// 	animationEnabled: true,
+// 		data: [
+// 				{
+// 					type: "spline", //change it to splineArea, spline, line, area, bar, pie,column. etc
+// 					color: "#eab476",
+// 					dataPoints: [
+// 						{ y: 10 },
+// 						{ y: 6	},
+// 						{ y: 14 },
+// 						{ y: 12 },
+// 						{ y: 19 },
+// 						{ y: 14 },
+// 						{ y: 26 },
+// 						{ y: 10 },
+// 						{ y: 22 }
+// 					]
+// 				}
+// 				]
+// 			};
+// 		$("#medicine-b").CanvasJSChart(options);
+// 	});
+
+// $(function () {
+// var options = {
+// 	animationEnabled: true,
+// 		data: [
+// 				{
+// 					type: "spline", //change it to splineArea, spline, line, area, bar, pie,column. etc
+// 					color: "#eab476",
+// 					dataPoints: [
+// 						{ y: 10 },
+// 						{ y: 6	},
+// 						{ y: 14 },
+// 						{ y: 12 },
+// 						{ y: 19 },
+// 						{ y: 14 },
+// 						{ y: 26 },
+// 						{ y: 10 },
+// 						{ y: 22 }
+// 					]
+// 				}
+// 				]
+// 			};
+// 		$("#medicine-c").CanvasJSChart(options);
+// 	});
+// $(function () {
+// var options = {
+// 	animationEnabled: true,
+// 		data: [
+// 				{
+// 					type: "spline", //change it to splineArea, spline, line, area, bar, pie,column. etc
+// 					color: "#eab476",
+// 					dataPoints: [
+// 						{ y: 10 },
+// 						{ y: 6	},
+// 						{ y: 14 },
+// 						{ y: 12 },
+// 						{ y: 19 },
+// 						{ y: 14 },
+// 						{ y: 26 },
+// 						{ y: 10 },
+// 						{ y: 22 }
+// 					]
+// 				}
+// 				]
+// 			};
+// 		$("#cigarette").CanvasJSChart(options);
+// 	});
+
+// $(function () {
+// var options = {
+// 	animationEnabled: true,
+// 		data: [
+// 				{
+// 					type: "spline", //change it to splineArea, spline, line, area, bar, pie,column. etc
+// 					color: "#eab476",
+// 					dataPoints: [
+// 						{ y: 10 },
+// 						{ y: 6	},
+// 						{ y: 14 },
+// 						{ y: 12 },
+// 						{ y: 19 },
+// 						{ y: 14 },
+// 						{ y: 26 },
+// 						{ y: 10 },
+// 						{ y: 22 }
+// 					]
+// 				}
+// 				]
+// 			};
+// 		$("#smoke").CanvasJSChart(options);
+// 	});
+
+// $(function () {
+// var options = {
+// 	animationEnabled: true,
+// 		data: [
+// 				{
+// 					type: "spline", //change it to splineArea, spline, line, area, bar, pie,column. etc
+// 					color: "#eab476",
+// 					dataPoints: [
+// 						{ y: 10 },
+// 						{ y: 6	},
+// 						{ y: 14 },
+// 						{ y: 12 },
+// 						{ y: 19 },
+// 						{ y: 14 },
+// 						{ y: 26 },
+// 						{ y: 10 },
+// 						{ y: 22 }
+// 					]
+// 				}
+// 				]
+// 			};
+// 		$("#sleep").CanvasJSChart(options);
+// 	});
+		</script>

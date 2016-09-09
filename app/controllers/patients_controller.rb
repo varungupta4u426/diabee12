@@ -1,8 +1,8 @@
 class PatientsController < ApplicationController
 
-  before_action :authenticate_counsellor?
+  before_action :authenticate_counsellor?,:set_sidebar
   helper_method :sort_column, :sort_direction
-  before_action :set_sidebar
+  before_action :set_patient,only: [:edit,:update,:dashboard]
 
   def index
     @patients = Patient.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 10)
@@ -31,12 +31,12 @@ class PatientsController < ApplicationController
   end	
 
   def edit
-    @patient = Patient.find(params[:id])
+    # @patient = Patient.find(params[:id])
     @_tab = params[:tab].present? ? (params[:tab]) : 1
   end  
 
   def update
-    @patient = Patient.find(params[:id])
+    # @patient = Patient.find(params[:id])
     if @patient.update(patient_params)
       @_tab = params[:tab].present? ? (params[:tab].to_i + 1) : 1 
       if @_tab >5 
@@ -51,6 +51,9 @@ class PatientsController < ApplicationController
     
   end  
 
+  def dashboard
+  end  
+
 
   def sort_column
     Patient.column_names.include?(params[:sort]) ? params[:sort] : "first_name"
@@ -63,13 +66,14 @@ class PatientsController < ApplicationController
 
   private 
   def patient_params
+    if params[:]
 	params.require(:patient).permit(:first_name,:last_name,:email,:gender,:password,:dob,
     :height,:ethnicity,:mobile,:street_address,:pin,:source,:package,:state,:city,:preferred_language,
     :preferred_time_call_start,:preferred_time_call_end,:disability,:doctor_id,
     :exercise,:smoke_drink,:reason_for_non_enrollment,:date_of_dropout,
     :reason_for_dropout,:nok_number,:nok_name, :nok_relation_with_patient,
      
-     health_history_attributes: [:follow_special_diet,{:ever_had_condition=>[]}, :listing_special_diet,
+     health_history_attributes: [:follow_special_diet,{:ever_had_condition=>[]},:ever_had_condition_other,:listing_special_diet,
      :dilated_eye_exam_month, :dilated_eye_exam_year, :seen_foot_doctor, :seen_foot_doctor_month, 
      :seen_foot_doctor_year, :check_feet_daily, :drink_alcohol, :drinks_per_week_wine, :drinks_per_week_beer, 
      :drinks_per_week_mixed, :do_you_smoke, :smoke_packs_per_day, :smoke_years, :ever_smoke, :smoke_quit, 
@@ -91,6 +95,10 @@ class PatientsController < ApplicationController
   def set_sidebar
     @_sidebar = 1
   end 
+
+  def set_patient
+    @patient = Patient.includes(:health_history,:nutrition_history,:diabetes_history,:patient_parameters,:doctor).where(id: params[:id]).first
+  end  
 
   
   	

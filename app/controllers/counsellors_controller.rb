@@ -1,7 +1,6 @@
 class CounsellorsController < ApplicationController
 	 
-	before_action :authenticate_counsellor?
-	before_action :set_sidebar
+	before_action :authenticate_counsellor?, :set_sidebar
 
 	def index
 		@counsellors = Counsellor.paginate(:page => params[:page], :per_page => 10)

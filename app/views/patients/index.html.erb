@@ -29,11 +29,12 @@
 			</div>
 			</div>
 		</div>
+
 		<script>
-		$(function() {
-   $("#search").on("keyup",function() {
-    $.get($("#patient_search").attr("action"), $("#patient_search").serialize(), null, "script");
-    return false;
-  });
-});  
-</script>
+			$(function() {
+				 $("#search").on("keyup",function() {
+			    $.get($("#patient_search").attr("action"), $("#patient_search").serialize(), null, "script");
+			    return false;
+			  });
+			});	 
+		</script>

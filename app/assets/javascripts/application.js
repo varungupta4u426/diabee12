@@ -36,18 +36,12 @@ function add_fields(link, association, content) {
   $(link).parent().before(content.replace(regexp, new_id));
 }
 
-$(function() {
-   $("#search").on("keyup",function() {
-    $.get($("#patient_search").attr("action"), $("#patient_search").serialize(), null, "script");
-    return false;
-  });
-});  
-$(function() {
-   $("#search").on("keyup",function() {
-    $.get($("#blog_post_search").attr("action"), $("#patient_search").serialize(), null, "script");
-    return false;
-  });
-});  
+// $(function() {
+// 	 $("#search").on("keyup",function() {
+//     $.get($("#patient_search").attr("action"), $("#patient_search").serialize(), null, "script");
+//     return false;
+//   });
+// });	 
 //   $(".main-div .white-bg #patients").on("click","#example a", function() {
 //     $.getScript(this.href);
 //     return false;

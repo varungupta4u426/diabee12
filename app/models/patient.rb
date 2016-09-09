@@ -41,7 +41,7 @@ class Patient < ApplicationRecord
    end	
 
    def full_name
-     "#{self.first_name} #{self.last_name}"
+     "#{self.first_name} #{self.last_name}".titleize
    end 
 
 
@@ -51,11 +51,28 @@ class Patient < ApplicationRecord
       all
     else
       where('first_name LIKE ? OR last_name LIKE ? OR concat("first_name","last_name") LIKE ?', "%#{search}%","%#{search}%","%#{search}%" )
-      # where('first_name LIKE ? OR last_name LIKE ? OR concat("first_name ","last_name") LIKE ?', "%#{search}%","%#{search}%","%#{search}%" )
-    end #REPLACE(column,column,column+' ')
-  end
+    end
+  end  
 
-# "first_name LIKE ? or last_name LIKE ? or concat(last_name, ', ', first_name) LIKE ?"
+  def age
+    begin
+      Date.today.year - self.dob.year
+    rescue
+      ""
+    end  
+  end  
+
+  def prefferd_time_to_call
+
+    if !self.preferred_time_call_start.blank? and !self.preferred_time_call_end.blank? then
+     return "#{self.preferred_time_call_start} to #{self.preferred_time_call_end}"
+    elsif self.preferred_time_call_start.blank? or self.preferred_time_call_end.blank? then
+      return "#{self.preferred_time_call_start} #{self.preferred_time_call_end}".strip
+    elsif !self.preferred_time_call_start.blank? and !self.preferred_time_call_end.blank? then
+      return ""
+    end 
+
+  end  
 
 
    GENDER_OPTIONS   = ["Male","Female","Other"]

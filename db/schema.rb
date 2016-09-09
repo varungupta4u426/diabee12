@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160908113924) do
+ActiveRecord::Schema.define(version: 20160909064841) do
 
   create_table "blog_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 20160908113924) do
     t.string   "drink_number_of_years"
     t.string   "food_alergies"
     t.string   "medicine_alergies"
+    t.string   "ever_had_condition_other"
     t.index ["patient_id"], name: "index_health_histories_on_patient_id", using: :btree
   end
 

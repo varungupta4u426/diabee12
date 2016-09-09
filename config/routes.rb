@@ -40,8 +40,8 @@ Rails.application.routes.draw do
 		          	post 'update_medicine'
 		          	get 'get_graph'
 		          end	
-    	          resource  :parameters, only: [:create,:show]
-		          resources :blog_posts
+            	          resource  :parameters, only: [:create,:show]
+		          resources :blog_posts,only: [:index]
 		    end
 		  end 
 
@@ -54,8 +54,11 @@ Rails.application.routes.draw do
 		
 		resources :patients do 
 			collection do 
-			get 'sorting'
-		end	
+				get 'sorting'
+			end
+			member do 
+				get 'dashboard'
+			end	
 	end
 		resources :counsellors, only: [:new,:index,:edit,:update,:show] do
 			collection do

@@ -23,6 +23,37 @@ class DiabetesHistory < ApplicationRecord
 
   LOW_BLOOD_SUGAR = ["Never","Once","Two or more times/week","Bedtime"]        				  
 
+  def diabetes_time
+      if self.diagnosed_year.blank?
+
+         if self.diagnosed_month.blank?
+            return ""
+         else
+            return "for 0 years #{self.diagnosed_month} months"
+         end 
+      else
+         year = Date.today.year - self.diagnosed_year.to_i
+         if self.diagnosed_month.blank?
+            return "for #{year} years"
+         else
+            month = Date.today.month - self.diagnosed_month.to_i
+            if month < 0
+              year  = year -1
+              month = 0 - month
+            end   
+            return "for #{year} years #{self.diagnosed_month} months"
+         end 
+
+      end  
+
+
+
+  end  
+
+
+
+
+
 end
 
 

@@ -18,12 +18,12 @@
 			<%@patients.each do |patient|%>
 			  <tr>
 				<td><%= patient.id%>.</td>
-				<td><a href="patient-dashboard.html"><%= patient.full_name%></a></td>
-				<td><a href="patient-dashboard.html"><%= patient.package%></a></td>
-				<td><a href="patient-dashboard.html"><%= patient.mobile%></a></td>
-				<td><a href="patient-dashboard.html"><%= patient.source%></a></td>
-				<td><a href="patient-dashboard.html"><i class="circle blue-color icon-circal"></i></a></td>
-				<td><a href="patient-dashboard.html"><i class="rectangle blue-color icon-box"></i></a></td>
+				<td><a href="/patients/<%= patient.id%>/dashboard"><%= patient.full_name%></a></td>
+				<td><a href="/patients/<%= patient.id%>/dashboard"><%= patient.package%></a></td>
+				<td><a href="/patients/<%= patient.id%>/dashboard"><%= patient.mobile%></a></td>
+				<td><a href="/patients/<%= patient.id%>/dashboard"><%= patient.source%></a></td>
+				<td><a href="/patients/<%= patient.id%>/dashboard"><i class="circle blue-color icon-circal"></i></a></td>
+				<td><a href="/patients/<%= patient.id%>/dashboard"><i class="rectangle blue-color icon-box"></i></a></td>
 				<td>
 					<a class="message blue-color"><i class="icon icon-speech-bubble-1"></i></a>
 				</td>

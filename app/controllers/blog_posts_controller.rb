@@ -1,7 +1,10 @@
 class BlogPostsController < ApplicationController
+  
+  before_action :authenticate_counsellor?, :set_sidebar
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
   before_action :set_patient_groups, only: [:new, :edit, :create, :update]
   helper_method :sort_column, :sort_direction
+
 
   # GET /blog_posts
   # GET /blog_posts.json
@@ -63,8 +66,12 @@ class BlogPostsController < ApplicationController
     end
   end
 
-  private
+    private
     # Use callbacks to share common setup or constraints between actions.
+    def set_sidebar
+      @_sidebar = 2
+    end 
+
     def set_blog_post
       @blog_post = BlogPost.find(params[:id])
     end

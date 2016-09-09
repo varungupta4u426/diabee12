@@ -66,7 +66,7 @@
 								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>Date of Birth</label>
-										<%= f.text_field :dob, :class=>"form-control date-picker",:placeholder => "Select date"%>
+										<%= f.text_field :dob, :class=>"form-control date-picker",:placeholder => "Select date",:value => f.object.dob.strftime("%m/%d/%Y")%>
 									</div>
 								</div>
 								
@@ -253,7 +253,7 @@
 
 						  <div class="form-group">
 								<label>Other</label>
-								<textarea class="form-control"></textarea>
+								<%= ff.text_area :ever_had_condition_other,:class=>"form-control",:placeholder=>"Other" %>
 							</div>
 						  <br>
 						  
