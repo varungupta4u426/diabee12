@@ -66,7 +66,13 @@
 								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<label>Date of Birth</label>
-										<%= f.text_field :dob, :class=>"form-control date-picker",:placeholder => "Select date",:value => f.object.dob.strftime("%m/%d/%Y")%>
+									<%if f.object.dob.blank?%>
+											<%= f.text_field :dob, :class=>"form-control date-picker",:placeholder => "Select date"%>
+									<%else%>
+											<%= f.text_field :dob, :class=>"form-control date-picker",:value => f.object.dob.strftime("%d/%m/%Y")%>
+									<%end%>
+
+										
 									</div>
 								</div>
 								

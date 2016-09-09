@@ -23,15 +23,32 @@ class HealthHistory < ApplicationRecord
 							"Stomach or intestinal Problems",
 							"Depression or Mental Illness",
 							]
+  def last_eye_exam_date
+  	if self.last_dialated_eye_exam_date.blank?
+  		return ""
+  	else
+  		return "#{self.last_dialated_eye_exam_date.strftime("%d/%m/%Y")}"
+  	end	
   end
 
-  public
+  def next_frequency
+  	if self.last_dialated_eye_exam_date.blank? or self.next_frequency_in_month.blank?
+  		return ""
+  	else
+  		next_date = self.last_dialated_eye_exam_date + self.next_frequency_in_month.to_i.months
+  		return "#{next_date.strftime("%d/%m/%Y")}"
+  	end
+  end
+  	
   def co_morbidities
-  	if self.ever_had_condition.nil? or self.ever_had_condition.blank?
-  		return nil
-  	else	 
-  		self.ever_had_condition.delete('"][').split(",") << self.ever_had_condition_other
-  	end	
-  end	
+  if self.ever_had_condition.nil? or self.ever_had_condition.blank?
+  	return nil
+  else	 
+  	self.ever_had_condition.delete('"][').split(",") << self.ever_had_condition_other
+  end
+  end
+
+
+end  	
 
 

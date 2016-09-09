@@ -66,7 +66,10 @@ class PatientsController < ApplicationController
 
   private 
   def patient_params
-    # if params[:/]
+    if params[:patient][:dob].present? and !params[:patient][:dob].blank?
+      params[:patient][:dob] = params[:patient][:dob].to_date.strftime("%F")
+    end
+     
 	params.require(:patient).permit(:first_name,:last_name,:email,:gender,:password,:dob,
     :height,:ethnicity,:mobile,:street_address,:pin,:source,:package,:state,:city,:preferred_language,
     :preferred_time_call_start,:preferred_time_call_end,:disability,:doctor_id,
@@ -74,10 +77,10 @@ class PatientsController < ApplicationController
     :reason_for_dropout,:nok_number,:nok_name, :nok_relation_with_patient,
      
      health_history_attributes: [:follow_special_diet,{:ever_had_condition=>[]},:ever_had_condition_other,:listing_special_diet,
-     :dilated_eye_exam_month, :dilated_eye_exam_year, :seen_foot_doctor, :seen_foot_doctor_month, 
+     :dilated_eye_exam_month, :dilated_eye_exam_year, :seen_foot_doctor, :seen_foot_doctor_month,:last_dialated_eye_exam_date, 
      :seen_foot_doctor_year, :check_feet_daily, :drink_alcohol, :drinks_per_week_wine, :drinks_per_week_beer, 
      :drinks_per_week_mixed, :do_you_smoke, :smoke_packs_per_day, :smoke_years, :ever_smoke, :smoke_quit, 
-     :alergies_any_othr_health_condition],
+     :alergies_any_othr_health_condition,:next_frequency_in_month],
      
      nutrition_history_attributes: [:weight,:height,:weight_chamge_last_year,:realistic_weight_for_you, 
     :since_you_at_that_weight, :confidence_diaterey_change, :motivation_diatery_change, :eat_out_for_breakfast_count, 
