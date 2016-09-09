@@ -66,7 +66,7 @@ class PatientsController < ApplicationController
 
   private 
   def patient_params
-    if params[:]
+    # if params[:/]
 	params.require(:patient).permit(:first_name,:last_name,:email,:gender,:password,:dob,
     :height,:ethnicity,:mobile,:street_address,:pin,:source,:package,:state,:city,:preferred_language,
     :preferred_time_call_start,:preferred_time_call_end,:disability,:doctor_id,
