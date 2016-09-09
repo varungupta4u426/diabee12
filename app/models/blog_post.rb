@@ -34,4 +34,12 @@ class BlogPost < ApplicationRecord
 			""
 		end
 	end
+  def self.search(search)
+    if search.blank?
+      all
+    else
+      where('title LIKE ?', "%#{search}%" )
+    end 
+  end
+
 end

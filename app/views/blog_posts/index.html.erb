@@ -1,36 +1,85 @@
-    <div class="main-div">
-      <div class="page-title">
-        <h1 class="pull-left">Blog Post</h1>
-        <div class="pull-right">
-          <a href="/blog_posts/new" class="add-btn blue-bg"><i class="icon icon-add-1"></i> Add Blog Post</a>
-          <a href="/counsellors" class="add-btn"><i class="icon icon-left-arrow"></i> Back</a>
+<div class="main-div">
+  <div class="page-title">
+    <h1 class="pull-left">Blog Post</h1>
+    <div class="pull-right">
+      <a href="/blog_posts/new" class="add-btn blue-bg"><i class="icon icon-add-1"></i> Add Blog Post</a>
+      <a href="/counsellors" class="add-btn"><i class="icon icon-left-arrow"></i> Back</a>
+    </div>
+  </div>
+  <div class="white-bg">
+    <div class="table-overflow">
+      <div id="example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+        <div class="row">
+          <div class="col-sm-6"></div>
+          <div class="col-sm-6">
+            <div id="example_filter" class="dataTables_filter">
+              <%= form_tag blog_posts_path, :method => 'get', :id => "blog_post_search" do %>
+                <div class="search_div_parent">
+                  <%= hidden_field_tag :direction, params[:direction] %>
+                  <%= hidden_field_tag :sort, params[:sort] %>
+                  <div class="search_div">
+                   <%= text_field_tag :search, params[:search],{:class=>"form-control",:placeholder => "search"} %>
+                  </div>
+                </div>
+              <% end %>
+            </div>  
+          </div>
         </div>
-      </div>
-      <div class="white-bg">
-      <div class="table-overflow">
-        <table class="table" id="example">
-          <thead>
-            <tr>
-            <th width="50">SNo.</th>
-            <th>Title</th>
-            <th>Group</th>
-            <th class="text-right">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @blog_posts.each_with_index do |blog_post, index| %>
-              <tr>
-                <td><%= index+1 %>.</td>
-                <td><a href="#"><%= blog_post.title %></a></td>
-                <td><%= blog_post.patient_group.name rescue "" %></td>
-                <td class="text-right">
-                  <a href="/blog_posts/<%= blog_post.id %>/edit" class="yello-btn" title="Edit"><i class="icon icon-edit-1"></i></a>
-                  <a href="/blog_posts/<%= blog_post.id %>" class="blue-btn" title="Preview"><i class="icon icon-document"></i></a>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-          </table>
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="blog_posts"><%= render 'blog_posts' %></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-5">
+            <div class="dataTables_info" id="example_info" role="status" aria-live="polite">Showing <%= @lower_limit %> to <%= @upper_limit %> of <%= @count %> entries</div>
+          </div>
+          <div class="col-sm-7">
+            <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
+              <ul class="pagination">
+                <% if @prev_page %>
+                  <li class="paginate_button previous" id="example_previous">
+                    <a href=<%= @prev_page_url %> aria-controls="example" data-dt-idx="0" tabindex="0">
+                      <i class="icon icon-left-chevron"></i>
+                    </a>
+                  </li>
+                <% else %>
+                  <li class="paginate_button previous disabled" id="example_previous">
+                    <a href="#" aria-controls="example" data-dt-idx="0" tabindex="0">
+                      <i class="icon icon-left-chevron"></i>
+                    </a>
+                  </li>
+                <% end %>
+                <li class="paginate_button active">
+                  <a href="#" aria-controls="example" data-dt-idx="1" tabindex="0"><%= @page %></a>
+                </li>
+                <% if @next_page %>
+                  <li class="paginate_button next" id="example_next">
+                    <a href=<%= @next_page_url %> aria-controls="example" data-dt-idx="0" tabindex="0">
+                      <i class="icon icon-right-chevron"></i>
+                    </a>
+                  </li>
+                <% else %>
+                  <li class="paginate_button next disabled" id="example_next">
+                    <a href="#" aria-controls="example" data-dt-idx="0" tabindex="0">
+                      <i class="icon icon-right-chevron"></i>
+                    </a>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+<script>
+$(function() {
+  $("#search").on("keyup",function() {
+    $.get($("#blog_post_search").attr("action"), $("#blog_post_search").serialize(), null, "script");
+    return false;
+  });
+});  
+
+</script>

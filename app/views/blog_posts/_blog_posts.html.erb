@@ -1,0 +1,27 @@
+<table class="table" id="example">
+  <thead>
+    <tr>
+    <th width="50" class="sorting"><%= sortable "id", "SNo." %></th>
+    <th class="sorting"><%= sortable "title", "Title" %></th>
+    <th class="sorting"><%= sortable "patient_group_id", "Group" %></th>
+    <th class="text-right">Action</th>
+    </tr> 
+  </thead>
+  <tbody>
+    <% @blog_posts.each_with_index do |blog_post, index| %>
+      <tr>
+        <% if @direction=="asc" %>
+          <td><%= @lower_limit+index %>.</td>
+        <% else %>
+          <td><%= @lower_limit-index %>.</td>
+        <% end %>
+        <td><a href="#"><%= blog_post.title %></a></td>
+        <td><%= blog_post.patient_group.name rescue "" %></td>
+        <td class="text-right">
+          <a href="/blog_posts/<%= blog_post.id %>/edit" class="yello-btn" title="Edit"><i class="icon icon-edit-1"></i></a>
+          <a href="/blog_posts/<%= blog_post.id %>" class="blue-btn" title="Preview"><i class="icon icon-document"></i></a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

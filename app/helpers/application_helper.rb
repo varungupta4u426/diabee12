@@ -15,10 +15,15 @@ module ApplicationHelper
   
 
   def sortable(column, title = nil)
-    p "********#{}*******"
     title ||= column.titleize
     css_class = column == sort_column ? "current #{sort_direction}" : "asc"
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
+    puts "title => #{title}"
+    puts "sort_column => #{sort_column}"
+    puts "sort_direction => #{sort_direction}"
+    puts "css_class => #{css_class}"
+    puts "direction => #{direction}"
+    puts "column => #{column}"
     link_to title, params.permit!.merge(:sort => column, :direction => direction, :page => nil), {:class => css_class}
   end
 
