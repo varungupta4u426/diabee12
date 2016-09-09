@@ -14,21 +14,13 @@ class Api::V1::ParametersController < AppsController
 		end
 	end
 
-	def show
-		name  = params[:name]	
-		@_parameters = PatientParameter.joins("INNER JOIN parameters ON parameters.name = '#{name}' 
+	def show	
+		@_parameter_name = params[:name]
+		@_parameters = PatientParameter.joins("INNER JOIN parameters ON parameters.name = '#{@_parameter_name}' 
 			AND patient_parameters.patient_id = '#{@patient.id}' ").
 		select("patient_parameters.id,patient_parameters.part_of_day,patient_parameters.time,patient_parameters.reading,
-			patient_parameters.date_of_recall")
-
-		p "****************#{@_parameters.inspect}"
-		# render json: {
-		# 				result: true, 
-		# 				messages: "Parameter fetched successfully",
-		# 				status: SUCCESS_CODE,
-		# 				name: name,
-		# 				parameter: @_parameter
-		# 			}
+			patient_parameters.date_of_recall").order("date_of_recall ASC")
+			
 	end	
 
 
